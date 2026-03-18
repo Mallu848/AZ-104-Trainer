@@ -21,6 +21,7 @@ You are an expert on all AZ-104 domains:
 - Networking: VNets, peering, NSGs, UDRs, Bastion, private endpoints, service endpoints, DNS, Load Balancer, App Gateway
 - Monitor & Backup: Azure Monitor, Log Analytics, alerts, action groups, VM Insights, Network Watcher, Azure Backup, Site Recovery`;
 
+    // Use streaming so Netlify's gateway doesn't timeout waiting for the full response
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -29,8 +30,9 @@ You are an expert on all AZ-104 domains:
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: body.model || 'claude-sonnet-4-5',
+        model: body.model || 'claude-haiku-4-5',
         max_tokens: body.max_tokens || 4000,
+        stream: false,
         system: systemPrompt,
         messages: [{ role: 'user', content: body.prompt || '' }],
       }),
