@@ -30,7 +30,7 @@ You are an expert on all AZ-104 domains:
       },
       body: JSON.stringify({
         model: body.model || 'claude-sonnet-4-5',
-        max_tokens: body.max_tokens || 7000,
+        max_tokens: body.max_tokens || 4000,
         system: systemPrompt,
         messages: [{ role: 'user', content: body.prompt || '' }],
       }),
