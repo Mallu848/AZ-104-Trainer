@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AZ-104 Official Skills Trainer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#080b12; --s1:#0e1320; --s2:#141b2e; --bdr:#1a2840;
+  --acc:#2563eb; --acc2:#3b82f6; --grn:#10b981; --red:#f43f5e;
+  --ylw:#f59e0b; --pur:#8b5cf6;
+  --txt:#dde4f0; --mut:#4d6680;
+  --mono:'JetBrains Mono',monospace; --sans:'Syne',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);min-height:100vh}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 70% 40% at 15% 0%,rgba(37,99,235,.06) 0%,transparent 55%),
+             radial-gradient(ellipse 50% 35% at 85% 100%,rgba(139,92,246,.04) 0%,transparent 50%);
+  pointer-events:none;z-index:0}
+.w{max-width:920px;margin:0 auto;padding:20px 16px;position:relative;z-index:1}
+
+/* ── HEADER ── */
+header{display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:18px;border-bottom:1px solid var(--bdr);margin-bottom:20px}
+.brand{font-family:var(--mono);font-size:10px;color:var(--acc2);letter-spacing:.22em;text-transform:uppercase}
+.badge{font-family:var(--mono);font-size:11px;
+  background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.3);
+  color:#f87171;border-radius:6px;padding:4px 12px}
+
+/* ── NAV ── */
+nav{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+.nb{padding:7px 13px;border-radius:7px;font-size:10px;font-weight:700;
+  cursor:pointer;border:1px solid var(--bdr);background:var(--s1);color:var(--mut);
+  transition:all .18s;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.nb.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.nb:hover:not(.on){border-color:var(--acc2);color:var(--txt)}
+
+/* ── HOME ── */
+h1{font-size:clamp(26px,5vw,44px);font-weight:800;line-height:1.05;margin-bottom:6px;
+  background:linear-gradient(128deg,#dde4f0 0%,#2563eb 50%,#8b5cf6 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--mut);font-size:13px;margin-bottom:22px}
+
+.ms-banner{background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.25);
+  border-radius:10px;padding:14px 18px;margin-bottom:22px;font-size:13px;color:#93c5fd;line-height:1.65}
+.ms-banner strong{color:#bfdbfe}
+
+/* domain breakdown */
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-bottom:22px}
+.dom{background:var(--s1);border:1px solid var(--bdr);border-radius:10px;padding:14px 16px;
+  cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.dom::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.dom.d-identity::before{background:var(--pur)}
+.dom.d-storage::before{background:var(--grn)}
+.dom.d-compute::before{background:var(--ylw)}
+.dom.d-networking::before{background:var(--acc2)}
+.dom.d-monitoring::before{background:var(--red)}
+.dom:hover{border-color:var(--acc);background:var(--s2)}
+.dom.on{border-color:var(--acc);background:rgba(37,99,235,.07)}
+.dom-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.dom-name{font-size:13px;font-weight:700}
+.dom-weight{font-family:var(--mono);font-size:11px;
+  padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.06);color:var(--mut)}
+.dom-topics{font-size:11px;color:var(--mut);line-height:1.5}
+
+.mode-row{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.mchip{background:var(--s1);border:1px solid var(--bdr);border-radius:8px;
+  padding:10px 16px;cursor:pointer;transition:all .18s;font-size:12px;font-weight:700}
+.mchip:hover{border-color:var(--acc)}
+.mchip.on{background:rgba(37,99,235,.1);border-color:var(--acc);color:var(--acc2)}
+
+.stats-row{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.sc{background:var(--s1);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;
+  font-family:var(--mono);font-size:11px;display:flex;align-items:center;gap:8px}
+.sc .v{font-size:20px;font-weight:700;color:var(--acc2);display:block}
+.sc .l{color:var(--mut);font-size:10px;display:block}
+
+.go-btn{width:100%;padding:16px;font-size:15px;font-weight:800;border-radius:12px;
+  background:var(--acc);color:#fff;border:none;cursor:pointer;transition:all .2s;
+  font-family:var(--sans);letter-spacing:.04em}
+.go-btn:hover{background:var(--acc2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.35)}
+
+/* ── PRACTICE ── */
+.prog{background:var(--s2);border-radius:3px;height:3px;margin-bottom:20px;overflow:hidden}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--acc),var(--pur));
+  border-radius:3px;transition:width .4s ease}
+
+.qcard{background:var(--s1);border:1px solid var(--bdr);border-radius:14px;
+  padding:24px;margin-bottom:12px;animation:up .3s ease}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.qmeta{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.qtag{font-family:var(--mono);font-size:9px;font-weight:700;
+  padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.12em}
+.ti{background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}
+.ts{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
+.tc{background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)}
+.tn{background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)}
+.tm{background:rgba(244,63,94,.15);color:#fda4af;border:1px solid rgba(244,63,94,.3)}
+
+.qnum{font-family:var(--mono);font-size:11px;color:var(--mut)}
+.skill-ref{font-family:var(--mono);font-size:9px;color:var(--mut);margin-left:auto;
+  background:var(--s2);border:1px solid var(--bdr);border-radius:4px;padding:2px 8px;
+  max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.qtext{font-size:15px;line-height:1.7;color:var(--txt);margin-bottom:18px;font-weight:600}
+
+.sc-note{background:var(--s2);border-left:3px solid var(--acc);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin-bottom:16px;
+  font-size:13px;color:#94a3b8;line-height:1.6}
+
+.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.opt{background:var(--s2);border:1px solid var(--bdr);border-radius:9px;
+  padding:12px 15px;cursor:pointer;transition:all .15s;
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;line-height:1.55;color:var(--txt)}
+.opt:hover:not(.dis){border-color:var(--acc);background:rgba(37,99,235,.05)}
+.opt.sel{border-color:var(--acc);background:rgba(37,99,235,.09)}
+.opt.ok{border-color:var(--grn);background:rgba(16,185,129,.07)}
+.opt.bad{border-color:var(--red);background:rgba(244,63,94,.07)}
+.opt.dis{cursor:default}
+.ol{font-family:var(--mono);font-size:11px;font-weight:700;
+  width:22px;min-width:22px;height:22px;border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bdr);color:var(--mut);flex-shrink:0}
+.opt.sel .ol{background:var(--acc);color:#fff}
+.opt.ok .ol{background:var(--grn);color:#fff}
+.opt.bad .ol{background:var(--red);color:#fff}
+
+.btn-row{display:flex;gap:9px;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:8px;font-family:var(--sans);font-weight:700;
+  font-size:13px;cursor:pointer;transition:all .16s;border:none}
+.bp{background:var(--acc);color:#fff}
+.bp:hover{background:var(--acc2);transform:translateY(-1px)}
+.bp:disabled{opacity:.35;cursor:default;transform:none}
+.bs{background:var(--s2);color:var(--txt);border:1px solid var(--bdr)}
+.bs:hover{border-color:var(--acc)}
+
+/* ── EXPLANATION ── */
+#exp{display:none;background:var(--s2);border:1px solid var(--bdr);
+  border-radius:12px;padding:18px 22px;margin-top:12px;animation:up .25s ease}
+#exp.show{display:block}
+#exp.e-ok{border-left:3px solid var(--grn)}
+#exp.e-bad{border-left:3px solid var(--red)}
+.eh{font-weight:700;font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.eh.ok{color:var(--grn)}.eh.bad{color:var(--red)}
+.eb{color:#94a3b8;font-size:13px;line-height:1.75}
+.etip{margin-top:12px;padding:10px 14px;
+  background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);
+  border-radius:8px;font-size:12px;color:#93c5fd;line-height:1.6}
+.etip strong{color:#60a5fa}
+.eref{margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--mut)}
+
+.dots{display:flex;gap:4px}
+.dots span{width:5px;height:5px;border-radius:50%;background:var(--acc);animation:dp 1.2s infinite}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes dp{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+/* ── SKILLS MAP ── */
+#skillsmap{display:none}
+.sm-section{margin-bottom:24px}
+.sm-domain{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--acc2);margin-bottom:12px;font-family:var(--mono);
+  display:flex;align-items:center;gap:8px}
+.sm-domain::after{content:'';flex:1;height:1px;background:var(--bdr)}
+.sm-group{margin-bottom:14px}
+.sm-group-title{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:8px}
+.sm-item{display:flex;align-items:flex-start;gap:10px;padding:7px 12px;
+  background:var(--s1);border:1px solid var(--bdr);border-radius:7px;margin-bottom:5px;
+  font-size:12px;color:#94a3b8;line-height:1.5}
+.sm-bullet{width:6px;height:6px;border-radius:50%;background:var(--mut);
+  margin-top:4px;flex-shrink:0}
+.sm-item.covered .sm-bullet{background:var(--grn)}
+.sm-item.covered{border-color:rgba(16,185,129,.2);background:rgba(16,185,129,.03)}
+
+/* ── TIPS ── */
+.tp{background:var(--s1);border:1px solid var(--bdr);border-radius:10px;
+  padding:15px 17px;margin-bottom:9px;display:flex;gap:13px;align-items:flex-start}
+.ti2{font-size:19px;min-width:26px}
+.tt{font-size:13px;line-height:1.65;color:#94a3b8}
+.tt strong{color:var(--txt)}
+
+.sec-h{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);margin-bottom:12px;font-family:var(--mono)}
+
+@media(max-width:560px){.domain-grid{grid-template-columns:1fr}}
+
+/* ── YES/NO question type ── */
+.yn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.yn-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;
+  background:var(--s2);border:1px solid var(--bdr);border-radius:9px;padding:12px 14px;margin-bottom:8px}
+.yn-stmt{font-size:13px;color:var(--txt);line-height:1.5}
+.yn-btn{padding:7px 16px;border-radius:6px;font-size:12px;font-weight:700;
+  cursor:pointer;border:1px solid var(--bdr);background:var(--s1);color:var(--mut);
+  transition:all .15s;font-family:var(--sans);white-space:nowrap}
+.yn-btn:hover:not(.dis){border-color:var(--acc);color:var(--txt)}
+.yn-btn.sel-yes{background:rgba(16,185,129,.15);border-color:var(--grn);color:var(--grn)}
+.yn-btn.sel-no{background:rgba(244,63,94,.15);border-color:var(--red);color:var(--red)}
+.yn-btn.ok{background:rgba(16,185,129,.2);border-color:var(--grn);color:var(--grn)}
+.yn-btn.bad{background:rgba(244,63,94,.2);border-color:var(--red);color:var(--red)}
+.yn-btn.dis{cursor:default}
+
+/* ── MULTI-SELECT question type ── */
+.ms-hint{font-size:11px;color:var(--acc2);font-family:var(--mono);margin-bottom:12px;
+  background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);
+  border-radius:6px;padding:6px 12px;display:inline-block}
+
+/* ── DRAG-AND-DROP ordering ── */
+.dnd-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.dnd-item{background:var(--s2);border:1px solid var(--bdr);border-radius:9px;
+  padding:12px 16px;display:flex;align-items:center;gap:12px;
+  cursor:grab;transition:all .15s;user-select:none}
+.dnd-item:active{cursor:grabbing}
+.dnd-item.dragging{opacity:.4;border-style:dashed}
+.dnd-item.drag-over{border-color:var(--acc);background:rgba(37,99,235,.08)}
+.dnd-item.correct-pos{border-color:var(--grn);background:rgba(16,185,129,.07)}
+.dnd-item.wrong-pos{border-color:var(--red);background:rgba(244,63,94,.07)}
+.dnd-item.dis{cursor:default}
+.dnd-handle{font-size:14px;color:var(--mut);flex-shrink:0}
+.dnd-num{font-family:var(--mono);font-size:11px;font-weight:700;
+  width:22px;height:22px;border-radius:5px;display:flex;align-items:center;
+  justify-content:center;background:var(--bdr);color:var(--mut);flex-shrink:0}
+.dnd-text{font-size:13px;color:var(--txt);line-height:1.5}
+.dnd-correct-num{font-family:var(--mono);font-size:10px;color:var(--grn);
+  margin-left:auto;flex-shrink:0;display:none}
+
+/* ── Question type badge ── */
+.qtype-badge{font-family:var(--mono);font-size:9px;font-weight:700;
+  padding:2px 8px;border-radius:4px;letter-spacing:.08em;text-transform:uppercase}
+.qt-mc{background:rgba(37,99,235,.15);color:var(--acc2);border:1px solid rgba(37,99,235,.3)}
+.qt-yn{background:rgba(245,158,11,.15);color:var(--ylw);border:1px solid rgba(245,158,11,.3)}
+.qt-ms{background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}
+.qt-dnd{background:rgba(16,185,129,.15);color:var(--grn);border:1px solid rgba(16,185,129,.3)}
+
+/* ── REVIEW CARDS ── */
+.rcard{background:var(--s1);border:1px solid var(--bdr);border-radius:12px;
+  padding:18px 20px;margin-bottom:12px;transition:border-color .2s}
+.rcard.mastered{border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.03)}
+.rcard-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.rcard-q{font-size:13px;font-weight:600;line-height:1.6;color:var(--txt);margin-bottom:10px}
+.rcard-scenario{font-size:11px;color:var(--mut);background:var(--s2);
+  border-left:2px solid var(--acc);border-radius:0 6px 6px 0;
+  padding:8px 12px;margin-bottom:10px;line-height:1.5}
+.answer-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+@media(max-width:500px){.answer-row{grid-template-columns:1fr}}
+.ans-box{padding:9px 12px;border-radius:8px;font-size:12px;line-height:1.5}
+.ans-wrong{background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.25);color:#fca5a5}
+.ans-right{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);color:#6ee7b7}
+.ans-label{font-size:10px;font-weight:700;letter-spacing:.1em;margin-bottom:4px;opacity:.7}
+.rcard-exp{font-size:12px;color:#64748b;line-height:1.65;margin-bottom:8px}
+.rcard-tip{font-size:11px;color:#93c5fd;background:rgba(37,99,235,.06);
+  border:1px solid rgba(37,99,235,.15);border-radius:6px;padding:8px 10px;margin-bottom:10px;line-height:1.5}
+.rcard-tip strong{color:#60a5fa}
+.rcard-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.rcard-skill{font-family:var(--mono);font-size:9px;color:var(--mut)}
+.rcard-meta{font-family:var(--mono);font-size:9px;color:var(--mut);display:flex;gap:10px}
+.master-btn{font-size:11px;font-weight:700;padding:5px 12px;border-radius:6px;
+  cursor:pointer;border:1px solid rgba(16,185,129,.4);background:rgba(16,185,129,.08);
+  color:var(--grn);transition:all .18s;font-family:var(--sans)}
+.master-btn:hover{background:rgba(16,185,129,.2)}
+.master-btn.done{background:rgba(16,185,129,.15);border-color:var(--grn);color:#fff}
+.times-wrong{font-family:var(--mono);font-size:10px;padding:2px 8px;
+  border-radius:4px;background:rgba(244,63,94,.1);color:#f87171}
+.times-wrong.once{background:rgba(245,158,11,.1);color:var(--ylw)}
+
+</style>
+</head>
+<body>
+<div class="w">
+<header>
+  <div class="brand">AZ-104 · Official Skills Trainer</div>
+  <div class="badge">686 → 700 needed · Friday</div>
+</header>
+
+<nav>
+  <button class="nb on" onclick="go('home')">HOME</button>
+  <button class="nb" onclick="go('practice')">PRACTICE</button>
+  <button class="nb" onclick="go('review')">❌ WRONG ANSWERS <span id="wrong-count-badge" style="display:none;background:var(--red);color:#fff;border-radius:10px;padding:1px 6px;font-size:9px;margin-left:4px">0</span></button>
+  <button class="nb" onclick="go('skillsmap')">SKILLS MAP</button>
+  <button class="nb" onclick="go('tips')">EXAM TIPS</button>
+</nav>
+
+<!-- ════════════════ HOME ════════════════ -->
+<div id="home">
+  <h1>AZ-104 Exam Trainer</h1>
+  <p class="sub">Every question maps directly to the official Microsoft skills outline (updated April 18, 2025)</p>
+
+  <div class="ms-banner">
+    <strong>✅ Built from the official Microsoft AZ-104 skills outline (April 18, 2025).</strong><br/>
+    Every question in this trainer is tagged to a specific bullet point Microsoft has published as examinable. No filler, no off-topic content. The Skills Map tab shows you exactly what's covered.
+  </div>
+
+  <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:12px;font-family:var(--mono)">
+    SELECT DOMAIN TO FOCUS ON
+  </div>
+  <div class="domain-grid">
+    <div class="dom d-identity on" onclick="pickDom(this,'all')">
+      <div class="dom-header"><span class="dom-name">🌐 All Domains</span><span class="dom-weight">Full Exam</span></div>
+      <div class="dom-topics">Balanced mix across all 5 official domains</div>
+    </div>
+    <div class="dom d-identity" onclick="pickDom(this,'identity')">
+      <div class="dom-header"><span class="dom-name">🔐 Identities &amp; Governance</span><span class="dom-weight">20–25%</span></div>
+      <div class="dom-topics">Entra users/groups · RBAC · Policy · Locks · Tags · Cost management</div>
+    </div>
+    <div class="dom d-storage" onclick="pickDom(this,'storage')">
+      <div class="dom-header"><span class="dom-name">💾 Storage</span><span class="dom-weight">15–20%</span></div>
+      <div class="dom-topics">SAS · Access policies · Redundancy · Blob lifecycle · Soft delete · AzCopy</div>
+    </div>
+    <div class="dom d-compute" onclick="pickDom(this,'compute')">
+      <div class="dom-header"><span class="dom-name">🖥️ Compute</span><span class="dom-weight">20–25%</span></div>
+      <div class="dom-topics">VMs · ARM/Bicep · VMSS · Container Instances · Container Apps · App Service</div>
+    </div>
+    <div class="dom d-networking" onclick="pickDom(this,'networking')">
+      <div class="dom-header"><span class="dom-name">🌐 Virtual Networking</span><span class="dom-weight">15–20%</span></div>
+      <div class="dom-topics">VNets · NSGs · Bastion · DNS · Load Balancer · Private Endpoints · Peering</div>
+    </div>
+    <div class="dom d-monitoring" onclick="pickDom(this,'monitoring')">
+      <div class="dom-header"><span class="dom-name">📊 Monitor &amp; Maintain</span><span class="dom-weight">10–15%</span></div>
+      <div class="dom-topics">Azure Monitor · Log Analytics · Alerts · Backup · Site Recovery · Network Watcher</div>
+    </div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:10px;font-family:var(--mono)">MODE</div>
+  <div class="mode-row">
+    <div class="mchip on" onclick="pickMode(this,'standard')">📋 Standard</div>
+    <div class="mchip" onclick="pickMode(this,'hard')">💀 Hard Only</div>
+    <div class="mchip" onclick="pickMode(this,'scenario')">🎯 Scenario Focus</div>
+  </div>
+
+  <div class="stats-row">
+    <div class="sc"><div><span class="v" id="sa">0</span><span class="l">Attempted</span></div></div>
+    <div class="sc"><div><span class="v" id="sc2">0</span><span class="l">Correct</span></div></div>
+    <div class="sc"><div><span class="v" id="sp">—</span><span class="l">Accuracy</span></div></div>
+    <div class="sc"><div><span class="v" id="ss">0</span><span class="l">Streak 🔥</span></div></div>
+  </div>
+
+  <!-- Per-domain performance dashboard -->
+  <div style="margin-bottom:20px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:12px;font-family:var(--mono);display:flex;align-items:center;justify-content:space-between">
+      <span>DOMAIN PERFORMANCE</span>
+      <span style="color:var(--acc2);font-size:10px;font-weight:400">weighted toward your weakest areas</span>
+    </div>
+    <div id="domain-perf-bars"></div>
+  </div>
+
+  <button class="go-btn" onclick="startSession()">START TRAINING →</button>
+</div>
+
+<!-- ════════════════ PRACTICE ════════════════ -->
+<div id="practice" style="display:none">
+  <div class="prog"><div class="prog-bar" id="pbar" style="width:0%"></div></div>
+  <div id="qarea">
+    <div class="qcard" id="qcard">
+      <div class="qmeta">
+        <span class="qtag tc" id="qtag">Compute</span>
+        <span class="qnum" id="qnum">Q1</span>
+        <span class="qtype-badge qt-mc" id="qtype-badge">Multiple Choice</span>
+        <span class="skill-ref" id="skillref">ARM Templates · Modify existing template</span>
+      </div>
+      <div id="qscenario" class="sc-note" style="display:none"></div>
+      <div class="qtext" id="qtext">Loading...</div>
+      <div class="opts" id="optslist"></div>
+      <div class="btn-row">
+        <button class="btn bp" id="subbtn" onclick="doSubmit()" disabled>Submit Answer</button>
+        <button class="btn bs" id="nxtbtn" onclick="doNext()" style="display:none">Next Question →</button>
+        <button class="btn bs" onclick="go('home')" style="margin-left:auto">← Home</button>
+      </div>
+    </div>
+    <div id="exp">
+      <div class="eh" id="exphead"></div>
+      <div class="eb" id="expbody"></div>
+      <div class="etip" id="exptip" style="display:none"></div>
+      <div class="eref" id="expref"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ SKILLS MAP ════════════════ -->
+<div id="skillsmap">
+  <h2 style="font-size:20px;font-weight:800;margin-bottom:4px">Official Skills Map</h2>
+  <p class="sub" style="margin-bottom:20px">Every bullet below is directly from the Microsoft AZ-104 study guide (April 18, 2025). Green = covered in this trainer.</p>
+
+  <div class="sm-section">
+    <div class="sm-domain">Manage Azure Identities &amp; Governance (20–25%)</div>
+    <div class="sm-group"><div class="sm-group-title">Manage Microsoft Entra users and groups</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create users and groups; manage user and group properties</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage licenses in Microsoft Entra ID</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage external users (B2B guests)</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure self-service password reset (SSPR)</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Manage access to Azure resources</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage built-in Azure roles</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Assign roles at different scopes</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Interpret access assignments</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Manage Azure subscriptions and governance</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Implement and manage Azure Policy</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure resource locks</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Apply and manage tags on resources</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage resource groups</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage costs by using alerts, budgets, and Azure Advisor recommendations</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure management groups</div>
+    </div>
+  </div>
+
+  <div class="sm-section">
+    <div class="sm-domain">Implement and Manage Storage (15–20%)</div>
+    <div class="sm-group"><div class="sm-group-title">Configure access to storage</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure Azure Storage firewalls and virtual networks</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and use shared access signature (SAS) tokens</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure stored access policies</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage access keys</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure identity-based access for Azure Files</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Configure and manage storage accounts</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and configure storage accounts</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure Azure Storage redundancy</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure object replication</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure storage account encryption</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage data by using Azure Storage Explorer and AzCopy</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Configure Azure Files and Azure Blob Storage</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and configure a file share in Azure Storage</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure storage tiers (Hot, Cool, Cold, Archive)</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure soft delete for blobs and containers</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure blob lifecycle management</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure blob versioning</div>
+    </div>
+  </div>
+
+  <div class="sm-section">
+    <div class="sm-domain">Deploy and Manage Azure Compute Resources (20–25%)</div>
+    <div class="sm-group"><div class="sm-group-title">Automate deployment — ARM templates and Bicep</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Interpret an ARM template or Bicep file</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Modify an existing ARM template or Bicep file</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Deploy resources by using ARM template or Bicep file</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Export a deployment as ARM template or convert to Bicep</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Create and configure virtual machines</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure Azure Disk Encryption</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Move a VM to another resource group, subscription, or region</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage virtual machine sizes and disks</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Deploy VMs to availability zones and availability sets</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Deploy and configure Azure Virtual Machine Scale Sets</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Provision and manage containers</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and manage an Azure Container Registry</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Provision a container by using Azure Container Instances</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Provision a container by using Azure Container Apps</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Manage sizing and scaling for ACI and Container Apps</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Create and configure Azure App Service</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Provision and configure scaling for an App Service plan</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure TLS, custom DNS, backup, networking for App Service</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure deployment slots for an App Service</div>
+    </div>
+  </div>
+
+  <div class="sm-section">
+    <div class="sm-domain">Implement and Manage Virtual Networking (15–20%)</div>
+    <div class="sm-group"><div class="sm-group-title">Configure and manage virtual networks</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and configure virtual networks and subnets</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and configure virtual network peering</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure public IP addresses</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure user-defined network routes (UDRs)</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Troubleshoot network connectivity</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Configure secure access to virtual networks</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and configure NSGs and application security groups</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Evaluate effective security rules in NSGs</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Implement Azure Bastion</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure service endpoints for Azure PaaS</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure private endpoints for Azure PaaS</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Configure name resolution and load balancing</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure Azure DNS (public and private zones)</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure an internal or public load balancer</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Troubleshoot load balancing</div>
+    </div>
+  </div>
+
+  <div class="sm-section">
+    <div class="sm-domain">Monitor and Maintain Azure Resources (10–15%)</div>
+    <div class="sm-group"><div class="sm-group-title">Monitor resources in Azure</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Interpret metrics in Azure Monitor</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure log settings and query logs in Azure Monitor</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Set up alert rules, action groups, and alert processing rules</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure and interpret monitoring via Azure Monitor Insights</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Use Azure Network Watcher and Connection Monitor</div>
+    </div>
+    <div class="sm-group"><div class="sm-group-title">Implement backup and recovery</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create a Recovery Services vault and Backup vault</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Create and configure a backup policy; perform backup and restore</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure Azure Site Recovery; perform a regional failover</div>
+      <div class="sm-item covered"><div class="sm-bullet"></div>Configure and interpret reports and alerts for backups</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ TIPS ════════════════ -->
+<div id="tips" style="display:none">
+  <h2 style="font-size:20px;font-weight:800;margin-bottom:4px">Exam Day Playbook</h2>
+  <p class="sub" style="margin-bottom:20px">Rohan-specific strategy — you need 14 more points. Here's exactly how to get them.</p>
+
+  <div class="sec-h">🎯 High-yield topics from the official outline</div>
+  <div class="tp"><div class="ti2">📋</div><div class="tt"><strong>ARM Templates &amp; Bicep (officially on exam):</strong> Know the 5 required sections of an ARM template: <code>$schema</code>, <code>contentVersion</code>, <code>resources</code> (required) + <code>parameters</code>, <code>variables</code>, <code>outputs</code>, <code>functions</code> (optional). Bicep uses <code>param</code>, <code>var</code>, <code>output</code> keywords. You may be asked to read a snippet and identify what it does.</div></div>
+  <div class="tp"><div class="ti2">🔄</div><div class="tt"><strong>Deployment Slots (App Service):</strong> Swapping slots swaps ALL settings by default EXCEPT slot-specific settings (connection strings / app settings marked as "slot setting"). Traffic splitting uses slot percentages. Blue/green = swap with no downtime. This is a common scenario question.</div></div>
+  <div class="tp"><div class="ti2">🗑️</div><div class="tt"><strong>Soft Delete (NEW in April 2025 update):</strong> Soft delete is now explicitly listed for BOTH blobs AND containers. When enabled, deleted blobs/containers are retained for a configurable retention period. Restoring = undelete operation. Separate settings for blobs vs containers.</div></div>
+  <div class="tp"><div class="ti2">🔐</div><div class="tt"><strong>Service Endpoints vs Private Endpoints:</strong> Service Endpoint = traffic stays on Azure backbone but storage account is still reachable via public IP (just restricted to your VNet). Private Endpoint = storage account gets a private IP in your VNet — fully private. Private Endpoint is more secure and works across peered VNets.</div></div>
+  <div class="tp"><div class="ti2">📦</div><div class="tt"><strong>Azure Container Registry (ACR) — now explicitly on exam:</strong> ACR stores Docker images. To use ACR with ACI or Container Apps, you grant the AcrPull role to the managed identity. ACR tiers: Basic, Standard, Premium (geo-replication = Premium only). You push with <code>docker push</code> or <code>az acr build</code>.</div></div>
+  <div class="tp"><div class="ti2">💰</div><div class="tt"><strong>Cost Management (officially listed):</strong> Azure Cost Management has Budgets (set spending limits + alerts), Cost Alerts (budget/credit/department quota alerts), and Azure Advisor Cost recommendations (right-size VMs, delete unused resources, reserved instance suggestions).</div></div>
+  <div class="tp"><div class="ti2">🏷️</div><div class="tt"><strong>Tags — scope and inheritance:</strong> Tags are NOT inherited by default (resources in a tagged RG don't automatically get the tag). You must use Azure Policy (Inherit a tag from resource group) to force inheritance. ARM templates CAN assign tags. Management groups CANNOT have tags.</div></div>
+  <div class="tp"><div class="ti2">🔒</div><div class="tt"><strong>Resource Locks — Read-Only vs Delete:</strong> ReadOnly lock = no changes AND no new resources (even reads that trigger side effects like listing keys are blocked). Delete lock = can modify, cannot delete. Locks apply to ALL users including Owner role. Must remove lock to delete.</div></div>
+
+  <div class="sec-h" style="margin-top:24px">⚡ Exam mechanics for Friday</div>
+  <div class="tp"><div class="ti2">⏱️</div><div class="tt"><strong>Time strategy:</strong> ~60 questions, 150 minutes = 2.5 min/question. Flag anything over 2 minutes and return at end. Case study sections CANNOT be returned to once you leave them — answer those fully before moving on.</div></div>
+  <div class="tp"><div class="ti2">📖</div><div class="tt"><strong>Scenario question technique:</strong> Read the LAST sentence first — it's always the actual question. The paragraphs before are context/constraints. Then re-read constraints to eliminate wrong answers.</div></div>
+  <div class="tp"><div class="ti2">🏆</div><div class="tt"><strong>You need ~2 more questions correct.</strong> Your strongest gains are in: Compute (your weakest bar) and Networking. Drill ARM/Bicep, VMSS, deployment slots, and service endpoint vs private endpoint — these are confirmed on the outline and likely new to you.</div></div>
+</div>
+
+<!-- ════════════════ WRONG ANSWERS ════════════════ -->
+<div id="review" style="display:none">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;flex-wrap:wrap;gap:10px">
+    <div>
+      <h2 style="font-size:20px;font-weight:800">Wrong Answers Log</h2>
+      <p class="sub" style="margin-bottom:0">Every question you've missed — saved across sessions. Drill these until they're green.</p>
+    </div>
+    <button class="btn bs" onclick="clearWrong()" style="font-size:11px;padding:7px 14px;white-space:nowrap">🗑 Clear All</button>
+  </div>
+
+  <div id="review-empty" style="display:none;text-align:center;padding:60px 20px">
+    <div style="font-size:40px;margin-bottom:12px">✅</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:6px">No wrong answers yet!</div>
+    <div style="font-size:13px;color:var(--mut)">Go practice — any question you miss will appear here for review.</div>
+  </div>
+
+  <div id="review-filter" style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+    <button class="mchip on" onclick="filterReview(this,'all')">All</button>
+    <button class="mchip" onclick="filterReview(this,'identity')">🔐 Identity</button>
+    <button class="mchip" onclick="filterReview(this,'storage')">💾 Storage</button>
+    <button class="mchip" onclick="filterReview(this,'compute')">🖥️ Compute</button>
+    <button class="mchip" onclick="filterReview(this,'networking')">🌐 Networking</button>
+    <button class="mchip" onclick="filterReview(this,'monitoring')">📊 Monitor</button>
+  </div>
+
+  <div id="review-stats-row" style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+    <div class="sc"><div><span class="v" id="rv-total">0</span><span class="l">Total Wrong</span></div></div>
+    <div class="sc"><div><span class="v" id="rv-mastered" style="color:var(--grn)">0</span><span class="l">Mastered ✅</span></div></div>
+    <div class="sc"><div><span class="v" id="rv-remaining" style="color:var(--red)">0</span><span class="l">Still Shaky ❌</span></div></div>
+  </div>
+
+  <div id="review-list"></div>
+</div>
+
+</div><!-- /w -->
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// QUESTION BANK
+// Every question tagged with: cat, diff, skill (exact bullet from MS outline)
+// Source: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104
+// Updated: April 18, 2025
+// ══════════════════════════════════════════════════════════════════
+const QB = [
+
+// ── IDENTITY & GOVERNANCE ──────────────────────────────────────────
+
+{type:'mc', cat:'identity', diff:'hard', scenario:"Your company uses Azure AD Connect to sync on-premises AD to Entra ID. A user changes their password on-premises. Three hours later they still cannot sign in to Microsoft 365 with the new password.",
+ skill:'Manage Microsoft Entra users and groups · Configure self-service password reset (SSPR)',
+ text:"Which component is MOST likely the cause of the sign-in failure?",
+ opts:["Azure AD Connect sync cycle has not yet run — default sync interval is 30 minutes so something else is wrong","The user's on-premises account is disabled","Azure AD smart lockout has triggered","Password Hash Synchronization is not enabled in Azure AD Connect"],
+ ans:3,
+ exp:"Azure AD Connect syncs every 30 minutes by default, so 3 hours is more than enough time. If Password Hash Synchronization (PHS) is not enabled, the password hash never gets synced to Entra ID and cloud sign-in continues to use the old hash indefinitely.",
+ tip:"Password changes on-prem not reflecting in cloud after multiple sync cycles = PHS not enabled. Sync interval (30 min) is a distractor."
+},
+
+{type:'mc', cat:'identity', diff:'hard', scenario:null,
+ skill:'Manage access to Azure resources · Interpret access assignments',
+ text:"User A has the Owner role on Resource Group RG1. A Deny assignment exists on RG1 blocking the action 'Microsoft.Compute/virtualMachines/delete'. User A tries to delete a VM in RG1. What happens?",
+ opts:["The delete requires a second approval due to Owner + Deny conflict","The Deny assignment only applies to users without the Owner role","The delete fails — Deny assignments always take precedence over role assignments including Owner","The delete succeeds — Owner role overrides Deny assignments"],
+ ans:2,
+ exp:"In Azure RBAC, Deny assignments override all role assignments — including Owner. Even an Owner cannot perform an action that is explicitly denied. Deny assignments are evaluated before any role permissions.",
+ tip:"Deny beats Owner. No role is exempt from a Deny assignment. This trips up even experienced admins on the exam."
+},
+
+{type:'mc', cat:'identity', diff:'hard', scenario:"You are configuring Conditional Access. Your policy requires MFA when users access the Azure portal from outside the corporate network. A user complains they are being prompted for MFA even when working from the office.",
+ skill:'Manage access to Azure resources · Manage built-in Azure roles',
+ text:"What is the MOST likely misconfiguration?",
+ opts:["The Conditional Access policy is set to 'Block' instead of 'Grant with MFA'","MFA is enforced per-user in the legacy MFA portal, overriding Conditional Access","The corporate network IP ranges have not been defined as a Named Location and marked as Trusted","The user's device is not Azure AD joined"],
+ ans:2,
+ exp:"Conditional Access location conditions rely on Named Locations — IP ranges you define and mark as Trusted. If the office IP range hasn't been configured as a trusted Named Location, the policy cannot distinguish office traffic from external traffic, triggering MFA everywhere.",
+ tip:"CA location policy not working = Named Locations not configured or not marked Trusted. Always define Trusted IPs before creating location-based CA policies."
+},
+
+{type:'mc', cat:'identity', diff:'hard', scenario:null,
+ skill:'Manage Azure subscriptions and governance · Implement and manage Azure Policy',
+ text:"You assign an Azure Policy with the 'DeployIfNotExists' effect to a subscription. 200 existing storage accounts are non-compliant. What happens to those 200 storage accounts immediately after assignment?",
+ opts:["They are immediately remediated automatically","The policy only applies to new resources created after the assignment date","They remain non-compliant until you create a remediation task manually","They are flagged and deleted after 24 hours"],
+ ans:2,
+ exp:"DeployIfNotExists automatically remediates NEW resources as they are created or updated, but existing non-compliant resources are NOT automatically fixed. You must manually create a Remediation Task in the Azure Policy portal to trigger remediation on existing resources.",
+ tip:"DeployIfNotExists = auto-remediates NEW resources, NOT existing ones. Existing non-compliant resources need a manual Remediation Task."
+},
+
+{type:'mc', cat:'identity', diff:'hard', scenario:null,
+ skill:'Manage Azure subscriptions and governance · Configure resource locks',
+ text:"A team has a Delete lock on a storage account. They need to rotate the storage account access keys. Can they do this with the Delete lock in place?",
+ opts:["No — all operations require the lock to be removed first","Yes — but only Global Administrators can rotate keys on a locked resource","Yes — a Delete lock only prevents deletion; key rotation is a write operation that is still permitted","No — key rotation is blocked because it modifies the storage account"],
+ ans:2,
+ exp:"A Delete lock prevents only deletion of the resource. All read and write operations — including key rotation, configuration changes, and data operations — remain permitted. Only a ReadOnly lock would block key rotation (since listing/rotating keys involves a write-side effect).",
+ tip:"Delete lock = only blocks DELETE. Write operations (key rotation, config changes) are allowed. ReadOnly lock = blocks writes too."
+},
+
+{type:'mc', cat:'identity', diff:'hard', scenario:null,
+ skill:'Manage Azure subscriptions and governance · Manage costs by using alerts, budgets, and Azure Advisor recommendations',
+ text:"Azure Advisor shows a 'Right-size or shut down underutilized virtual machines' recommendation. A VM is flagged with average CPU below 5% for 14 days. What does Advisor recommend and what must you do to act on it?",
+ opts:["Advisor creates a budget alert tied to the VM's cost","Advisor automatically resizes the VM — no action needed","Advisor shows the recommendation; you must manually resize or deallocate the VM — Advisor does not take action automatically","Advisor shuts down the VM after 30 days if no action is taken"],
+ ans:2,
+ exp:"Azure Advisor provides recommendations but never takes automated action. All recommendations are advisory only — you must review and act on them manually. Advisor can link to the resource so you can take action, but it will not resize, stop, or delete anything on your behalf.",
+ tip:"Azure Advisor = recommendations only, NEVER automated action. You act, it advises."
+},
+
+// ── STORAGE ────────────────────────────────────────────────────────
+
+{type:'mc', cat:'storage', diff:'hard', scenario:"A storage account has the following configuration: Replication = LRS, Access tier = Hot, Hierarchical namespace = Enabled. A developer tries to set a blob's access tier to Archive.",
+ skill:'Configure Azure Files and Azure Blob Storage · Configure storage tiers',
+ text:"What will happen when the developer attempts this operation?",
+ opts:["The operation succeeds but only for block blobs larger than 1 GB","The operation fails — Archive tier is not supported on storage accounts with Hierarchical Namespace (ADLS Gen2) enabled","The operation fails — LRS replication does not support Archive tier","The operation succeeds — Archive tier is available on all storage accounts"],
+ ans:1,
+ exp:"Storage accounts with Hierarchical Namespace enabled (Azure Data Lake Storage Gen2) do not support the Archive access tier. Archive tier is only available on standard general-purpose v2 accounts without HNS. This is a common trap because HNS accounts look like normal blob storage accounts.",
+ tip:"Archive tier NOT supported on ADLS Gen2 (HNS enabled) accounts. If you see HNS + Archive in a question, it's not supported."
+},
+
+{type:'mc', cat:'storage', diff:'hard', scenario:null,
+ skill:'Configure access to storage · Configure stored access policies',
+ text:"You have a SAS token that grants write access to a blob container expiring in 30 days. You discover the token was accidentally shared publicly. You need to invalidate it immediately without affecting other applications. What is the fastest approach?",
+ opts:["Rotate the storage account access key used to sign the SAS token","Change the storage account's firewall rules to block external access","Delete and recreate the blob container","Wait for the SAS token to expire in 30 days"],
+ ans:0,
+ exp:"A SAS token signed with a storage account key is immediately invalidated when that key is rotated, since the signature becomes invalid. This is the fastest way to revoke an account-key-based SAS. Note: this also invalidates all other SAS tokens signed with that same key, so other applications using the same key must be updated.",
+ tip:"Revoke account-key SAS immediately = rotate the signing key. Side effect: ALL SAS tokens signed with that key are also invalidated."
+},
+
+{type:'mc', cat:'storage', diff:'hard', scenario:null,
+ skill:'Configure and manage storage accounts · Configure Azure Storage redundancy',
+ text:"A storage account is configured as GRS. The primary region experiences an outage. Which statement about read access is TRUE?",
+ opts:["Read requests are automatically redirected to the secondary region with no configuration changes","Read and write operations continue normally because GRS keeps two synchronous copies","The secondary region becomes writable immediately during an outage","Read access to the secondary region requires RA-GRS — standard GRS only allows reads after Microsoft initiates a failover"],
+ ans:3,
+ exp:"With standard GRS, the secondary region is only accessible for reads after Microsoft initiates a failover — you cannot read from the secondary on demand. RA-GRS (Read-Access GRS) is the configuration that allows read access to the secondary endpoint at any time without a failover. GRS replication is also asynchronous, not synchronous.",
+ tip:"GRS = failover only. RA-GRS = read secondary anytime. If the question says 'read during outage without failover' = RA-GRS."
+},
+
+{type:'mc', cat:'storage', diff:'hard', scenario:"A lifecycle management policy has been configured: move to Cool tier after 30 days, move to Archive after 90 days. A blob was last modified 95 days ago. An application reads the blob today.",
+ skill:'Configure Azure Files and Azure Blob Storage · Configure blob lifecycle management',
+ text:"What access tier is the blob currently in, and what happens when the application reads it?",
+ opts:["Hot tier — lifecycle policies do not apply retroactively","Archive tier — Azure automatically rehydrates the blob and returns the data within seconds","Cool tier — the read succeeds immediately at Cool tier pricing","Archive tier — the read fails immediately with an error until the blob is rehydrated"],
+ ans:3,
+ exp:"After 95 days the blob should be in Archive tier (policy moves to Archive at day 90). Archive blobs are offline and cannot be read directly — any read attempt returns an error. The blob must first be rehydrated to Hot or Cool tier, which can take up to 15 hours (standard priority) or under 1 hour (high priority for small blobs).",
+ tip:"Archive tier = offline. Read attempt = immediate error. Must rehydrate first. Azure does NOT auto-rehydrate on access."
+},
+
+{type:'mc', cat:'storage', diff:'hard', scenario:null,
+ skill:'Configure access to storage · Create and use shared access signature (SAS) tokens',
+ text:"You create a User Delegation SAS for a blob container that expires in 7 days. After 2 days you need to revoke access immediately. The user key is still valid. What must you do?",
+ opts:["Rotate the storage account access key","Revoke the user delegation key used to create the SAS via the Azure portal or CLI","Delete the blob container","Wait for the SAS to expire in 5 days"],
+ ans:1,
+ exp:"User Delegation SAS tokens are signed with a user delegation key (tied to an Azure AD identity), not the storage account key. To revoke a User Delegation SAS, you must revoke the user delegation key itself using 'az storage account revoke-delegation-keys'. Rotating the account key has no effect on User Delegation SAS tokens.",
+ tip:"Revoke User Delegation SAS = revoke the user delegation key (not the account key). Rotating account key only revokes account-key SAS."
+},
+
+{type:'mc', cat:'storage', diff:'hard', scenario:null,
+ skill:'Configure and manage storage accounts · Configure storage account encryption',
+ text:"Your security team requires that encryption keys for a storage account be rotated automatically every 90 days and that the rotation is auditable. Which configuration achieves this?",
+ opts:["Enable double encryption on the storage account","Use customer-managed keys (CMK) in Azure Key Vault with automatic key rotation enabled on the Key Vault key","Enable infrastructure encryption on the storage account","Use Microsoft-managed keys and set a 90-day rotation reminder in Azure Policy"],
+ ans:1,
+ exp:"Customer-managed keys stored in Azure Key Vault support automatic key rotation. You configure a rotation policy on the key in Key Vault, and Key Vault automatically creates a new key version on schedule. Azure Storage detects the new version and updates automatically. Key Vault also provides a full audit log of key operations.",
+ tip:"Automatic key rotation + audit trail = CMK in Key Vault with rotation policy. Microsoft-managed keys rotate automatically but you cannot control the schedule or audit it."
+},
+
+// ── COMPUTE ────────────────────────────────────────────────────────
+
+{type:'mc', cat:'compute', diff:'hard', scenario:"You have an ARM template that deploys a VM. When you run the deployment a second time with the same parameters, you want it to update the existing VM rather than fail or create a duplicate.",
+ skill:'Automate deployment · Deploy resources by using an ARM template or Bicep file',
+ text:"Which ARM template deployment mode ensures existing resources are updated to match the template without deleting resources not in the template?",
+ opts:["Complete mode — removes any resources in the resource group not defined in the template","Incremental mode — only adds or updates resources defined in the template, leaves unlisted resources untouched","Validate mode — checks the template without making changes","What-If mode — shows what would change without deploying"],
+ ans:1,
+ exp:"Incremental mode is the default ARM deployment mode. It compares the template to existing resources and adds or updates resources defined in the template, but does NOT delete resources that exist in the resource group but are absent from the template. Complete mode would delete unlisted resources.",
+ tip:"Incremental = add/update only, never delete unlisted resources. Complete = enforce template exactly, delete anything not in it. Default = Incremental."
+},
+
+{type:'mc', cat:'compute', diff:'hard', scenario:null,
+ skill:'Create and configure virtual machines · Configure Azure Disk Encryption',
+ text:"You enable Azure Disk Encryption on a Windows VM. The VM uses a key encryption key (KEK) stored in Key Vault. What does the KEK protect?",
+ opts:["The VM's operating system directly","The BitLocker encryption key (BEK) — the KEK wraps the BEK so the BEK itself is never stored unprotected","The VM's NIC and network traffic","The managed disk metadata only"],
+ ans:1,
+ exp:"Azure Disk Encryption uses BitLocker (Windows) or DM-Crypt (Linux) to encrypt disks. The disk encryption key (BEK/passphrase) is then wrapped (encrypted) by the Key Encryption Key (KEK) stored in Key Vault. This means the BEK is never exposed in plaintext — it can only be unwrapped by Key Vault. This provides an additional layer of protection.",
+ tip:"KEK wraps the BEK. KEK = Key Encryption Key in Key Vault. BEK = BitLocker Encryption Key. Two-layer protection: disk encrypted by BEK, BEK protected by KEK."
+},
+
+{type:'mc', cat:'compute', diff:'hard', scenario:"A VM in East US needs to be moved to West Europe. The VM has a managed OS disk, one managed data disk, and is in an availability set.",
+ skill:'Create and configure virtual machines · Move a VM to another resource group, subscription, or region',
+ text:"What is the correct approach to move this VM to West Europe?",
+ opts:["Use Azure Resource Mover or manually recreate the VM in West Europe — cross-region moves are not supported natively via the portal Move function","Stop the VM and change its region in the VM settings","Use the 'Move' button in the Azure portal — it supports cross-region moves natively","Use Azure Site Recovery to replicate the VM to West Europe then do a test failover"],
+ ans:0,
+ exp:"The Azure portal's 'Move' function supports moving resources between resource groups and subscriptions within the same region, but NOT between regions. Cross-region VM moves require Azure Resource Mover (which orchestrates the copy) or a manual process of capturing the VM image, copying it to the target region, and recreating the VM.",
+ tip:"Move between resource groups/subscriptions = portal Move button. Move between REGIONS = Azure Resource Mover or manual. ASR is for DR, not migration."
+},
+
+{type:'mc', cat:'compute', diff:'hard', scenario:null,
+ skill:'Create and configure virtual machines · Deploy and configure Azure Virtual Machine Scale Sets',
+ text:"You have a VMSS with a minimum of 2 and maximum of 10 instances. A scale-in rule triggers and attempts to remove an instance. The VMSS has a scale-in policy set to 'OldestVM'. Which instance is removed?",
+ opts:["The instance with the highest CPU utilization","A random instance","The newest instance created","The oldest instance in the scale set regardless of its zone or update domain"],
+ ans:3,
+ exp:"The 'OldestVM' scale-in policy instructs VMSS to terminate the oldest VM first during scale-in operations. Other options include 'NewestVM' and 'Default' (which balances across zones first, then removes the oldest). This policy is configured per scale set and affects which instance is chosen when scaling in.",
+ tip:"VMSS scale-in policy 'OldestVM' = removes oldest instance first. 'NewestVM' = removes newest. 'Default' = zone-balanced then oldest."
+},
+
+{type:'mc', cat:'compute', diff:'hard', scenario:null,
+ skill:'Provision and manage containers · Create and manage an Azure Container Registry',
+ text:"Your AKS cluster needs to pull images from your private Azure Container Registry without storing credentials in Kubernetes secrets. What is the recommended approach?",
+ opts:["Make the container registry public","Assign the AcrPull role to the AKS cluster's managed identity","Use an admin account on the ACR and store the password in a ConfigMap","Create a service principal with ACR pull permissions and store its credentials as a Kubernetes secret"],
+ ans:1,
+ exp:"The recommended approach is to assign the AcrPull built-in role to the AKS cluster's managed identity (either system-assigned or user-assigned). This grants the cluster permission to pull images without any credentials needing to be stored, rotated, or managed. This is the Microsoft-recommended integration pattern.",
+ tip:"AKS pulling from ACR without credentials = AcrPull role on the AKS managed identity. No secrets needed."
+},
+
+{type:'mc', cat:'compute', diff:'hard', scenario:"An App Service web app is running in West US on a Standard S2 plan. Response times are slow during peak hours. You need to improve performance without changing the pricing tier.",
+ skill:'Create and configure Azure App Service · Configure scaling for an App Service plan',
+ text:"Which scaling approach should you configure?",
+ opts:["Enable Always On in the app settings","Configure autoscale on the App Service plan to add instances when average response time exceeds a threshold","Scale up to a Premium P1 plan","Migrate the app to Azure Kubernetes Service"],
+ ans:1,
+ exp:"Scale-out (adding instances via autoscale) distributes load across multiple instances without changing the pricing tier. Standard S2 fully supports autoscale rules based on metrics including response time, CPU, and memory. Scale-up (changing tier) would require moving to a different plan.",
+ tip:"Slow response under load + don't change tier = autoscale (scale out). Scale up = bigger VM. Scale out = more VMs. Autoscale = automatic scale out/in."
+},
+
+{type:'mc', cat:'compute', diff:'hard', scenario:null,
+ skill:'Create and configure Azure App Service · Configure deployment slots for an App Service',
+ text:"You swap your staging slot to production. Five minutes later users report a critical bug. You need to roll back immediately. What is the fastest approach?",
+ opts:["Delete the production slot and recreate it from backup","Scale down to zero and back up to force a fresh deployment","Swap the slots again — this will restore the previous production configuration since staging now holds what was in production","Redeploy the last known good version from your CI/CD pipeline"],
+ ans:2,
+ exp:"Slot swaps are reversible. After swapping staging to production, the staging slot now contains what was previously in production. Swapping again immediately restores the previous production state. This is intentional — it's why staging slots are used as a rollback mechanism.",
+ tip:"Rollback after bad slot swap = swap again. Staging now holds the old production. One more swap = instant rollback. Fastest possible recovery."
+},
+
+// ── NETWORKING ─────────────────────────────────────────────────────
+
+{type:'mc', cat:'networking', diff:'hard', scenario:"VNet-A (10.0.0.0/16) is peered with VNet-B (10.1.0.0/16). VNet-A has a VPN Gateway connected to on-premises. You enable 'Allow gateway transit' on VNet-A's side of the peering. VNet-B still cannot reach on-premises resources.",
+ skill:'Configure and manage virtual networks · Create and configure virtual network peering',
+ text:"What additional configuration is required?",
+ opts:["Add a static route in VNet-B's route table pointing to on-premises","Configure BGP between VNet-A and VNet-B","Enable 'Use remote gateways' on VNet-B's side of the peering","Deploy a second VPN Gateway in VNet-B"],
+ ans:2,
+ exp:"Gateway transit requires TWO settings: 'Allow gateway transit' on the hub (VNet-A) side AND 'Use remote gateways' on the spoke (VNet-B) side. Enabling only one side does not establish the transit routing. Both peering configurations must be updated.",
+ tip:"Gateway transit = two switches. Hub: 'Allow gateway transit' ON. Spoke: 'Use remote gateways' ON. Forget one = doesn't work."
+},
+
+{type:'mc', cat:'networking', diff:'hard', scenario:null,
+ skill:'Configure secure access to virtual networks · Create and configure network security groups (NSGs) and application security groups',
+ text:"You have 50 web server VMs and 10 database VMs. You want NSG rules that allow web servers to reach databases on port 1433, without referencing individual IP addresses. What is the most maintainable approach?",
+ opts:["Create an NSG rule with a /24 source IP range covering all web server IPs","Use Application Security Groups — assign web VMs to ASG-Web and database VMs to ASG-DB, then create an NSG rule with ASG-Web as source and ASG-DB as destination on port 1433","Use Azure Firewall with FQDN-based rules instead of NSGs","Create individual NSG rules for each web server VM"],
+ ans:1,
+ exp:"Application Security Groups (ASGs) allow you to group VMs logically and reference the group in NSG rules instead of IP addresses. As VMs are added or removed from the group, the rule automatically applies without modification. This is the recommended approach for dynamic, scalable NSG management.",
+ tip:"NSG rules based on VM role not IP = Application Security Groups (ASGs). Group VMs into ASGs, reference ASGs in rules. Scales automatically."
+},
+
+{type:'mc', cat:'networking', diff:'hard', scenario:null,
+ skill:'Configure and manage virtual networks · Configure public IP addresses',
+ text:"You need a public IP address for an Azure Load Balancer that must remain the same even if the Load Balancer is deleted and recreated. Which public IP SKU and assignment method is required?",
+ opts:["Standard SKU with Static assignment","Standard SKU with Dynamic assignment — Standard IPs are always static","Basic SKU with Static assignment","Basic SKU with Dynamic assignment"],
+ ans:0,
+ exp:"Standard SKU public IPs are always statically assigned — they do not change and can be reserved independently of the resource they're attached to. Standard Load Balancers require Standard SKU public IPs. Basic Dynamic IPs change on stop/start. Basic Static IPs persist but are being retired. Standard SKU is the correct and current choice.",
+ tip:"Standard LB requires Standard SKU public IP. Standard IPs are always static — they persist even when detached from a resource."
+},
+
+{type:'mc', cat:'networking', diff:'hard', scenario:"You create a private DNS zone 'internal.contoso.com' and link it to VNet-Prod with auto-registration enabled. You deploy a VM named 'webvm01' in VNet-Prod. You then try to resolve 'webvm01.internal.contoso.com' from another VM in VNet-Dev, which is peered with VNet-Prod.",
+ skill:'Configure name resolution and load balancing · Configure Azure DNS',
+ text:"The resolution fails from VNet-Dev. What must be done?",
+ opts:["Link the private DNS zone to VNet-Dev as well — a VNet must be explicitly linked to use the private DNS zone","Configure DNS forwarding from VNet-Dev to VNet-Prod","Add a static A record in the private DNS zone for webvm01","Enable auto-registration on VNet-Dev"],
+ ans:0,
+ exp:"Private DNS zones must be explicitly linked to each VNet that needs to resolve names in that zone. VNet peering alone does not share DNS zone access. VNet-Dev must have its own VNet link to the 'internal.contoso.com' private DNS zone (without auto-registration, unless you want its VMs registered too).",
+ tip:"Private DNS resolution across peered VNets = link the zone to EVERY VNet that needs to resolve it. Peering alone does not share DNS zones."
+},
+
+{type:'mc', cat:'networking', diff:'hard', scenario:null,
+ skill:'Configure name resolution and load balancing · Troubleshoot load balancing',
+ text:"An Azure Standard Load Balancer has a backend pool, health probe on port 80, and a load balancing rule on port 80. VMs in the backend pool can reach each other but external clients cannot reach the load balancer's public IP. What should you check first?",
+ opts:["Whether an NSG on the backend subnet is blocking inbound traffic on port 80 from the load balancer's source IP","The health probe interval — increase it to 30 seconds","Whether the load balancing rule has 'Floating IP' enabled","Whether the VMs are in an availability set"],
+ ans:0,
+ exp:"Standard Load Balancer does not use Security Groups for health probe traffic — health probes come from 168.63.129.16. However, inbound traffic from external clients must be permitted by NSGs on the VM NICs or subnets. A common misconfiguration is having an NSG that blocks the inbound port, preventing external access despite the LB being configured correctly.",
+ tip:"LB configured correctly but external clients can't connect = check NSG on backend subnet/NIC. NSGs must allow the traffic that the LB forwards."
+},
+
+// ── MONITORING & BACKUP ────────────────────────────────────────────
+
+{type:'mc', cat:'monitoring', diff:'hard', scenario:null,
+ skill:'Monitor resources in Azure · Configure log settings in Azure Monitor',
+ text:"You need to send Azure Activity Logs from 5 subscriptions to a single Log Analytics workspace for centralized querying. What is the recommended approach?",
+ opts:["Use Azure Monitor Workbooks to aggregate data across subscriptions","Install the Log Analytics agent on all VMs in each subscription","Configure an alert rule in each subscription that forwards events to the workspace","Configure a Diagnostic Setting on each subscription to route Activity Logs to the central Log Analytics workspace"],
+ ans:3,
+ exp:"Activity Logs are subscription-level logs. To send them to Log Analytics, you create a Diagnostic Setting at the subscription level (not resource level) and select the target Log Analytics workspace. You must do this for each subscription individually, but they can all point to the same workspace for centralized analysis.",
+ tip:"Activity Logs to Log Analytics = Diagnostic Setting at the SUBSCRIPTION level. Not resource level. One per subscription, all pointing to same workspace."
+},
+
+{type:'mc', cat:'monitoring', diff:'hard', scenario:"A VM has been configured with Azure Monitor and a Log Analytics workspace. You need to create an alert that fires when the VM's available memory drops below 500 MB. You check Azure Monitor and find no memory metric available for this VM.",
+ skill:'Monitor resources in Azure · Interpret metrics in Azure Monitor',
+ text:"Why is the memory metric unavailable, and how do you fix it?",
+ opts:["The Azure Monitor Agent (or Log Analytics agent) with a Data Collection Rule configured for performance counters must be installed — guest OS metrics are not collected by default","Memory metrics are only available in Azure Security Center","Memory metrics require a Premium VM SKU","Memory metrics must be enabled through Azure Advisor"],
+ ans:0,
+ exp:"Azure Monitor collects host-level metrics (CPU, network, disk) automatically for VMs without any agent. However, guest OS metrics like available memory, disk queue length, and per-process CPU require the Azure Monitor Agent (AMA) or Log Analytics agent to be installed, plus a Data Collection Rule specifying which performance counters to collect.",
+ tip:"Host metrics (CPU%) = no agent needed. Guest OS metrics (memory, disk queue) = requires Azure Monitor Agent + Data Collection Rule."
+},
+
+{type:'mc', cat:'monitoring', diff:'hard', scenario:null,
+ skill:'Implement backup and recovery · Configure and interpret reports and alerts for backups',
+ text:"Azure Backup reports show that a VM backup job has been failing for 3 days with error 'UserErrorVmNotInDesiredState'. What does this error indicate?",
+ opts:["The VM backup policy has expired","The Recovery Services vault is in a different region than the VM","The managed disk is encrypted and Key Vault access has been revoked","The VM must be running (not deallocated) for backup to succeed — Azure Backup requires the VM to be in a running state"],
+ ans:3,
+ exp:"'UserErrorVmNotInDesiredState' means Azure Backup could not take the snapshot because the VM is in a deallocated or stopped state. Azure Backup for VMs requires the VM to be running to create an application-consistent snapshot (VSS on Windows, fsfreeze on Linux). A file-consistent backup is attempted if the VM is off, but certain configurations prevent this.",
+ tip:"UserErrorVmNotInDesiredState = VM is stopped/deallocated when backup tried to run. Backup requires VM to be running for app-consistent snapshots."
+},
+
+{type:'mc', cat:'monitoring', diff:'hard', scenario:null,
+ skill:'Implement backup and recovery · Configure Azure Site Recovery for Azure resources',
+ text:"You use Azure Site Recovery to replicate VMs from East US to West US. Your RPO requirement is 1 hour. After testing a failover, you notice replicated VMs in West US have a recovery point that is 4 hours old. What is the MOST likely cause?",
+ opts:["Network bandwidth between East US and West US is insufficient causing replication lag","The Recovery Services vault in West US has reached its storage limit","ASR replication is paused — it must be manually triggered","ASR only replicates once every 4 hours by default"],
+ ans:0,
+ exp:"ASR uses continuous replication for Azure VMs (crash-consistent every 5 minutes, app-consistent every 1-4 hours depending on policy). If recovery points are consistently old, it typically indicates network bandwidth constraints causing replication lag. ASR replication is continuous and automatic — it does not require manual triggering.",
+ tip:"Old ASR recovery points despite continuous replication = network bandwidth bottleneck. ASR is always-on; stale points = replication can't keep up."
+},
+
+{type:'mc', cat:'monitoring', diff:'hard', scenario:null,
+ skill:'Monitor resources in Azure · Set up alert rules, action groups, and alert processing rules',
+ text:"You have 20 alert rules across your subscription that all need to notify the same on-call team via email and webhook. The team email address changes. What is the most efficient way to update all 20 alert rules?",
+ opts:["Update each of the 20 alert rules individually","Create a new Action Group and reassign all 20 alert rules to it","Delete and recreate all 20 alert rules with the new email","Update the single Action Group that all 20 alert rules reference — all rules automatically use the updated contact information"],
+ ans:3,
+ exp:"Action Groups are reusable — multiple alert rules reference the same Action Group. When you update the Action Group (changing the email address), all alert rules that reference it automatically use the new configuration. This is the primary architectural benefit of separating conditions (alert rules) from notification targets (action groups).",
+ tip:"One Action Group change = updates all alert rules that reference it. This is why Action Groups exist — single update point for notifications."
+},
+
+];
+
+// ══════════════════════════════════════════════════════════════════
+// PERSISTENT STORAGE KEYS
+const KEYS = { stats:'az104_stats', wrong:'az104_wrong', perf:'az104_perf' };
+
+// ── In-memory state
+let selDomain='all', selMode='standard';
+let pool=[], qi=0, picked=null, done=false; // picked: MC=idx, MS=Set, YN=Map, DND=array
+let stats={att:0,cor:0,str:0};
+// wrongLog: { [questionText]: { cat, diff, skill, text, scenario, opts, ans, exp, tip, yourAns, timesWrong, mastered, lastSeen } }
+let wrongLog={};
+let reviewFilter='all';
+
+// ── Per-domain performance tracking
+// Seeded with Rohan's actual exam results as starting baseline
+// domainPerf: { [cat]: { att, cor, examBaseline } }
+// examBaseline: 0-100 estimated score from real exam (lower = weaker)
+let domainPerf = {
+  compute:    { att:0, cor:0, examBaseline:52 },  // Shortest bar — weakest
+  identity:   { att:0, cor:0, examBaseline:68 },  // 2nd weakest
+  storage:    { att:0, cor:0, examBaseline:72 },  // 3rd weakest
+  networking: { att:0, cor:0, examBaseline:76 },  // Decent
+  monitoring: { att:0, cor:0, examBaseline:80 },  // Strongest
+};
+
+const tagClass={identity:'ti',storage:'ts',compute:'tc',networking:'tn',monitoring:'tm'};
+const tagLabel={identity:'Identity & Gov',storage:'Storage',compute:'Compute',networking:'Networking',monitoring:'Monitor & Backup'};
+const PAGES=['home','practice','review','skillsmap','tips'];
+
+// ══════════════════════════════════════════════════════════════════
+// STORAGE HELPERS — localStorage works on any browser/device (Netlify, mobile, etc.)
+function saveStats(){
+  try{ localStorage.setItem(KEYS.stats, JSON.stringify(stats)); }catch(e){}
+}
+function saveWrong(){
+  try{ localStorage.setItem(KEYS.wrong, JSON.stringify(wrongLog)); }catch(e){}
+}
+function savePerf(){
+  try{ localStorage.setItem(KEYS.perf, JSON.stringify(domainPerf)); }catch(e){}
+}
+function loadAll(){
+  try{
+    const s=localStorage.getItem(KEYS.stats);
+    if(s) stats=JSON.parse(s);
+  }catch(e){}
+  try{
+    const w=localStorage.getItem(KEYS.wrong);
+    if(w) wrongLog=JSON.parse(w);
+  }catch(e){}
+  try{
+    const p=localStorage.getItem(KEYS.perf);
+    if(p){
+      const saved=JSON.parse(p);
+      // Merge saved into domainPerf — preserve examBaseline if not in saved
+      Object.keys(domainPerf).forEach(k=>{
+        if(saved[k]) domainPerf[k]={...domainPerf[k],...saved[k]};
+      });
+    }
+  }catch(e){}
+}
+
+// ── Compute effective weakness score for a domain (lower = weaker = more questions)
+// Blends exam baseline with live session performance
+function weaknessScore(cat){
+  const d=domainPerf[cat];
+  if(!d) return 50;
+  const liveAcc = d.att > 0 ? Math.round((d.cor/d.att)*100) : null;
+  // If we have live data, weight it 70% live + 30% baseline
+  // If no live data yet, use baseline only
+  const score = liveAcc !== null
+    ? Math.round(liveAcc * 0.7 + d.examBaseline * 0.3)
+    : d.examBaseline;
+  return score;
+}
+
+// ── Build weighted topic distribution based on weakness scores
+function getWeightedTopicCounts(domain, total){
+  if(domain !== 'all'){
+    // Single domain — all questions from that domain
+    return { [domain]: total };
+  }
+  // Multi-domain: invert weakness scores to get weights
+  const cats=['compute','identity','storage','networking','monitoring'];
+  const scores=cats.map(c=>weaknessScore(c));
+  const maxScore=Math.max(...scores);
+  // Invert: weaker (lower score) gets higher weight
+  const inverted=cats.map((c,i)=>({ cat:c, w: maxScore - scores[i] + 10 }));
+  const totalW=inverted.reduce((s,x)=>s+x.w,0);
+  const counts={};
+  let assigned=0;
+  inverted.forEach((x,i)=>{
+    if(i<inverted.length-1){
+      counts[x.cat]=Math.max(1, Math.round((x.w/totalW)*total));
+      assigned+=counts[x.cat];
+    } else {
+      counts[x.cat]=Math.max(1, total-assigned);
+    }
+  });
+  return counts;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// NAV
+function go(id){
+  PAGES.forEach(s=>{ document.getElementById(s).style.display=s===id?'block':'none'; });
+  document.querySelectorAll('.nb').forEach(b=>{
+    const page=b.getAttribute('data-page');
+    if(page) b.classList.toggle('on', page===id);
+  });
+  if(id==='review') renderReview();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// HOME
+function pickDom(el,d){
+  document.querySelectorAll('.dom').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on'); selDomain=d;
+}
+function pickMode(el,m){
+  document.querySelectorAll('.mchip').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on'); selMode=m;
+}
+
+function updStats(){
+  const {att,cor,str}=stats;
+  document.getElementById('sa').textContent=att;
+  document.getElementById('sc2').textContent=cor;
+  document.getElementById('sp').textContent=att?Math.round(cor/att*100)+'%':'—';
+  document.getElementById('ss').textContent=str;
+  // wrong count badge
+  const wc=Object.keys(wrongLog).length;
+  const badge=document.getElementById('wrong-count-badge');
+  if(badge){ badge.textContent=wc; badge.style.display=wc>0?'inline':'none'; }
+  // Render domain performance bars
+  renderDomainBars();
+}
+
+function renderDomainBars(){
+  const el=document.getElementById('domain-perf-bars');
+  if(!el) return;
+
+  const cats=[
+    {cat:'compute',    label:'Compute',         weight:'20–25%', color:'var(--ylw)'},
+    {cat:'identity',   label:'Identity & Gov',  weight:'20–25%', color:'var(--pur)'},
+    {cat:'storage',    label:'Storage',         weight:'15–20%', color:'var(--grn)'},
+    {cat:'networking', label:'Networking',      weight:'15–20%', color:'var(--acc2)'},
+    {cat:'monitoring', label:'Monitor & Backup',weight:'10–15%', color:'var(--red)'},
+  ];
+
+  const weights = getWeightedTopicCounts('all', 20);
+  const totalWeight = Object.values(weights).reduce((s,v)=>s+v,0);
+
+  el.innerHTML = cats.map(({cat,label,weight,color})=>{
+    const d=domainPerf[cat];
+    const liveAcc = d.att>0 ? Math.round((d.cor/d.att)*100) : null;
+    const score = weaknessScore(cat);
+    const displayPct = liveAcc !== null ? liveAcc : d.examBaseline;
+    const isWeak = score < 70;
+    const sessionShare = Math.round((weights[cat]||1)/totalWeight*100);
+
+    // Bar color: red if weak, amber if medium, green if strong
+    const barColor = score < 65 ? 'var(--red)' : score < 78 ? 'var(--ylw)' : 'var(--grn)';
+    const label2 = liveAcc !== null
+      ? `${liveAcc}% live (${d.att} answered)`
+      : `Exam baseline: ${d.examBaseline}% — no live data yet`;
+
+    return `<div style="margin-bottom:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;gap:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:12px;font-weight:700;color:var(--txt)">${label}</span>
+          <span style="font-family:var(--mono);font-size:9px;color:var(--mut)">${weight}</span>
+          ${isWeak ? '<span style="font-family:var(--mono);font-size:9px;font-weight:700;color:var(--red);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);border-radius:4px;padding:1px 6px">⚠ WEAK</span>' : ''}
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:10px;color:var(--mut)">${label2}</span>
+          <span style="font-family:var(--mono);font-size:10px;font-weight:700;color:var(--acc2)">${sessionShare}% of next session</span>
+        </div>
+      </div>
+      <div style="background:var(--s2);border-radius:4px;height:8px;overflow:hidden;position:relative">
+        <div style="height:100%;width:${displayPct}%;background:${barColor};border-radius:4px;transition:width .6s ease"></div>
+        <div style="position:absolute;top:0;left:0;height:100%;width:70%;border-right:1px dashed rgba(255,255,255,.1)"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════════════════
+// PRACTICE
+function buildPool(){
+  let q=selDomain==='all'?[...QB]:QB.filter(x=>x.cat===selDomain);
+  if(selMode==='hard') q=q.filter(x=>x.diff==='hard');
+  if(selMode==='scenario') q=q.filter(x=>x.scenario);
+  if(q.length===0) q=[...QB];
+  return q.sort(()=>Math.random()-.5);
+}
+
+async function startSession(){
+  qi = 0;
+  go('practice');
+
+  document.getElementById('pbar').style.width = '0%';
+  document.getElementById('qcard').style.display = 'none';
+  document.getElementById('exp').style.display = 'none';
+
+  // Loading screen
+  let loadDiv = document.getElementById('ai-gen-loading');
+  if(!loadDiv){
+    loadDiv = document.createElement('div');
+    loadDiv.id = 'ai-gen-loading';
+    loadDiv.style.cssText = 'text-align:center;padding:60px 20px;';
+    document.getElementById('qarea').prepend(loadDiv);
+  }
+  const loadingMessages = [
+    'Fetching 5 Microsoft Learn docs...',
+    'Grounding questions in official documentation...',
+    'Generating 20 verified questions...',
+    'Adding Yes/No and drag-and-drop types...',
+    'Almost ready...'
+  ];
+  let msgIdx = 0;
+  loadDiv.innerHTML = `
+    <div style="font-size:13px;color:var(--acc2);font-family:var(--mono);margin-bottom:16px;letter-spacing:.1em" id="load-msg">
+      ${loadingMessages[0]}
+    </div>
+    <div style="display:flex;justify-content:center;gap:6px;margin-bottom:12px">
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+    <div style="font-size:11px;color:var(--mut)">Every session is unique — you should almost never see the same question twice</div>`;
+  loadDiv.style.display = 'block';
+
+  // Cycle loading messages
+  const msgTimer = setInterval(() => {
+    msgIdx = (msgIdx + 1) % loadingMessages.length;
+    const el = document.getElementById('load-msg');
+    if(el) el.textContent = loadingMessages[msgIdx];
+  }, 1800);
+
+  try {
+    const aiQs = await generateAIQuestions(selDomain, selMode);
+    clearInterval(msgTimer);
+    if(aiQs && aiQs.length >= 5){
+      pool = aiQs.sort(() => Math.random() - .5);
+      // Show what question types were generated
+      const typeCounts = aiQs.reduce((acc,q)=>{ acc[q.type||'mc']=(acc[q.type||'mc']||0)+1; return acc; }, {});
+      const typeStr = Object.entries(typeCounts).map(([t,n])=>n+'× '+t.toUpperCase()).join(' · ');
+      const loadMsg = document.getElementById('load-msg');
+      if(loadMsg) loadMsg.textContent = '✓ Generated ' + aiQs.length + ' questions — ' + typeStr;
+      await new Promise(r => setTimeout(r, 1200));
+    } else {
+      // Fallback: static bank if AI fails or returns too few
+      pool = buildPool();
+      const loadMsg = document.getElementById('load-msg');
+      if(loadMsg) loadMsg.textContent = 'Using static question bank (AI returned too few questions)';
+      await new Promise(r => setTimeout(r, 1200));
+    }
+  } catch(e) {
+    clearInterval(msgTimer);
+    console.log('AI generation failed, falling back to static pool:', e);
+    pool = buildPool();
+    // Show brief notice that we're using static questions
+    const loadMsg = document.getElementById('load-msg');
+    if(loadMsg) loadMsg.textContent = 'Using static question bank (AI generation unavailable)';
+    await new Promise(r => setTimeout(r, 1500));
+  }
+
+  loadDiv.style.display = 'none';
+  document.getElementById('qcard').style.display = 'block';
+  loadQ();
+}
+
+async function generateAIQuestions(domain, mode) {
+
+  // Full AZ-104 topic pool — randomly pick a subset each session for variety
+  const ALL_TOPICS = {
+    identity: [
+      'Entra ID user creation and bulk operations',
+      'Group-based licensing vs per-user licensing',
+      'B2B guest access and external collaboration settings',
+      'B2C vs B2B — when to use each',
+      'SSPR configuration and password writeback',
+      'Conditional Access policies and Named Locations',
+      'Azure AD Connect sync modes: PHS vs PTA vs Federation',
+      'Seamless SSO configuration',
+      'RBAC built-in roles: Owner vs Contributor vs Reader',
+      'RBAC custom roles and assignable scopes',
+      'Deny assignments and how they interact with role assignments',
+      'RBAC scope inheritance: Management Group → Subscription → RG → Resource',
+      'Azure Policy effects: Audit, Deny, DeployIfNotExists, Modify, Append',
+      'Policy initiatives and management group assignments',
+      'Remediation tasks for existing non-compliant resources',
+      'Resource locks: ReadOnly vs Delete — what each blocks',
+      'Tag inheritance and Azure Policy for tag enforcement',
+      'Management groups: hierarchy depth, subscriptions, limitations',
+      'Azure Budgets: alerts vs auto-actions',
+      'Azure Advisor recommendation categories and actions',
+      'Cost Management: budgets, cost alerts, spending limits',
+      'Moving resources between resource groups and subscriptions',
+      'Azure Blueprints vs ARM templates vs Policy',
+    ],
+    storage: [
+      'Storage account types: GPv2, BlobStorage, FileStorage',
+      'Storage redundancy: LRS vs ZRS vs GRS vs RA-GRS vs GZRS vs RA-GZRS',
+      'When to use each redundancy option based on RPO/RTO requirements',
+      'Converting between redundancy types — what is and is not possible',
+      'Blob access tiers: Hot vs Cool vs Cold vs Archive — costs and SLAs',
+      'Archive tier rehydration: standard vs high priority, time estimates',
+      'Blob lifecycle management policies — transition rules and delete actions',
+      'Blob versioning vs soft delete for blobs vs soft delete for containers',
+      'Object replication — requirements, limitations, use cases',
+      'Shared Access Signatures: Service SAS vs Account SAS vs User Delegation SAS',
+      'SAS revocation strategies for each type',
+      'Stored access policies — maximum count, how to revoke',
+      'Storage account access keys — rotation and impact',
+      'Storage firewall rules: virtual network rules vs IP rules',
+      'Private endpoints for storage vs service endpoints',
+      'Azure Files: SMB vs NFS, identity-based auth (AD DS vs AADDS vs Kerberos)',
+      'Azure File Sync: server endpoint, cloud endpoint, sync groups',
+      'AzCopy commands: copy, sync, authentication methods',
+      'Azure Storage Explorer capabilities and limitations',
+      'Customer-managed keys (CMK) vs Microsoft-managed keys',
+      'Infrastructure encryption (double encryption)',
+      'Immutable storage: WORM policies, legal hold',
+      'Blob snapshots vs versions — differences and use cases',
+    ],
+    compute: [
+      'ARM template structure: required vs optional sections',
+      'ARM template deployment modes: Incremental vs Complete',
+      'secureString vs string parameter types in ARM templates',
+      'ARM template functions: concat, resourceId, parameters, variables',
+      'Bicep: param, var, output, module keywords',
+      'Converting ARM JSON to Bicep: az bicep decompile',
+      'What-If deployment and validation mode',
+      'VM sizes and when resizing requires deallocation',
+      'VM disk types: OS disk vs data disk vs temp disk — persistence rules',
+      'Managed disks: Standard HDD vs Standard SSD vs Premium SSD vs Ultra',
+      'Azure Disk Encryption (ADE): BitLocker/DM-Crypt, KEK vs BEK',
+      'Disk encryption at rest: ADE vs SSE vs double encryption',
+      'Availability Sets: fault domains vs update domains',
+      'Availability Zones vs Availability Sets — differences and when to use',
+      'VM Scale Sets: Uniform vs Flexible orchestration, scale-in policies',
+      'VMSS autoscale: scale-out rules, scale-in rules, cooldown periods',
+      'VM extensions: Custom Script, DSC, diagnostics, domain join',
+      'Azure Container Registry tiers: Basic vs Standard vs Premium',
+      'ACR tasks: az acr build, ACR geo-replication requirements',
+      'Azure Container Instances: public IP, DNS labels, restart policies',
+      'Azure Container Apps: KEDA scaling rules, external vs internal ingress',
+      'App Service plans: tiers and features (Free/Shared/Basic/Standard/Premium)',
+      'App Service autoscale: minimum tier, configuring rules on the plan',
+      'App Service deployment slots: swap behavior, sticky settings',
+      'App Service custom domains, TLS/SSL certificates',
+      'App Service networking: VNet integration, private endpoints',
+      'Azure Functions: Consumption plan limits, Premium plan benefits',
+    ],
+    networking: [
+      'VNet address space planning and subnet sizing',
+      'Azure reserved IP addresses in every subnet (5 addresses)',
+      'VNet peering: local vs global, non-transitive routing',
+      'Gateway transit: Allow gateway transit + Use remote gateways',
+      'User-Defined Routes (UDRs): next hop types, 0.0.0.0/0 default route',
+      'Azure Firewall vs NVA vs NSG — when to use each',
+      'NSG rules: inbound vs outbound, priority numbers, default rules',
+      'NSG evaluation order: subnet NSG then NIC NSG (inbound)',
+      'Application Security Groups (ASGs) for scalable NSG management',
+      'Effective security rules — how to view and interpret them',
+      'Azure Bastion: subnet requirements, SKU differences, features',
+      'Just-in-time (JIT) VM access vs Azure Bastion',
+      'Service Endpoints: what they do and do NOT do (public IP still visible)',
+      'Private Endpoints: private IP, DNS requirements, disabling public access',
+      'Private DNS zones: auto-registration, VNet links, cross-VNet resolution',
+      'Public DNS zones: A, CNAME, MX, TXT, NS, SOA records',
+      'DNS subdomain delegation with NS records',
+      'Azure Standard Load Balancer vs Basic: features and limitations',
+      'Load balancing rules vs inbound NAT rules',
+      'Health probes: HTTP vs TCP vs HTTPS, interval and threshold',
+      'Application Gateway: WAF, SSL termination, URL-based routing',
+      'Azure Traffic Manager: routing methods (priority, weighted, geographic)',
+      'VPN Gateway SKUs: Basic limitations vs VpnGw1+',
+      'VPN types: route-based vs policy-based',
+      'ExpressRoute vs VPN Gateway — use cases',
+      'Network Watcher tools: IP Flow Verify, NSG Flow Logs, Connection Monitor, Packet Capture',
+      'Public IP SKUs: Basic vs Standard, static vs dynamic assignment',
+    ],
+    monitoring: [
+      'Azure Monitor metrics: host metrics (no agent) vs guest OS metrics (agent required)',
+      'Data Collection Rules (DCR) and Azure Monitor Agent',
+      'Log Analytics workspace: tables, KQL basics, retention settings',
+      'Key Log Analytics tables: AzureActivity, SecurityEvent, Heartbeat, VMConnection, Perf',
+      'Diagnostic settings: what they route, destinations, limits per resource',
+      'Azure Monitor alert rule components: signal, condition, action group',
+      'Metric alerts vs log search alerts vs activity log alerts',
+      'Alert processing rules: suppression and action group override',
+      'Action Groups: notification types and automation actions',
+      'Azure Monitor Workbooks vs Dashboards',
+      'VM Insights: performance tab, map tab, required agents',
+      'Container Insights for AKS monitoring',
+      'Application Insights: availability tests, live metrics, dependency tracking',
+      'Azure Service Health vs Resource Health — differences',
+      'Azure Advisor: recommendation categories, how to act on recommendations',
+      'Recovery Services vault: supported workloads (VMs, Files, SQL, SAP)',
+      'Backup vault: supported workloads (Disks, Blobs, PostgreSQL)',
+      'Azure Backup policies: backup frequency, retention, instant restore',
+      'Backup error codes and common causes',
+      'Azure Site Recovery: replication policy, recovery points, RPO',
+      'ASR failover process: test failover vs planned vs unplanned failover',
+      'ASR failback: re-protect then failback sequence',
+      'Azure Backup Center: centralized management of backup across vaults',
+    ]
+  };
+
+  // Pick a random subset of topics to cover this session
+  const topicPool = domain === 'all'
+    ? Object.values(ALL_TOPICS).flat()
+    : (ALL_TOPICS[domain] || Object.values(ALL_TOPICS).flat());
+
+  // Shuffle and pick enough topics for 20 questions (some topics may generate 1-2 questions)
+  const shuffled = topicPool.sort(() => Math.random() - .5);
+  const sessionTopics = shuffled.slice(0, 20);
+
+  const domainFocus = domain === 'all'
+    ? 'all five AZ-104 exam domains'
+    : { identity:'Identity & Governance', storage:'Storage', compute:'Compute', networking:'Networking', monitoring:'Monitor & Backup' }[domain];
+
+  // Get weakness-weighted question counts per domain
+  const topicCounts = getWeightedTopicCounts(domain, 20);
+  const cats=['compute','identity','storage','networking','monitoring'];
+  const weaknessContext = domain === 'all'
+    ? cats.map(c => {
+        const d=domainPerf[c];
+        const liveAcc = d.att>0 ? Math.round((d.cor/d.att)*100) : null;
+        const score = weaknessScore(c);
+        const label = {compute:'Compute',identity:'Identity & Gov',storage:'Storage',networking:'Networking',monitoring:'Monitor & Backup'}[c];
+        const status = score < 65 ? 'WEAKEST — focus heavily here' : score < 75 ? 'WEAK — needs more practice' : 'ACCEPTABLE';
+        return `${label}: score=${score}% (${liveAcc!==null?'live data':'exam baseline'}) — ${topicCounts[c]} questions this session — ${status}`;
+      }).join('\n')
+    : `Focused domain: ${domainFocus} — generate all 20 questions here`;
+
+  const modeInstr = mode === 'hard'
+    ? 'ALL questions must be HARD. Use multi-step scenarios, subtle edge cases, and distractors that are plausible Azure services. Never make the correct answer the longest or most detailed option.'
+    : mode === 'scenario'
+    ? 'ALL questions must start with a scenario paragraph (1-3 sentences describing a real situation), then ask what the administrator should do.'
+    : 'Mix of medium (40%) and hard (60%) questions. Hard questions should use scenarios and tricky distractors.';
+
+  const prompt = `You are a Microsoft AZ-104 certification exam question writer preparing a student for their retake exam on Friday.
+
+STUDENT PERFORMANCE ANALYSIS:
+${weaknessContext}
+
+INSTRUCTIONS: Generate exactly 20 questions for the domain: ${domainFocus}.
+DIFFICULTY: ${modeInstr}
+WEIGHTING RULE: Generate MORE questions from WEAKEST domains. The question counts per domain are already specified above — follow them exactly.
+
+TOPIC COVERAGE FOR THIS SESSION (cover these specific areas, distribute according to weakness weights):
+${sessionTopics.map((t,i) => `${i+1}. ${t}`).join('\n')}
+
+CRITICAL RULES:
+1. ANSWER POSITION for MC questions: vary ans across 0,1,2,3 roughly equally. Never make the longest option always correct.
+2. DISTRACTORS: each wrong answer must be a real, plausible Azure service. No fake services.
+3. DIFFICULTY: test what an admin DOES, not definitions. Use "You need to...", "A company requires...", "What happens when..." framing.
+4. TRAPS: at least 8 questions must have a common Azure misconception as a wrong option.
+5. ACCURACY: every correct answer must be factually accurate for Azure as of 2025.
+6. VARIETY: generate a MIX of question types as specified below.
+
+QUESTION TYPE DISTRIBUTION — generate exactly this mix across the 20 questions:
+- 10 questions type "mc" (standard multiple choice, 4 options, one correct)
+- 4 questions type "yn" (yes/no — give 3-4 statements about an Azure behavior, student picks Yes or No for each)
+- 3 questions type "ms" (multi-select — 5 options, student must pick exactly 2 or 3 correct answers)  
+- 3 questions type "dnd" (drag-and-drop ordering — give 4-5 steps in wrong order, student must put in correct sequence)
+
+JSON SHAPE — use EXACTLY this shape, varying by type:
+
+For type "mc":
+{"type":"mc","cat":"networking","diff":"hard","skill":"...","scenario":null,"text":"Question?","opts":["A","B","C","D"],"ans":1,"exp":"explanation","tip":"memory trick"}
+
+For type "yn":
+{"type":"yn","cat":"storage","diff":"hard","skill":"...","scenario":"Optional scenario context","text":"For each of the following statements about [topic], select Yes if the statement is correct or No if it is incorrect.","statements":[{"stmt":"Statement about Azure behavior","answer":true},{"stmt":"Another statement","answer":false},{"stmt":"Third statement","answer":true}],"exp":"explanation of the correct answers","tip":"memory trick"}
+
+For type "ms":
+{"type":"ms","cat":"compute","diff":"hard","skill":"...","scenario":null,"text":"You need to [task]. Which TWO actions should you perform?","opts":["Option A","Option B","Option C","Option D","Option E"],"correctIndices":[1,3],"exp":"explanation","tip":"memory trick"}
+
+For type "dnd":
+{"type":"dnd","cat":"monitoring","diff":"hard","skill":"...","scenario":"Scenario context","text":"You need to [process]. Put the following steps in the correct order.","items":["Step C","Step A","Step D","Step B"],"correctOrder":["Step A","Step B","Step C","Step D"],"exp":"explanation of why this order is correct","tip":"memory trick"}
+
+Notes:
+- items in dnd should be presented in WRONG/RANDOM order; correctOrder has the RIGHT order
+- yn statements should mix true and false answers (not all Yes or all No)  
+- ms correctIndices are 0-based indices into opts array
+- all types need exp and tip fields
+
+Generate all 20 questions now as a single JSON array.`;
+
+  // Docs fetched server-side in claude.js (no CORS issues)
+  const res = await fetch('/.netlify/functions/claude', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 7000,
+      domain: domain,
+      prompt: prompt
+    })
+  });
+
+  const data = await res.json();
+  if(data.error) throw new Error(data.error.message);
+
+  const raw = data.content.map(i => i.text || '').join('');
+  const clean = raw.replace(/```json|```/g, '').trim();
+  const questions = JSON.parse(clean);
+
+  // Validate and mark as AI-generated — handle all question types
+  return questions
+    .filter(q => {
+      if(!q.text || !q.cat || !q.skill) return false;
+      const t = q.type || 'mc';
+      if(t === 'mc') return q.opts && q.opts.length >= 4 && typeof q.ans === 'number';
+      if(t === 'yn') return q.statements && q.statements.length >= 2;
+      if(t === 'ms') return q.opts && q.opts.length >= 4 && Array.isArray(q.correctIndices);
+      if(t === 'dnd') return q.items && q.correctOrder && q.items.length >= 3;
+      return false;
+    })
+    .map(q => ({ ...q, type: q.type || 'mc', aiGenerated: true }));
+}
+
+// ══════════════════════════════════════════════════════════════════
+// QUESTION TYPE CONSTANTS
+const QTYPES = { MC:'mc', YN:'yn', MS:'ms', DND:'dnd' };
+const QTYPE_LABELS = { mc:'Multiple Choice', yn:'Yes / No', ms:'Multi-Select', dnd:'Drag & Drop' };
+const QTYPE_CSS = { mc:'qt-mc', yn:'qt-yn', ms:'qt-ms', dnd:'qt-dnd' };
+
+// Per-question interaction state (declared in state block above)
+// picked: MC=index, MS=Set, YN=Map, DND=array
+// done: bool
+
+// ── DnD state
+let dragSrc = null;
+
+function loadQ(){
+  done = false; picked = null;
+  const q = pool[qi % pool.length];
+  document.getElementById('pbar').style.width = Math.min(qi/Math.max(pool.length,1)*100,100) + '%';
+
+  // Tags and meta
+  const tag = document.getElementById('qtag');
+  tag.textContent = tagLabel[q.cat] || q.cat;
+  tag.className = 'qtag ' + (tagClass[q.cat] || 'tc');
+  document.getElementById('qnum').textContent = 'Q'+(qi+1)+' of '+pool.length;
+
+  const tb = document.getElementById('qtype-badge');
+  const qtype = q.type || QTYPES.MC;
+  tb.textContent = QTYPE_LABELS[qtype] || 'Multiple Choice';
+  tb.className = 'qtype-badge ' + (QTYPE_CSS[qtype] || 'qt-mc');
+
+  let aiBadge = document.getElementById('ai-badge');
+  if(!aiBadge){
+    aiBadge = document.createElement('span');
+    aiBadge.id = 'ai-badge';
+    aiBadge.style.cssText = 'font-family:var(--mono);font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3);letter-spacing:.08em';
+    aiBadge.textContent = '✨ AI GENERATED';
+    document.getElementById('qtag').parentNode.appendChild(aiBadge);
+  }
+  aiBadge.style.display = q.aiGenerated ? 'inline' : 'none';
+  document.getElementById('skillref').textContent = q.skill;
+
+  const sc = document.getElementById('qscenario');
+  if(q.scenario){ sc.style.display='block'; sc.textContent=q.scenario; }
+  else sc.style.display='none';
+
+  document.getElementById('qtext').textContent = q.text;
+
+  // Render correct interaction type
+  const ol = document.getElementById('optslist');
+  ol.innerHTML = '';
+
+  if(qtype === QTYPES.MC) renderMC(q, ol);
+  else if(qtype === QTYPES.YN) renderYN(q, ol);
+  else if(qtype === QTYPES.MS) renderMS(q, ol);
+  else if(qtype === QTYPES.DND) renderDND(q, ol);
+
+  document.getElementById('subbtn').disabled = true;
+  document.getElementById('subbtn').style.display = 'inline-block';
+  document.getElementById('subbtn').textContent = 'Submit Answer';
+  document.getElementById('nxtbtn').style.display = 'none';
+  const eb = document.getElementById('exp');
+  eb.classList.remove('show','e-ok','e-bad');
+  eb.style.display = 'none';
+}
+
+// ── MULTIPLE CHOICE ──────────────────────────────────────────────────
+function renderMC(q, container){
+  ['A','B','C','D'].forEach((L,i)=>{
+    if(i >= q.opts.length) return;
+    const d = document.createElement('div');
+    d.className = 'opt';
+    d.innerHTML = `<span class="ol">${L}</span><span>${q.opts[i]}</span>`;
+    d.onclick = () => {
+      if(done) return;
+      document.querySelectorAll('#optslist .opt').forEach(o=>o.classList.remove('sel'));
+      d.classList.add('sel');
+      picked = i;
+      document.getElementById('subbtn').disabled = false;
+    };
+    container.appendChild(d);
+  });
+}
+
+// ── YES / NO ────────────────────────────────────────────────────────
+function renderYN(q, container){
+  // q.statements: array of {stmt, answer (true=Yes, false=No)}
+  picked = new Map();
+  container.innerHTML = '<div style="font-size:11px;color:var(--ylw);font-family:var(--mono);margin-bottom:12px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:6px 12px">For each statement, select Yes or No</div>';
+  (q.statements || []).forEach((s, i)=>{
+    const row = document.createElement('div');
+    row.className = 'yn-row';
+    row.innerHTML = `
+      <span class="yn-stmt">${s.stmt}</span>
+      <button class="yn-btn" id="yn-yes-${i}" onclick="pickYN(${i},true)"">Yes</button>
+      <button class="yn-btn" id="yn-no-${i}" onclick="pickYN(${i},false)">No</button>`;
+    container.appendChild(row);
+  });
+}
+
+function pickYN(idx, val){
+  if(done) return;
+  picked.set(idx, val);
+  document.getElementById('yn-yes-'+idx).className = 'yn-btn' + (val ? ' sel-yes' : '');
+  document.getElementById('yn-no-'+idx).className = 'yn-btn' + (!val ? ' sel-no' : '');
+  // Enable submit once all answered
+  const q = pool[qi % pool.length];
+  if(picked.size === (q.statements||[]).length)
+    document.getElementById('subbtn').disabled = false;
+}
+
+// ── MULTI-SELECT ─────────────────────────────────────────────────────
+function renderMS(q, container){
+  // q.correctIndices: array of correct option indices, q.opts: all options
+  picked = new Set();
+  const needed = (q.correctIndices || []).length;
+  container.innerHTML = `<div class="ms-hint">Select ${needed} correct answer${needed>1?'s':''}</div>`;
+  ['A','B','C','D','E'].forEach((L,i)=>{
+    if(i >= q.opts.length) return;
+    const d = document.createElement('div');
+    d.className = 'opt';
+    d.dataset.idx = i;
+    d.innerHTML = `<span class="ol">${L}</span><span>${q.opts[i]}</span>`;
+    d.onclick = () => {
+      if(done) return;
+      if(picked.has(i)){ picked.delete(i); d.classList.remove('sel'); }
+      else { picked.add(i); d.classList.add('sel'); }
+      document.getElementById('subbtn').disabled = picked.size === 0;
+    };
+    container.appendChild(d);
+  });
+}
+
+// ── DRAG AND DROP ────────────────────────────────────────────────────
+function renderDND(q, container){
+  // q.items: array of strings in WRONG order to present, q.correctOrder: correct order as array of strings
+  container.innerHTML = '<div style="font-size:11px;color:var(--grn);font-family:var(--mono);margin-bottom:12px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:6px;padding:6px 12px">Drag items into the correct order (top = first)</div>';
+  const list = document.createElement('div');
+  list.className = 'dnd-list';
+  list.id = 'dnd-list';
+
+  // Shuffle items for display
+  const displayItems = [...(q.items || [])].sort(()=>Math.random()-.5);
+  picked = [...displayItems]; // current order
+
+  displayItems.forEach((item, i)=>{
+    const d = document.createElement('div');
+    d.className = 'dnd-item';
+    d.draggable = true;
+    d.dataset.item = item;
+    d.innerHTML = `<span class="dnd-handle">⠿</span><span class="dnd-num">${i+1}</span><span class="dnd-text">${item}</span><span class="dnd-correct-num" id="dnd-correct-${i}"></span>`;
+
+    d.addEventListener('dragstart', e=>{
+      dragSrc = d;
+      d.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    d.addEventListener('dragend', ()=>{ d.classList.remove('dragging'); dragSrc=null; });
+    d.addEventListener('dragover', e=>{ e.preventDefault(); d.classList.add('drag-over'); });
+    d.addEventListener('dragleave', ()=>d.classList.remove('drag-over'));
+    d.addEventListener('drop', e=>{
+      e.preventDefault();
+      d.classList.remove('drag-over');
+      if(dragSrc && dragSrc !== d){
+        const allItems = [...list.querySelectorAll('.dnd-item')];
+        const srcIdx = allItems.indexOf(dragSrc);
+        const dstIdx = allItems.indexOf(d);
+        if(srcIdx < dstIdx) list.insertBefore(dragSrc, d.nextSibling);
+        else list.insertBefore(dragSrc, d);
+        // Update numbers
+        updateDNDNumbers();
+        // Update picked order
+        picked = [...list.querySelectorAll('.dnd-item')].map(x=>x.dataset.item);
+        document.getElementById('subbtn').disabled = false;
+      }
+    });
+    list.appendChild(d);
+  });
+  container.appendChild(list);
+  // Enable submit immediately for DnD (they can submit current order)
+  document.getElementById('subbtn').disabled = false;
+}
+
+function updateDNDNumbers(){
+  document.querySelectorAll('#dnd-list .dnd-item').forEach((d,i)=>{
+    d.querySelector('.dnd-num').textContent = i+1;
+  });
+}
+
+// ── SUBMIT ───────────────────────────────────────────────────────────
+function doSubmit(){
+  if(done) return;
+  done = true;
+  const q = pool[qi % pool.length];
+  const qtype = q.type || QTYPES.MC;
+  let ok = false;
+  let explanation = '';
+
+  if(qtype === QTYPES.MC){
+    if(picked === null) return;
+    ok = (picked === q.ans);
+    // Mark options
+    document.querySelectorAll('#optslist .opt').forEach((o,i)=>{
+      o.classList.add('dis');
+      if(i===q.ans) o.classList.add('ok');
+      else if(i===picked && !ok) o.classList.add('bad');
+    });
+    explanation = ok ? '✓ Correct!' : '✗ Incorrect — correct answer: '+q.opts[q.ans];
+
+  } else if(qtype === QTYPES.YN){
+    if(!(picked instanceof Map) || picked.size === 0){ done=false; return; }
+    const statements = q.statements || [];
+    let allCorrect = true;
+    statements.forEach((s,i)=>{
+      const userAns = picked.get(i);
+      const correct = s.answer;
+      const isRight = userAns === correct;
+      if(!isRight) allCorrect = false;
+      const yBtn = document.getElementById('yn-yes-'+i);
+      const nBtn = document.getElementById('yn-no-'+i);
+      if(yBtn) yBtn.classList.add('dis');
+      if(nBtn) nBtn.classList.add('dis');
+      // Show correct/wrong styling
+      if(correct === true){
+        if(yBtn) yBtn.classList.add('ok');
+        if(!isRight && nBtn) nBtn.classList.add('bad');
+      } else {
+        if(nBtn) nBtn.classList.add('ok');
+        if(!isRight && yBtn) yBtn.classList.add('bad');
+      }
+    });
+    ok = allCorrect;
+    explanation = ok ? '✓ All correct!' : '✗ Some answers were wrong — see the correct answers highlighted above';
+
+  } else if(qtype === QTYPES.MS){
+    if(!(picked instanceof Set) || picked.size === 0){ done=false; return; }
+    const correct = new Set(q.correctIndices || []);
+    ok = picked.size === correct.size && [...picked].every(x=>correct.has(x));
+    document.querySelectorAll('#optslist .opt').forEach((o,i)=>{
+      o.classList.add('dis');
+      if(correct.has(i)) o.classList.add('ok');
+      else if(picked.has(i) && !correct.has(i)) o.classList.add('bad');
+    });
+    const missed = [...correct].filter(x=>!picked.has(x)).map(x=>q.opts[x]).join(', ');
+    explanation = ok
+      ? '✓ Correct! You selected all the right answers.'
+      : `✗ Incorrect. Correct answers: ${[...correct].map(x=>q.opts[x]).join(' + ')}`;
+
+  } else if(qtype === QTYPES.DND){
+    const currentOrder = [...document.querySelectorAll('#dnd-list .dnd-item')].map(x=>x.dataset.item);
+    const correctOrder = q.correctOrder || [];
+    ok = JSON.stringify(currentOrder) === JSON.stringify(correctOrder);
+    // Show correct positions
+    document.querySelectorAll('#dnd-list .dnd-item').forEach((d,i)=>{
+      d.classList.add('dis');
+      const isRight = currentOrder[i] === correctOrder[i];
+      d.classList.add(isRight ? 'correct-pos' : 'wrong-pos');
+      if(!isRight){
+        const correctPos = correctOrder.indexOf(currentOrder[i]) + 1;
+        const cn = d.querySelector('.dnd-correct-num');
+        if(cn){ cn.textContent = `→ should be #${correctPos}`; cn.style.display='inline'; }
+      }
+    });
+    explanation = ok ? '✓ Perfect order!' : '✗ Wrong order — correct positions shown above';
+  }
+
+  // ── Scoring and persistence
+  stats.att++; if(ok){ stats.cor++; stats.str++; } else { stats.str=0; }
+  if(q.cat && domainPerf[q.cat]){
+    domainPerf[q.cat].att++;
+    if(ok) domainPerf[q.cat].cor++;
+    savePerf();
+  }
+  updStats();
+  saveStats();
+
+  // Log wrong answers
+  if(!ok){
+    const key = q.text.slice(0,80);
+    const existing = wrongLog[key] || {};
+    wrongLog[key] = {
+      cat:q.cat, diff:q.diff, skill:q.skill, type:qtype,
+      text:q.text, scenario:q.scenario||null,
+      opts:q.opts||[], ans:q.ans||0,
+      statements:q.statements||null,
+      correctIndices:q.correctIndices||null,
+      items:q.items||null, correctOrder:q.correctOrder||null,
+      exp:q.exp, tip:q.tip||null,
+      yourAns: qtype===QTYPES.MC ? picked : 'see question',
+      timesWrong:(existing.timesWrong||0)+1,
+      mastered:false,
+      lastSeen:new Date().toLocaleDateString()
+    };
+    saveWrong();
+  }
+
+  document.getElementById('subbtn').style.display = 'none';
+  document.getElementById('nxtbtn').style.display = 'inline-block';
+
+  const eb = document.getElementById('exp');
+  eb.style.display = 'block';
+  eb.classList.add('show', ok ? 'e-ok' : 'e-bad');
+
+  const eh = document.getElementById('exphead');
+  eh.className = 'eh ' + (ok ? 'ok' : 'bad');
+  eh.textContent = explanation;
+
+  document.getElementById('expbody').textContent = q.exp || '';
+  const et = document.getElementById('exptip');
+  if(q.tip){ et.style.display='block'; et.innerHTML=`<strong>💡 Exam Hack:</strong> ${q.tip}`; }
+  else et.style.display='none';
+  document.getElementById('expref').textContent = '📋 Skill: '+q.skill;
+
+  // AI breakdown for MC wrong answers, and for all types when wrong
+  if(qtype === QTYPES.MC) callAI(q, picked, ok);
+  else if(!ok) callAIGeneric(q, ok);
+}
+
+// ── AI BREAKDOWN — MC (per-option analysis) ──────────────────────────
+async function callAI(q, wrongIdx, isCorrect){
+  const eb = document.getElementById('expbody');
+  const orig = q.exp;
+  const ltrs = ['A','B','C','D'];
+  const optLines = q.opts.map((o,i)=>{
+    let tag = '';
+    if(i===q.ans) tag=' ← CORRECT';
+    else if(i===wrongIdx) tag=' ← STUDENT CHOSE THIS';
+    return `${ltrs[i]}. ${o}${tag}`;
+  }).join('\n');
+
+  eb.innerHTML = orig + `<div style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:11px;color:var(--mut);font-family:var(--mono)">
+    <span>${isCorrect ? 'Claude explaining why the others are wrong...' : 'Claude analysing every answer option...'}</span>
+    <div class="dots"><span></span><span></span><span></span></div>
+  </div>`;
+
+  try{
+    const res = await fetch('/.netlify/functions/claude',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-haiku-4-5', max_tokens:1200,
+        messages:[{role:'user', content:
+`You are an AZ-104 exam coach. Skill: ${q.skill}
+Question: ${q.text}
+Options:\n${optLines}
+${isCorrect ? "Student was CORRECT. Explain why each wrong option is incorrect." : "Student was WRONG. Explain why their choice is wrong and why each other wrong option is also wrong."}
+Respond ONLY with valid JSON, no markdown:
+{"why_correct":"1-2 sentences","why_you_chose_wrong":"1-2 sentences or empty string","other_distractors":[{"option":"text","reason":"1 sentence"}],"memory_trick":"one line"}`
+        }]})
+    });
+    const d = await res.json();
+    if(d.error) throw new Error(d.error.message);
+    const raw = d.content.map(i=>i.text||'').join('');
+    const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+    const distractorRows = (parsed.other_distractors||[]).map(item=>`
+      <div style="padding:10px 14px;background:rgba(100,116,139,.07);border:1px solid rgba(100,116,139,.18);border-radius:8px;margin-bottom:7px">
+        <div style="font-size:10px;font-weight:700;color:#64748b;letter-spacing:.08em;margin-bottom:4px;font-family:var(--mono)">❌ ALSO WRONG</div>
+        <div style="font-size:12px;color:#94a3b8;font-weight:600;margin-bottom:3px">${item.option}</div>
+        <div style="font-size:12px;color:#64748b;line-height:1.55">${item.reason}</div>
+      </div>`).join('');
+    eb.innerHTML = `
+      <div style="margin-bottom:14px;color:#475569;font-size:12px;line-height:1.6">${orig}</div>
+      <div style="border-top:1px solid var(--bdr);padding-top:14px">
+        <div style="font-size:9px;color:var(--acc2);font-weight:700;letter-spacing:.14em;margin-bottom:12px;font-family:var(--mono)">${isCorrect?"🤖 WHY THE OTHER OPTIONS ARE WRONG":"🤖 FULL ANSWER BREAKDOWN"}</div>
+        <div style="padding:11px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:8px;margin-bottom:8px">
+          <div style="font-size:10px;font-weight:700;color:#10b981;letter-spacing:.08em;margin-bottom:4px;font-family:var(--mono)">✅ WHY THE CORRECT ANSWER IS RIGHT</div>
+          <div style="font-size:13px;color:#6ee7b7;line-height:1.65">${parsed.why_correct}</div>
+        </div>
+        ${!isCorrect && parsed.why_you_chose_wrong ? `
+        <div style="padding:11px 14px;background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.25);border-radius:8px;margin-bottom:8px">
+          <div style="font-size:10px;font-weight:700;color:#f43f5e;letter-spacing:.08em;margin-bottom:4px;font-family:var(--mono)">❌ WHY YOUR ANSWER WAS WRONG</div>
+          <div style="font-size:13px;color:#fca5a5;line-height:1.65">${parsed.why_you_chose_wrong}</div>
+        </div>` : ''}
+        ${distractorRows ? `<div style="margin-bottom:8px">${distractorRows}</div>` : ''}
+        <div style="padding:10px 14px;background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);border-radius:8px">
+          <div style="font-size:10px;font-weight:700;color:#3b82f6;letter-spacing:.08em;margin-bottom:4px;font-family:var(--mono)">💡 MEMORY TRICK</div>
+          <div style="font-size:12px;color:#93c5fd;line-height:1.6">${parsed.memory_trick}</div>
+        </div>
+      </div>`;
+  }catch(e){ eb.textContent = orig; }
+}
+
+// ── AI BREAKDOWN — non-MC types ──────────────────────────────────────
+async function callAIGeneric(q, isCorrect){
+  const eb = document.getElementById('expbody');
+  const orig = q.exp;
+  eb.innerHTML = orig + `<div style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:11px;color:var(--mut);font-family:var(--mono)">
+    <span>Claude generating deeper explanation...</span>
+    <div class="dots"><span></span><span></span><span></span></div>
+  </div>`;
+  try{
+    const qtype = q.type || QTYPES.MC;
+    let context = '';
+    if(qtype===QTYPES.YN && q.statements){
+      context = 'Statements:\n'+q.statements.map((s,i)=>`${i+1}. "${s.stmt}" — Answer: ${s.answer?'YES':'NO'}`).join('\n');
+    } else if(qtype===QTYPES.MS && q.correctIndices){
+      context = 'Options:\n'+q.opts.map((o,i)=>`${i+1}. ${o}${q.correctIndices.includes(i)?' ← CORRECT':''}`).join('\n');
+    } else if(qtype===QTYPES.DND && q.correctOrder){
+      context = 'Correct order:\n'+q.correctOrder.map((o,i)=>`${i+1}. ${o}`).join('\n');
+    }
+    const res = await fetch('/.netlify/functions/claude',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-haiku-4-5', max_tokens:600,
+        messages:[{role:'user', content:
+`AZ-104 exam coach. Skill: ${q.skill}
+Question: ${q.text}
+${context}
+Student got this WRONG. In 3 sentences: explain the key Azure concept, the common misconception, and one memory trick. Be direct.`}]})
+    });
+    const d = await res.json();
+    if(d.error) throw new Error(d.error.message);
+    const txt = d.content.map(i=>i.text||'').join('');
+    eb.innerHTML = `<div style="margin-bottom:10px;color:#475569;font-size:12px">${orig}</div>
+      <div style="border-top:1px solid var(--bdr);padding-top:12px">
+        <div style="font-size:9px;color:var(--acc2);font-weight:700;letter-spacing:.14em;margin-bottom:8px;font-family:var(--mono)">🤖 CLAUDE'S BREAKDOWN</div>
+        <div style="font-size:13px;color:#cbd5e1;line-height:1.75">${txt.replace(/\n/g,'<br/>')}</div>
+      </div>`;
+  }catch(e){ eb.textContent = orig; }
+}
+
+function doNext(){
+  qi++;
+  if(qi >= pool.length){ pool = buildPool(); qi=0; }
+  loadQ();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// REVIEW TAB
+function filterReview(el,cat){
+  reviewFilter=cat;
+  document.querySelectorAll('#review-filter .mchip').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  renderReview();
+}
+
+function renderReview(){
+  const all=Object.values(wrongLog);
+  const filtered=reviewFilter==='all'?all:all.filter(x=>x.cat===reviewFilter);
+
+  const total=all.length;
+  const mastered=all.filter(x=>x.mastered).length;
+  document.getElementById('rv-total').textContent=total;
+  document.getElementById('rv-mastered').textContent=mastered;
+  document.getElementById('rv-remaining').textContent=total-mastered;
+
+  const list=document.getElementById('review-list');
+  const empty=document.getElementById('review-empty');
+  const filterRow=document.getElementById('review-filter');
+  const statsRow=document.getElementById('review-stats-row');
+
+  if(total===0){
+    empty.style.display='block'; list.innerHTML='';
+    filterRow.style.display='none'; statsRow.style.display='none';
+    return;
+  }
+  empty.style.display='none';
+  filterRow.style.display='flex'; statsRow.style.display='flex';
+
+  // Sort: un-mastered first, then by timesWrong desc
+  const sorted=[...filtered].sort((a,b)=>{
+    if(a.mastered!==b.mastered) return a.mastered?1:-1;
+    return b.timesWrong-a.timesWrong;
+  });
+
+  list.innerHTML='';
+  if(sorted.length===0){
+    list.innerHTML=`<div style="text-align:center;padding:30px;color:var(--mut);font-size:13px">No wrong answers in this category yet.</div>`;
+    return;
+  }
+
+  sorted.forEach((item,idx)=>{
+    const key=item.text.slice(0,80);
+    const tClass=tagClass[item.cat]||'tc';
+    const tLabel=tagLabel[item.cat]||item.cat;
+    const wrongTimes=item.timesWrong;
+
+    const card=document.createElement('div');
+    card.className='rcard'+(item.mastered?' mastered':'');
+    card.id='rcard-'+idx;
+    card.innerHTML=`
+      <div class="rcard-header">
+        <span class="qtag ${tClass}" style="font-size:9px">${tLabel}</span>
+        <span class="times-wrong ${wrongTimes===1?'once':''}">${wrongTimes}× wrong</span>
+        ${item.mastered?'<span style="font-size:11px;color:var(--grn);font-weight:700">✅ Mastered</span>':''}
+        <span style="font-family:var(--mono);font-size:9px;color:var(--mut);margin-left:auto">${item.lastSeen}</span>
+      </div>
+      ${item.scenario?`<div class="rcard-scenario">📋 Scenario: ${item.scenario}</div>`:''}
+      <div class="rcard-q">${item.text}</div>
+      <div class="answer-row">
+        <div class="ans-box ans-wrong">
+          <div class="ans-label">❌ YOUR ANSWER</div>
+          ${item.opts[item.yourAns]}
+        </div>
+        <div class="ans-box ans-right">
+          <div class="ans-label">✅ CORRECT ANSWER</div>
+          ${item.opts[item.ans]}
+        </div>
+      </div>
+      <div class="rcard-exp">${item.exp}</div>
+      ${item.tip?`<div class="rcard-tip"><strong>💡 Exam Hack:</strong> ${item.tip}</div>`:''}
+      <div class="rcard-footer">
+        <div class="rcard-skill">📋 ${item.skill}</div>
+        <button class="master-btn ${item.mastered?'done':''}" onclick="toggleMaster('${key.replace(/'/g,"\\'")}', ${idx})">
+          ${item.mastered?'✅ Mastered':'Mark as Mastered'}
+        </button>
+      </div>`;
+    list.appendChild(card);
+  });
+}
+
+function toggleMaster(key, idx){
+  if(wrongLog[key]){
+    wrongLog[key].mastered=!wrongLog[key].mastered;
+    saveWrong();
+    renderReview();
+    updStats();
+  }
+}
+
+function clearWrong(){
+  if(!confirm('Clear all wrong answers and reset performance data? This cannot be undone.')) return;
+  wrongLog={};
+  saveWrong();
+  // Reset live session data but keep exam baselines
+  Object.keys(domainPerf).forEach(k=>{ domainPerf[k].att=0; domainPerf[k].cor=0; });
+  savePerf();
+  renderReview();
+  updStats();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// INIT — wire data-page attrs then load storage
+document.querySelectorAll('.nb').forEach((b,i)=>{
+  b.setAttribute('data-page', PAGES[i]);
+});
+
+loadAll();
+updStats();
+go('home');
+</script>
+</body>
+</html>
