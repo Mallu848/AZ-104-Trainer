@@ -2530,13 +2530,13 @@ async function generateAIQuestions(domain, mode) {
         const status = score < 65 ? 'WEAKEST — focus heavily here' : score < 75 ? 'WEAK — needs more practice' : 'ACCEPTABLE';
         return `${label}: score=${score}% (${liveAcc!==null?'live data':'exam baseline'}) — ${topicCounts[c]} questions this session — ${status}`;
       }).join('\n')
-    : `Focused domain: ${domainFocus} — generate all 20 questions here`;
+    : `Focused domain: ${domainFocus} — generate all 10 questions here`;
 
   const modeInstr = mode === 'hard'
     ? 'ALL questions must be HARD. Use multi-step scenarios, subtle edge cases, and distractors that are plausible Azure services. Never make the correct answer the longest or most detailed option.'
     : mode === 'scenario'
     ? 'ALL questions must start with a scenario paragraph (1-3 sentences describing a real situation), then ask what the administrator should do.'
-    : 'Mix of medium (40%) and hard (60%) questions. Hard questions should use scenarios and tricky distractors.';
+    : 'Every question must be hard. Use real-world admin scenarios, subtle behavioral edge cases, and wrong options that are all plausible Azure services. Never test definitions — test what an admin actually does or what Azure actually does in a specific situation. Distractors must require genuine knowledge to rule out, not just common sense.';
 
   const prompt = `You are a Microsoft AZ-104 certification exam question writer preparing a student for their retake exam on Friday.
 
@@ -2584,7 +2584,7 @@ Notes:
 - ms correctIndices are 0-based indices into opts array
 - all types need exp and tip fields
 
-Generate all 20 questions now as a single JSON array.`;
+Generate all 10 questions now as a single JSON array. Output ONLY the raw JSON array — no markdown, no backticks, no explanation.`;
 
   // Docs fetched server-side in claude.js (no CORS issues)
   const res = await fetch('/.netlify/functions/claude', {
