@@ -2358,6 +2358,7 @@ async function startSession(){
       ? aiQs.sort(() => Math.random() - .5)
       : buildPool();
   } catch(e) {
+    console.error("[AZ-104] AI generation failed:", e.message);
     pool = buildPool();
   }
 
@@ -2592,7 +2593,7 @@ Generate all 10 questions now as a single JSON array. Output ONLY the raw JSON a
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 4000,
+      max_tokens: 6000,
       prompt: prompt
     })
   });
