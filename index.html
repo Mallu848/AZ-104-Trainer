@@ -2352,7 +2352,14 @@ async function startSession(){
   }, 1800);
 
   clearInterval(msgTimer);
-  pool = buildPool();
+  try {
+    const aiQs = await generateAIQuestions(selDomain, selMode);
+    pool = (aiQs && aiQs.length >= 5)
+      ? aiQs.sort(() => Math.random() - .5)
+      : buildPool();
+  } catch(e) {
+    pool = buildPool();
+  }
 
   loadDiv.style.display = 'none';
   document.getElementById('qcard').style.display = 'block';
@@ -2584,7 +2591,7 @@ Generate all 20 questions now as a single JSON array.`;
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'claude-haiku-4-5',
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 4000,
       prompt: prompt
     })
@@ -2673,6 +2680,7 @@ function loadQ(){
   const eb = document.getElementById('exp');
   eb.classList.remove('show','e-ok','e-bad');
   eb.style.display = 'none';
+  var abd = document.getElementById('ai-breakdown'); if(abd) abd.style.display = 'none';
 }
 
 // ── MULTIPLE CHOICE ──────────────────────────────────────────────────
@@ -2944,8 +2952,94 @@ function doSubmit(){
 }
 
 // ── AI BREAKDOWN — MC (per-option analysis) ──────────────────────────
-function callAI(q, wrongIdx, isCorrect){ /* static exp+tip shown by doSubmit */ }
-function callAIGeneric(q, isCorrect){ /* static exp+tip shown by doSubmit */ }
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+async function callAI(q, wrongIdx, isCorrect){
+  var container = document.getElementById('ai-breakdown');
+  if(!container){
+    container = document.createElement('div');
+    container.id = 'ai-breakdown';
+    container.style.cssText = 'margin-top:14px;padding:12px 14px;background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.25);border-radius:8px;font-size:12px;';
+    document.getElementById('expref').insertAdjacentElement('beforebegin', container);
+  }
+  container.style.display = 'block';
+  container.innerHTML = '<div style="color:var(--mut);font-family:var(--mono);font-size:11px">\u2728 Loading AI breakdown...</div>';
+  try {
+    var prompt = 'For this AZ-104 exam question, provide a per-option breakdown in JSON format.\n\n' +
+      'Question: ' + q.text + '\n' +
+      'Options:\n' + q.opts.map(function(o,i){ return String.fromCharCode(65+i) + '. ' + o; }).join('\n') + '\n' +
+      'Correct answer: ' + q.opts[q.ans] + '\n' +
+      (wrongIdx !== q.ans ? 'Student chose: ' + q.opts[wrongIdx] + '\n' : 'Student answered correctly.\n') +
+      '\nRespond ONLY with valid JSON in this exact shape:\n' +
+      '{"why_correct":"why the correct answer is right in 1-2 sentences","why_you_chose_wrong":"why the student chosen option is wrong (omit key if student was correct)","other_distractors":[{"opt":"option text","why_wrong":"1 sentence"}],"memory_trick":"a memorable way to remember this"}';
+    var res = await fetch('/.netlify/functions/claude', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 1200, prompt: prompt })
+    });
+    var data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    var raw = data.content.map(function(i){ return i.text || ''; }).join('');
+    var bd = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    var html = '<div style="color:#60a5fa;font-family:var(--mono);font-size:10px;font-weight:700;margin-bottom:8px;letter-spacing:.08em">\u2728 AI BREAKDOWN</div>';
+    html += '<div style="margin-bottom:8px"><span style="color:var(--grn);font-weight:700">\u2713 Why correct: </span>' + escHtml(bd.why_correct) + '</div>';
+    if(bd.why_you_chose_wrong && wrongIdx !== q.ans){
+      html += '<div style="margin-bottom:8px"><span style="color:var(--red);font-weight:700">\u2717 Why your choice was wrong: </span>' + escHtml(bd.why_you_chose_wrong) + '</div>';
+    }
+    if(bd.other_distractors && bd.other_distractors.length){
+      html += '<div style="margin-bottom:6px;color:var(--mut);font-size:11px;font-weight:700">Other distractors:</div>';
+      bd.other_distractors.forEach(function(d){
+        html += '<div style="margin-bottom:4px;padding-left:10px"><span style="color:var(--ylw)">\u2022 ' + escHtml(d.opt) + ':</span> ' + escHtml(d.why_wrong) + '</div>';
+      });
+    }
+    if(bd.memory_trick){
+      html += '<div style="margin-top:8px;padding:6px 10px;background:rgba(139,92,246,.1);border-left:3px solid #8b5cf6;border-radius:0 4px 4px 0"><span style="color:#a78bfa;font-weight:700">\ud83d\udca1 </span>' + escHtml(bd.memory_trick) + '</div>';
+    }
+    container.innerHTML = html;
+  } catch(e) {
+    container.style.display = 'none';
+  }
+}
+
+async function callAIGeneric(q, isCorrect){
+  var container = document.getElementById('ai-breakdown');
+  if(!container){
+    container = document.createElement('div');
+    container.id = 'ai-breakdown';
+    container.style.cssText = 'margin-top:14px;padding:12px 14px;background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.25);border-radius:8px;font-size:12px;';
+    document.getElementById('expref').insertAdjacentElement('beforebegin', container);
+  }
+  container.style.display = 'block';
+  container.innerHTML = '<div style="color:var(--mut);font-family:var(--mono);font-size:11px">\u2728 Loading AI breakdown...</div>';
+  try {
+    var qtype = q.type || 'mc';
+    var questionContext = 'Question: ' + q.text + '\n';
+    if(qtype === 'yn'){
+      questionContext += 'Statements:\n' + (q.statements||[]).map(function(s){ return '- ' + s.stmt + ' (Answer: ' + (s.answer ? 'Yes' : 'No') + ')'; }).join('\n') + '\n';
+    } else if(qtype === 'ms'){
+      questionContext += 'Options:\n' + (q.opts||[]).map(function(o,i){ return String.fromCharCode(65+i) + '. ' + o; }).join('\n') + '\n';
+      questionContext += 'Correct answers: ' + (q.correctIndices||[]).map(function(i){ return q.opts[i]; }).join(' and ') + '\n';
+    } else if(qtype === 'dnd'){
+      questionContext += 'Correct order:\n' + (q.correctOrder||[]).map(function(s,i){ return (i+1) + '. ' + s; }).join('\n') + '\n';
+    }
+    var prompt = 'For this AZ-104 exam question, provide a brief 3-sentence explanation of the correct answer.\n\n' +
+      questionContext +
+      'Student was ' + (isCorrect ? 'correct' : 'incorrect') + '.\n\n' +
+      'Respond with exactly 3 sentences: (1) why the correct answer is right, (2) a common misconception to avoid, (3) how to remember this for the exam.';
+    var res = await fetch('/.netlify/functions/claude', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 1200, prompt: prompt })
+    });
+    var data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    var raw = data.content.map(function(i){ return i.text || ''; }).join('');
+    container.innerHTML = '<div style="color:#60a5fa;font-family:var(--mono);font-size:10px;font-weight:700;margin-bottom:8px;letter-spacing:.08em">\u2728 AI BREAKDOWN</div>' +
+      '<div>' + escHtml(raw.trim()).replace(/\n/g, '<br/>') + '</div>';
+  } catch(e) {
+    container.style.display = 'none';
+  }
+}
 
 function doNext(){
   qi++;
