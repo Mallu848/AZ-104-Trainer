@@ -2544,7 +2544,7 @@ async function generateAIQuestions(domain, mode) {
 STUDENT PERFORMANCE ANALYSIS:
 ${weaknessContext}
 
-INSTRUCTIONS: Generate exactly 10 questions for the domain: ${domainFocus}.
+INSTRUCTIONS: Generate exactly 5 questions for the domain: ${domainFocus}.
 DIFFICULTY: ${modeInstr}
 WEIGHTING RULE: Generate MORE questions from WEAKEST domains. The question counts per domain are already specified above — follow them exactly.
 
@@ -2555,15 +2555,16 @@ CRITICAL RULES:
 1. ANSWER POSITION for MC questions: vary ans across 0,1,2,3 roughly equally. Never make the longest option always correct.
 2. DISTRACTORS: each wrong answer must be a real, plausible Azure service. No fake services.
 3. DIFFICULTY: test what an admin DOES, not definitions. Use "You need to...", "A company requires...", "What happens when..." framing.
-4. TRAPS: at least 8 questions must have a common Azure misconception as a wrong option.
-5. ACCURACY: every correct answer must be factually accurate for Azure as of 2025.
-6. VARIETY: generate a MIX of question types as specified below.
+4. TRAPS: at least 4 questions must have a common Azure misconception as a wrong option.
+5. BREVITY: Keep exp to 2 sentences max. Keep tip to 1 sentence max. Be concise.
+6. ACCURACY: every correct answer must be factually accurate for Azure as of 2025.
+7. VARIETY: generate a MIX of question types as specified below.
 
-QUESTION TYPE DISTRIBUTION — generate exactly this mix across the 10 questions:
-- 5 questions type "mc" (standard multiple choice, 4 options, one correct)
-- 2 questions type "yn" (yes/no — give 3-4 statements about an Azure behavior, student picks Yes or No for each)
-- 2 questions type "ms" (multi-select — 5 options, student must pick exactly 2 or 3 correct answers)
-- 1 questions type "dnd" (drag-and-drop ordering — give 4-5 steps in wrong order, student must put in correct sequence)
+QUESTION TYPE DISTRIBUTION — generate exactly this mix across the 5 questions:
+- 3 questions type "mc" (standard multiple choice, 4 options, one correct)
+- 1 question  type "yn" (yes/no — give 3-4 statements about an Azure behavior, student picks Yes or No for each)
+- 1 question  type "ms" (multi-select — 5 options, student must pick exactly 2 or 3 correct answers)
+// dnd omitted for speed — optionally add back when latency budget allows (drag-and-drop ordering — give 4-5 steps in wrong order, student must put in correct sequence)
 
 JSON SHAPE — use EXACTLY this shape, varying by type:
 
@@ -2585,7 +2586,7 @@ Notes:
 - ms correctIndices are 0-based indices into opts array
 - all types need exp and tip fields
 
-Generate all 10 questions now as a single JSON array. Output ONLY the raw JSON array — no markdown, no backticks, no explanation.`;
+Generate all 5 questions now as a single JSON array. Output ONLY the raw JSON array — no markdown, no backticks, no explanation.`;
 
   // Docs fetched server-side in claude.js (no CORS issues)
   const res = await fetch('/.netlify/functions/claude', {
@@ -2593,7 +2594,7 @@ Generate all 10 questions now as a single JSON array. Output ONLY the raw JSON a
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 6000,
+      max_tokens: 2500,
       prompt: prompt
     })
   });
