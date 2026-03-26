@@ -1,0 +1,15 @@
+{
+  "topic": "Manage external users and B2B guest access",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b",
+  "fetched_at": "2026-03-26T06:09:38.541Z",
+  "key_facts": [
+    "If you want to limit the ability to send invitations, you can turn invitations on or off for everyone, or limit invitations to certain roles.",
+    "Here are some examples:\n\n \n Example 1 : You previously added adatum.com (a Microsoft Entra organization) to the list of blocked domains in your external collaboration settings, but your cross-tenant access settings enable B2B collaboration for all Microsoft Entra organizations.",
+    "Example 2 : You allow B2B collaboration with Fabrikam in your cross-tenant access settings, but then you add fabrikam.com to your blocked domains in your external collaboration settings.",
+    "Work securely with external partners, even if they don't have Microsoft Entra ID or an IT department.",
+    "A simple invitation and redemption process lets partners use their own credentials to access your company's resources.",
+    "Developers can use Microsoft Entra business-to-business APIs to customize the invitation process or write applications like self-service sign-up portals.",
+    "Important\n\n The email one-time passcode feature is now turned on by default for all new tenants and for any existing tenants where you haven't explicitly turned it off."
+  ]
+}

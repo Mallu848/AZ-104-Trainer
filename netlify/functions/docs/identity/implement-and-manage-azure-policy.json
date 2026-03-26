@@ -1,0 +1,15 @@
+{
+  "topic": "Implement and manage Azure Policy",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+  "fetched_at": "2026-03-26T06:09:39.655Z",
+  "key_facts": [
+    "Resources covered by Azure Policy\n\n Although a policy can be assigned at the management group level, only resources at the subscription or resource group level are evaluated.",
+    "Only assign the minimum set of permissions necessary to perform a task and only grant these permissions to users who need permission.",
+    "Important\n\n To modify AVNM dynamic groups, you must be granted access via Azure RBAC role assignment only.",
+    "If your account was assigned only the Co-Administrator subscription role, you wouldn't have permissions on AVNM dynamic groups.",
+    "Some useful governance actions you can enforce with Azure Policy include:\n\n \n Ensure your team deploys Azure resources only to allowed regions.",
+    "After your business rules are formed, the policy definition or initiative is assigned to any scope of resources that Azure supports.",
+    "Remediate non-compliant resources\n\n While these effects primarily affect a resource when the resource is created or updated, Azure Policy also supports dealing with existing non-compliant resources without needing to alter that resource."
+  ]
+}

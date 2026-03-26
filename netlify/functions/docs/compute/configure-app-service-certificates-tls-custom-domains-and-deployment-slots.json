@@ -1,0 +1,15 @@
+{
+  "topic": "Configure App Service certificates, TLS, custom domains, and deployment slots",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-ssl-certificate",
+  "fetched_at": "2026-03-26T06:09:47.499Z",
+  "key_facts": [
+    "If you want to help secure a custom domain in a TLS binding, the certificate must meet these extra requirements:\n\n \n Contain an extended key usage for server authentication (OID = 1.3.6.1.5.5.7.3.1).",
+    "Doesn't support use as a client certificate by using certificate thumbprints, which is planned for deprecation and removal.",
+    "Upload a public certificate\n\n Public certificates aren't used to secure custom domains, but you can load them into your code if you need them to access remote resources.",
+    "The app's App Service plan must be in the Basic, Standard, Premium, or Isolated tier.",
+    "Note\n\n Elliptic Curve Cryptography (ECC) certificates work with App Service when uploaded as a PFX, but currently cannot be imported from Key Vault.",
+    "After you add a private certificate to an app, the certificate is stored in a deployment unit that's bound to the App Service plan's resource group, region, and operating system (OS) combination.",
+    "That way, the certificate is accessible to other apps in the same resource group, region, and OS combination."
+  ]
+}

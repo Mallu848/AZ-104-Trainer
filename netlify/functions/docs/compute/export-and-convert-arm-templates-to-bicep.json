@@ -1,0 +1,15 @@
+{
+  "topic": "Export and convert ARM templates to Bicep",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/decompile",
+  "fetched_at": "2026-03-26T06:09:45.124Z",
+  "key_facts": [
+    "You must have the Bicep CLI installed to run the conversion commands.",
+    "This article shows how to run the decompile command in Azure CLI.",
+    "If you're not using Azure CLI, run the command without az at the start of the command.",
+    "You can change it to:\n\n var uniqueStorageName = 'store${uniqueString(resourceGroup().id)}'\n \n To rename across the file, right-click the name, and then select Rename symbol .",
+    "For more information, see Use Azure portal to export a Bicep file .",
+    "You can export the template for a resource group and then pass it directly to the decompile command.",
+    "Next steps\n\n To learn about all Bicep CLI commands, see Bicep CLI commands ."
+  ]
+}

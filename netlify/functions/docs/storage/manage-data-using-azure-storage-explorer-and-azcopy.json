@@ -1,0 +1,15 @@
+{
+  "topic": "Manage data using Azure Storage Explorer and AzCopy",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10",
+  "fetched_at": "2026-03-26T06:09:42.924Z",
+  "key_facts": [
+    "It's supported only on versions of Windows, Linux, or macOS that are officially maintained.",
+    "Authorize AzCopy\n\n As an owner of your Azure Storage account, you aren't automatically assigned permissions to access data.",
+    "Note\n\n AzCopy does not support scenarios where the source or destination is being actively changed during the transfer.",
+    "azcopy set-properties \n\n Changes the access tier of one or more blobs and replaces (overwrites) the metadata and index tags of one or more blobs.",
+    "Use a package manager (Linux only)\n\n Installing AzCopy through your Linux distribution's package manager is the most convenient and maintainable approach.",
+    "Download a portable binary\n\n An installation package is available only for Linux.",
+    "Windows 64-bit (zip)\n\n Windows 32-bit (zip)\n\n Windows ARM64 (zip)\n\n Linux x86-64 (tar)\n\n Linux ARM64 (tar)\n\n macOS (zip)\n\n macOS ARM64 (zip)\n\n \n These files are compressed as a zip file (Windows and macOS) or a tar file (Linux)."
+  ]
+}

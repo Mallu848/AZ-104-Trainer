@@ -1,0 +1,15 @@
+{
+  "topic": "Interpret and modify Azure Resource Manager (ARM) templates",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview",
+  "fetched_at": "2026-03-26T06:09:44.591Z",
+  "key_facts": [
+    "To deploy a template, use any of the following options:\n\n \n Azure portal \n\n Azure CLI \n\n PowerShell \n\n REST API \n\n Button in GitHub repository \n\n Azure Cloud Shell \n\n \n Template design\n\n Define templates and resource groups based on how you want to manage your solution.",
+    "For example, you can deploy your three-tier application through a single template to a single resource group.",
+    "If you envision your tiers having separate lifecycles, you can deploy your three tiers to separate resource groups.",
+    "Get support\n\n Here are the steps for opening a support ticket for Azure Resource Manager (ARM) template related issues:\n\n \n Open the Azure portal .",
+    "You can also specify in which resource group those resources are deployed.",
+    "Each Bicep file is automatically converted to an ARM template during deployment.",
+    "For example, you can deploy not only virtual machines, but also the network infrastructure, storage systems, and any other resources you need."
+  ]
+}

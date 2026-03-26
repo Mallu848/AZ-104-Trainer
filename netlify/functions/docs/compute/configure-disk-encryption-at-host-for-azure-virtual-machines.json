@@ -1,0 +1,15 @@
+{
+  "topic": "Configure disk encryption at host for Azure virtual machines",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption",
+  "fetched_at": "2026-03-26T06:09:45.351Z",
+  "key_facts": [
+    "Can only create up to 5000 disk encryption sets per region per subscription.",
+    "Azure VMs that are version 5 and above (such as Dsv5 or Dsv6) automatically encrypt their temporary disks and (if in use) their ephemeral OS disks with encryption at rest.",
+    "Full control of your keys\n\n You must grant access to managed disks in your Key Vault or managed HSM to use your keys for encrypting and decrypting the DEK.",
+    "You can also audit the encryption key usage with Azure Key Vault monitoring to ensure that only managed disks or other trusted Azure services are accessing your keys.",
+    "Only software and HSM RSA keys of sizes 2,048-bit, 3,072-bit and 4,096-bit are supported, no other keys or sizes.",
+    "Most resources related to your customer-managed keys (disk encryption sets, VMs, disks, and snapshots) must be in the same subscription and region.",
+    "Azure Key Vaults may be used from a different subscription but must be in the same region as your disk encryption set."
+  ]
+}

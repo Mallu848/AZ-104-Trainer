@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure Azure Backup policies",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-vms-prepare",
+  "fetched_at": "2026-03-26T06:09:52.319Z",
+  "key_facts": [
+    "Azure Backup now supports immutable vaults that help you ensure that after recovery points are created, they can't be deleted before their expiry according to the backup policy.",
+    "When you configure backup, you can browse to the VM name and its resource group, even though you don't have the required permission on those VMs.",
+    "This phase ensures a recovery point is available for Instant Restore for up to 30 days, depending on the configured policy type and snapshot retention.",
+    "To create a Recovery Services vault:\n\n \n Sign in to the Azure portal .",
+    "On the Create Recovery Services vault pane, enter the following values:\n\n \n Subscription : Select the subscription to use.",
+    "If you're a member of only one subscription, you see that name.",
+    "If you're not sure which subscription to use, use the default subscription."
+  ]
+}

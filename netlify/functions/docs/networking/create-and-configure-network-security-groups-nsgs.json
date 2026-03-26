@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure network security groups (NSGs)",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+  "fetched_at": "2026-03-26T06:09:48.574Z",
+  "key_facts": [
+    "For Enterprise Dev/Test subscriptions, port 25 is blocked by default.",
+    "Security rules\n\n A network security group contains network security rules as desired, within Azure subscription limits .",
+    "After the retirement date, traffic analytics enabled for NSG flow logs will no longer be supported, and existing NSG flow log resources in your subscriptions will be deleted.",
+    "For deployments using default route 0.0.0.0/0 configuration, this platform rule is disabled.",
+    "If you created your Azure subscription before November 15, 2017, in addition to being able to use SMTP relay services, you can send email directly over TCP port 25.",
+    "If you created your subscription after November 15, 2017, you might not be able to send email directly over port 25.",
+    "The behavior of outbound communication over port 25 depends on the type of subscription you have, as follows:\n\n \n Enterprise Agreement : For VMs that are deployed in standard Enterprise Agreement subscriptions, the outbound SMTP connections on TCP port 25 aren't blocked."
+  ]
+}

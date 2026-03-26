@@ -1,0 +1,15 @@
+{
+  "topic": "Configure and interpret backup reports and alerts",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/backup/configure-reports",
+  "fetched_at": "2026-03-26T06:09:52.890Z",
+  "key_facts": [
+    "Note that only jobs triggered on replicated items and recovery plans currently appear in this report.",
+    "Supported scenarios\n\n The following table lists the supported scenarios to configure Azure Backup reports:\n\n \n \n \n Report\n\n Solution\n\n Description\n\n Scope\n\n Type\n\n \n \n \n Backup Reports \n\n Backup\n\n Gain visibility into backup jobs, instances, usage, policies, policy adherence, and optimization.",
+    "By default, the data in a Log Analytics workspace is retained for 30 days.",
+    "Azure Backup also provides a built-in Azure Policy definition, which automates the configuration of diagnostics settings for all Recovery Services vaults in a given scope.",
+    "The first difference is that for items with weekly backup policy, there is no daily view (only weekly and monthly views are available).",
+    "Further, in the grids for items with weekly backup policy, a 'month' is considered as a 4-week period (28 days), and not 30 days, to eliminate partial weeks from consideration.",
+    "Review the following limits in Backup Reports:\n\n \n After you configure diagnostics, it might take up to 24 hours for the initial data push to complete."
+  ]
+}

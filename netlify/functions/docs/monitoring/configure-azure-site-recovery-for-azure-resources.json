@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Site Recovery for Azure resources",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication",
+  "fetched_at": "2026-03-26T06:09:52.789Z",
+  "key_facts": [
+    "By default, Site Recovery creates a new replication policy with default settings of 24 hours for recovery point retention.",
+    "Site Recovery creates default settings/policy for the target region.",
+    "If you want to set up disaster recovery for encrypted VMs, follow this article .",
+    "Check permissions\n\n Your Azure account needs permissions to create a Recovery Services vault, and to create VMs in the target region.",
+    "Create a vault : Admin or owner permissions on the subscription.",
+    "Manage Site Recovery operations in the vault : The Site Recovery Contributor built-in Azure role.",
+    "Note\n\n Site Recovery doesn't support using an authentication proxy to control network connectivity."
+  ]
+}

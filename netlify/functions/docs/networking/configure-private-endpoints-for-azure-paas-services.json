@@ -1,0 +1,15 @@
+{
+  "topic": "Configure private endpoints for Azure PaaS services",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+  "fetched_at": "2026-03-26T06:09:49.604Z",
+  "key_facts": [
+    "Depending on the Azure role-based access control permissions, your private endpoint can be approved automatically.",
+    "A read-only network interface is automatically created for the lifecycle of the private endpoint.",
+    "The private endpoint must be deployed in the same region and subscription as the virtual network.",
+    "There are limits to the number of private endpoints you can create in a subscription.",
+    "The subscription that contains the private endpoint must also be registered with the Microsoft network resource provider.",
+    "To access more subresources within the same Azure service, more private endpoints with corresponding targets are required.",
+    "The required permissions are based on the private-link resource type in the following format:\n\n Microsoft.<Provider>/<resource_type>/privateEndpointConnectionsApproval/action \n\n Manually request : Use this method when you don't have the required permissions and want to request access."
+  ]
+}

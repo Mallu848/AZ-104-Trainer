@@ -1,0 +1,15 @@
+{
+  "topic": "Create and use shared access signature (SAS) tokens",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+  "fetched_at": "2026-03-26T06:09:41.273Z",
+  "key_facts": [
+    "For clients using a REST version prior to 2012-02-12, the maximum duration for a SAS that does not reference a stored access policy is 1 hour.",
+    "When to use a shared access signature\n\n Use a SAS to give secure access to resources in your storage account to any client who does not otherwise have permissions to those resources.",
+    "Grant limited access to Azure Storage resources using shared access signatures (SAS)\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n A shared access signature (SAS) provides secure delegated access to resources in your storage account.",
+    "A service SAS delegates access to a resource in only one of the Azure Storage services: Blob Storage (including Data Lake Storage and dfs endpoints), Queue Storage, Table Storage, or Azure Files.",
+    "Stored access policies are not supported for the user delegation SAS or the account SAS.",
+    "With a SAS, you have granular control over how a client can access your data.",
+    "Types of shared access signatures\n\n Azure Storage supports three types of shared access signatures:\n\n \n User delegation SAS \n\n Service SAS \n\n Account SAS \n\n \n \n Important\n\n For scenarios where shared access signatures are used, Microsoft recommends using a user delegation SAS."
+  ]
+}

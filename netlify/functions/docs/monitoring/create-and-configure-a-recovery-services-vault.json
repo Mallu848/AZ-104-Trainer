@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure a Recovery Services vault",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault",
+  "fetched_at": "2026-03-26T06:09:51.801Z",
+  "key_facts": [
+    "Azure Backup now supports immutable vaults that help you ensure that after recovery points are created, they can't be deleted before their expiry according to the backup policy.",
+    "Here are our recommendations for choosing a storage replication type:\n\n \n If you use Azure as a primary backup storage endpoint, continue to use the default geo-redundant storage (GRS) .",
+    "Before you begin, consider the following information:\n\n \n Cross Region Restore is supported only for a Recovery Services vault that uses the GRS replication type .",
+    "The Recovery Services agent is supported for vaults without a private endpoint (preview).",
+    "To re-register the provider, go to your subscription in the Azure portal, go to Resource provider on the left pane, and then select Microsoft.RecoveryServices > Re-register .",
+    "To configure Cross Subscription Restore for the vault, follow these steps:\n\n \n In the Azure portal, go to your Recovery Services vault .",
+    "Set encryption settings\n\n By default, the data in the Recovery Services vault is encrypted through platform-managed keys."
+  ]
+}

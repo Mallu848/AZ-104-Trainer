@@ -1,0 +1,15 @@
+{
+  "topic": "Configure user-defined routes (UDRs) and route tables",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview",
+  "fetched_at": "2026-03-26T06:09:48.359Z",
+  "key_facts": [
+    "The system default route specifies the 0.0.0.0/0 address prefix.",
+    "You can override the Azure default system route for the 0.0.0.0/0 address prefix with a custom route .",
+    "Azure automatically creates default routes for the following address prefixes:\n\n \n 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 : Reserved for private use in RFC 1918.",
+    "Optional default routes\n\n Azure creates more default system routes for different Azure capabilities, but only if you enable the capabilities.",
+    "Azure includes these routes only to subnets with service endpoints enabled.",
+    "Learn more about virtual network service endpoints and supported services.",
+    "Note\n\n The Virtual network peering and VirtualNetworkServiceEndpoint next hop types are added only to route tables of subnets within virtual networks created through the Azure Resource Manager deployment model."
+  ]
+}

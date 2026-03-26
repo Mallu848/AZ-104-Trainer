@@ -1,0 +1,15 @@
+{
+  "topic": "Troubleshoot Azure Load Balancer connectivity and health probes",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-troubleshoot",
+  "fetched_at": "2026-03-26T06:09:50.144Z",
+  "key_facts": [
+    "Basic ILBs allow connecting to the internet via a hidden public IP address called the default outbound access IP .",
+    "We don't recommend connecting via default outbound access IP for production workloads, because the IP address isn't static or locked down via network security groups that you own.",
+    "Troubleshoot Azure Load Balancer\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n This article provides troubleshooting information for common questions about Azure Load Balancer (Basic and Standard tiers).",
+    "When the external clients to the backend VMs go through the load balancer, the IP address of the clients is used for the communication.",
+    "Make sure the IP address of the clients is added to the network security group (NSG) allowlist.",
+    "Problem: No outbound connectivity from Standard internal load balancers\n\n Validation and resolution\n\n Standard internal load balancers (ILBs) have default security features.",
+    "We recommend NAT Gateway for all outbound access in production scenarios."
+  ]
+}

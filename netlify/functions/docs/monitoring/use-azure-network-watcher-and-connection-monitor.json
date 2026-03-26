@@ -1,0 +1,15 @@
+{
+  "topic": "Use Azure Network Watcher and Connection Monitor",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-overview",
+  "fetched_at": "2026-03-26T06:09:51.777Z",
+  "key_facts": [
+    "This information is helpful when planning future resource deployments as you can't create more resources if you reach their limits within the subscription or region.",
+    "Network Watcher consists of three major sets of tools and capabilities:\n\n \n Monitoring \n\n Network diagnostic tools \n\n Traffic \n\n \n \n \n \n\n \n Note\n\n When you create or update a virtual network in your subscription, Network Watcher is automatically enabled in your virtual network's region.",
+    "After the retirement date, traffic analytics enabled for NSG flow logs will no longer be supported, and existing NSG flow log resources in your subscriptions will be deleted.",
+    "Usage + quotas\n\n The Usage + quotas capability of Network Watcher provides a summary of your deployed network resources within a subscription and region, including current usage and corresponding limits for each resource.",
+    "For more information, see Networking limits to learn about the limits for each Azure network resource per region per subscription.",
+    "There's no impact on your resources or associated charge for automatically enabling Network Watcher.",
+    "You must manually enable Network Watcher if you previously chose to opt out of Network Watcher automatic enablement."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Log Analytics workspace retention and tables",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive",
+  "fetched_at": "2026-03-26T06:09:53.494Z",
+  "key_facts": [
+    "If you need to retain data for 30 days only to comply with a privacy policy, configure the default workspace retention to 30 days using the API and update the immediatePurgeDataOn30Days workspace property to true .",
+    "CLI and PowerShell are limited to seven years; support for 12 years will follow.",
+    "Basic and Auxiliary tables only have a total retention period, which is 30 days by default.",
+    "This operation is currently only supported using the Workspaces - Update API .",
+    "Example \n\n This example sets the workspace's retention to the workspace default of 30 days and ensures that data is immediately removed after 30 days and is nonrecoverable.",
+    "To reduce charges, set table-level retention to four days, which is the minimum supported period.",
+    "Long-term retention : In this low-cost state, data isn't available for table plan features, but can be accessed through search jobs ."
+  ]
+}

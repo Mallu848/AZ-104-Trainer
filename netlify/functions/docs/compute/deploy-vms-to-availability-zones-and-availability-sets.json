@@ -1,0 +1,15 @@
+{
+  "topic": "Deploy VMs to availability zones and availability sets",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/availability",
+  "fetched_at": "2026-03-26T06:09:46.192Z",
+  "key_facts": [
+    "Azure Storage redundancy\n\n Azure Storage always stores multiple copies of your data so that it is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters.",
+    "Availability zones\n\n Availability zones expands the level of control you have to maintain the availability of the applications and data on your VMs.",
+    "There are three Availability Zones per supported Azure region.",
+    "By designing your solutions to use replicated VMs in zones, you can protect your apps and data from the loss of a data center.",
+    "If one zone is compromised, then replicated apps and data are instantly available in another zone.",
+    "The number of VM instances can automatically increase or decrease in response to demand or a defined schedule.",
+    "There is no cost for the scale set itself, you only pay for each VM instance that you create."
+  ]
+}

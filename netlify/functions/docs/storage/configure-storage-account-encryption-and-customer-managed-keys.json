@@ -1,0 +1,15 @@
+{
+  "topic": "Configure storage account encryption and customer-managed keys",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+  "fetched_at": "2026-03-26T06:09:42.601Z",
+  "key_facts": [
+    "The managed identity that is associated with the storage account must have these permissions at a minimum to access a customer-managed key in Azure Key Vault:\n\n \n wrapkey \n\n unwrapkey \n\n get \n\n \n For more information about key permissions, see Key types, algorithms, and operations .",
+    "Azure storage encryption supports RSA and RSA-HSM keys of sizes 2048, 3072 and 4096.",
+    "When you specify a customer-managed key, that key is used to protect and control access to the key that encrypts your data.",
+    "Note\n\n Azure Key Vault and Azure Key Vault Managed HSM support the same APIs and management interfaces for configuration of customer-managed keys.",
+    "Azure Storage uses the managed identity to which the Azure Key Vault admin granted permissions in step 1 to authenticate access to Azure Key Vault via Microsoft Entra ID.",
+    "There is no additional action required on your part to ensure that your data remains encrypted.",
+    "Automatically update the key version\n\n To automatically update a customer-managed key when a new version is available, omit the key version when you enable encryption with customer-managed keys for the storage account."
+  ]
+}

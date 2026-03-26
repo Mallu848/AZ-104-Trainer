@@ -1,0 +1,15 @@
+{
+  "topic": "Deploy resources using ARM templates and Bicep files",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-portal",
+  "fetched_at": "2026-03-26T06:09:44.653Z",
+  "key_facts": [
+    "Deploying Azure resources by using the Azure portal usually involves two steps:\n\n \n Create a resource group.",
+    "Create a resource group\n\n \n To create a new resource group, select Resource groups from the Azure portal .",
+    "For all types, you must select a destination resource group.",
+    "Note\n\n The portal interface doesn't support referencing a secret from a Key Vault .",
+    "Deploy resources with ARM templates and Azure portal\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Learn how to use the Azure portal with Azure Resource Manager templates (ARM templates) to deploy your Azure resources.",
+    "To learn about managing your resources, see Manage Azure resources by using the Azure portal .",
+    "Select or enter the following property values:\n\n \n Subscription : Select an Azure subscription."
+  ]
+}

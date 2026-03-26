@@ -1,0 +1,15 @@
+{
+  "topic": "Provision containers using Azure Container Instances (ACI)",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview",
+  "fetched_at": "2026-03-26T06:09:46.735Z",
+  "key_facts": [
+    "Access takes places over HTTPS, using TLS to secure client connections.",
+    "Important\n\n Azure Container Instances requires all secure connections from servers and applications to use TLS 1.2.",
+    "Storing subscription IDs is required to ensure your container groups continue running as expected.",
+    "This enables you to combine your main application container with other supporting role containers, such as logging sidecars.",
+    "This is the only supported configuration for outbound connectivity from your container group in a virtual network.",
+    "Confidential containers on ACI are supported as a SKU that you can select when deploying your workload.",
+    "Storing credentials in plain text is a security risk; Microsoft advises customers to store user credentials in CLI environment variables to ensure they're encrypted/transformed when stored in the backend."
+  ]
+}

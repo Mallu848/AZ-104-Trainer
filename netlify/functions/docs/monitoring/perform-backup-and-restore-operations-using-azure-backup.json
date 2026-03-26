@@ -1,0 +1,15 @@
+{
+  "topic": "Perform backup and restore operations using Azure Backup",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-first-look-arm",
+  "fetched_at": "2026-03-26T06:09:52.335Z",
+  "key_facts": [
+    "It stores backups in a Recovery Services vault and manages recovery points automatically.",
+    "Under Choose backup policy , do one of the following:\n\n \n Leave the default policy.",
+    "The Standard policy backs up the VM once a day at the time specified and retains backups in the vault for 30 days.",
+    "The Enhanced policy backs up the VM every four hours at the time specified and retains daily backup points for 30 days.",
+    "Multiple Azure VMs : You can create a Recovery Services vault and configure backup for multiple Azure VMs.",
+    "Prerequisites\n\n \n Understand the Azure Backup workflow \n\n Get an overview of Azure VM backup \n\n Verify the VM backup support requirements \n\n \n Install an Azure VM agent\n\n To back up Azure VMs, Azure Backup installs an extension on the VM agent that runs on the machine.",
+    "Back up from Azure VM settings\n\n To back up from Azure VM settings, follow these steps:\n\n \n Sign in to the Azure portal ."
+  ]
+}

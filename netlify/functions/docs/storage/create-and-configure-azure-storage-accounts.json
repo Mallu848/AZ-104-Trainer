@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure Azure storage accounts",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create",
+  "fetched_at": "2026-03-26T06:09:42.068Z",
+  "key_facts": [
+    "Section\n\n Field\n\n Required or optional\n\n Description\n\n \n \n \n Security\n\n Require secure transfer for REST API operations\n\n Optional\n\n Require secure transfer to ensure that incoming requests to this storage account are made only via HTTPS (default).",
+    "Enable support for customer-managed keys\n\n Required\n\n By default, customer managed keys can be used to encrypt only blobs and files.",
+    "Section\n\n Field\n\n Required or optional\n\n Description\n\n \n \n \n Network connectivity\n\n Network access\n\n Required\n\n By default, incoming network traffic is routed to the public endpoint for your storage account.",
+    "Network connectivity\n\n Endpoint type\n\n Required\n\n Azure Storage supports two types of endpoints: standard endpoints (the default) and Azure DNS zone endpoints (preview).",
+    "1 With a quota increase, you can create up to 500 storage accounts with standard endpoints per region in a given subscription, for a total of 5500 storage accounts per region.",
+    "Storage account names must be between 3 and 24 characters in length and might contain numbers and lowercase letters only.",
+    "Security\n\n Enable storage account key access\n\n Optional\n\n When enabled, this setting allows clients to authorize requests to the storage account using either the account access keys or a Microsoft Entra account (default)."
+  ]
+}

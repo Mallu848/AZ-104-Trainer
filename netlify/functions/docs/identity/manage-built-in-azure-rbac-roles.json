@@ -1,0 +1,15 @@
+{
+  "topic": "Manage built-in Azure RBAC roles",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles",
+  "fetched_at": "2026-03-26T06:09:38.793Z",
+  "key_facts": [
+    "423170ca-a8f6-4b0f-8487-9e4eb8f49bfa\n\n \n Azure Maps Search and Render Data Reader \n\n Grants access to very limited set of data APIs for common visual web SDK scenarios.",
+    "ede9aaa3-4627-494e-be13-4aa7c256148d\n\n \n Azure API Center Data Reader \n\n Allows for access to Azure API Center data plane read operations.",
+    "cf7c76d2-98a3-4358-a134-615aa78bf44d\n\n \n Compute Gallery Sharing Admin \n\n This role allows user to share gallery to another subscription/tenant or share it to the public.",
+    "dfce8971-25e3-42e3-ba33-6055438e3080\n\n \n Windows 365 Network Interface Contributor \n\n This role is used by Windows 365 to provision required network resources and join Microsoft-hosted VMs to network interfaces.",
+    "b12aa53e-6015-4669-85d0-8515ebb3ae7f\n\n \n Traffic Manager Contributor \n\n Lets you manage Traffic Manager profiles, but does not let you control who has access to them.",
+    "2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b\n\n \n Web PubSub Service Owner \n\n Full access to Azure Web PubSub Service REST APIs\n\n 12cf5a90-567b-43ae-8102-96cf46c7d9b4\n\n \n Web PubSub Service Reader \n\n Read-only access to Azure Web PubSub Service REST APIs\n\n bfb1c7d2-fb1a-466b-b2ba-aee63b92deaf\n\n \n Website Contributor \n\n Manage websites, but not web plans.",
+    "This role does not allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation)."
+  ]
+}

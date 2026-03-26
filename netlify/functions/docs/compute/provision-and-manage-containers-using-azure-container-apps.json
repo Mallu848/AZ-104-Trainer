@@ -1,0 +1,15 @@
+{
+  "topic": "Provision and manage containers using Azure Container Apps",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/container-apps/overview",
+  "fetched_at": "2026-03-26T06:09:46.864Z",
+  "key_facts": [
+    "Instead of worrying about server configuration, container orchestration, and deployment details, Container Apps provides all the up-to-date server resources required to keep your applications stable and secure.",
+    "Build microservices with Dapr and access its rich set of APIs .",
+    "Use internal ingress and service discovery for secure internal-only endpoints with built-in DNS-based service discovery.",
+    "Learn more about serverless containers \n\n \n \n Features\n\n With Azure Container Apps, you can:\n\n \n Use the Azure CLI extension, Azure portal or ARM templates to manage your applications.",
+    "Use specialized hardware for access to increased compute resources.",
+    "Autoscale your apps based on any KEDA-supported scale trigger.",
+    "Generous quotas , which can be overridden to increase limits on a per-account basis."
+  ]
+}

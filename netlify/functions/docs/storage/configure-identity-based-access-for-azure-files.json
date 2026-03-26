@@ -1,0 +1,15 @@
+{
+  "topic": "Configure identity-based access for Azure Files",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview",
+  "fetched_at": "2026-03-26T06:09:41.840Z",
+  "key_facts": [
+    "Clients that aren't domain joined can still access Azure file shares by using explicit credentials only if the client has unimpeded network connectivity to the Domain Services domain controllers, for example through VPN or other supported connections.",
+    "For DR scenarios, you can configure an authentication option to support proper access control enforcement at failover.",
+    "Identities from AD DS can securely access SMB Azure file shares from a domain-joined client or a client that has uninterrupted connectivity to the domain controller.",
+    "Access requirements for Microsoft Entra Domain Services\n\n Clients must meet the following requirements to authenticate by using Domain Services authentication.",
+    "Just like Windows file servers, you can grant permissions to an identity at the share, directory, or file level.",
+    "Azure Files supports identity-based authentication over SMB for Windows, Linux , and macOS clients.",
+    "When an identity associated with a user or application running on a client attempts to access data in Azure Files, the request is sent to the identity source to authenticate the identity."
+  ]
+}

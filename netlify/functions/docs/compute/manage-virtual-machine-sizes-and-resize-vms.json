@@ -1,0 +1,15 @@
+{
+  "topic": "Manage virtual machine sizes and resize VMs",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/resize-vm",
+  "fetched_at": "2026-03-26T06:09:45.782Z",
+  "key_facts": [
+    "To change the size of a VM using PowerShell:\n\n \n Set the resource group and VM name variables.",
+    "This Cloud shell PowerShell script initializes the variables $resourceGroup , $vm , and $size with the resource group name, VM name, and desired VM size respectively.",
+    "Deallocation may be required if the new size isn’t available on the hardware cluster currently hosting the VM.",
+    "Even when deallocation isn’t required, changing the size of a running VM will cause it to restart.",
+    "This behavior applies to both the Azure portal, and all GET operations, as the displayed size always reflects the latest applied configuration, not the actual running size.",
+    "If the VM is running a memory-intensive workload, such as a machine learning model or a big data application, you may need to choose a SKU with more memory.",
+    "If the VM is running out of storage capacity, you may need to choose a SKU with more storage."
+  ]
+}

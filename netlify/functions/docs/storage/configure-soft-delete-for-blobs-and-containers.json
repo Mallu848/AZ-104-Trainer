@@ -1,0 +1,15 @@
+{
+  "topic": "Configure soft delete for blobs and containers",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview",
+  "fetched_at": "2026-03-26T06:09:43.511Z",
+  "key_facts": [
+    "Version 2017-07-29 and higher of the Azure Storage REST API support blob soft delete.",
+    "To minimize costs, use a lifecycle management policy to automatically delete old versions.",
+    "For more information about lifecycle management, see Optimize costs by automating Azure Blob Storage access tiers .",
+    "If you disable blob soft delete, you can continue to access and recover soft-deleted objects in your storage account until the soft delete retention period has elapsed.",
+    "For premium storage accounts, soft-deleted snapshots don't count toward the per-blob limit of 100 snapshots.",
+    "Blob soft delete and versioning\n\n \n Important\n\n Versioning is not supported for accounts that have a hierarchical namespace.",
+    "Feature support\n\n Support for this feature might be impacted by enabling Data Lake Storage Gen2, Network File System (NFS) 3.0 protocol, or the SSH File Transfer Protocol (SFTP)."
+  ]
+}

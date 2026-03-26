@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Monitor Data Collection Rules and Azure Monitor Agent",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-collection-rule-overview",
+  "fetched_at": "2026-03-26T06:09:53.422Z",
+  "key_facts": [
+    "View all of the DCRs in your subscription from the Data Collection Rules option of the Monitor menu in the Azure portal.",
+    "It replaces the Data Collector API which was less secure and less functional.",
+    "You can simply use guidance in the Azure portal to enable and configure data collection, while Azure Monitor creates and configures the DCR for you.",
+    "Scalable configuration options supporting infrastructure as code and DevOps processes.",
+    "Regardless of the method used to create the DCR and the details of the DCR itself, all DCRs in the subscription are listed in this screen.",
+    "Legacy method\n\n DCR method\n\n Description\n\n \n \n \n Log Analytics agent \n\n Azure Monitor agent \n\n The Azure Monitor agent is now used to monitor virtual machines (VMs) and Kubernetes clusters supporting VM insights and Container insights .",
+    "Diagnostic settings \n(metrics only)\n\n Metrics export \n\n Diagnostic settings are still currently used to collect resource logs from Azure resources."
+  ]
+}

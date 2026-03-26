@@ -1,0 +1,15 @@
+{
+  "topic": "Configure service endpoints for Azure PaaS services",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview",
+  "fetched_at": "2026-03-26T06:09:49.438Z",
+  "key_facts": [
+    "The Microsoft.AzureActiveDirectory tag listed under services supporting service endpoints is used only for supporting service endpoints to ADLS Gen 1.",
+    "For more information, see Secure Azure service access from on-premises \n\n For Azure SQL, a service endpoint applies only to Azure service traffic within a virtual network's region.",
+    "A virtual network can be associated with up to 200 different subscriptions and regions by each supported service with active virtual network rules configured.",
+    "Secure Azure service access from on-premises\n\n By default, Azure service resources secured to virtual networks aren't reachable from on-premises networks.",
+    "To allow access to your service resources, you must allow these public IP addresses in the resource IP firewall setting.",
+    "For more information on permissions required for setting up endpoints and securing Azure services, see Provisioning .",
+    "To secure Azure service resources to a virtual network, users must have the Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action permission for the added subnets."
+  ]
+}

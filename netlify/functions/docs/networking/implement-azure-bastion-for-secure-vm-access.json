@@ -1,0 +1,15 @@
+{
+  "topic": "Implement Azure Bastion for secure VM access",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+  "fetched_at": "2026-03-26T06:09:49.106Z",
+  "key_facts": [
+    "Key benefits\n\n Azure Bastion provides the following benefits:\n\n \n Secure connectivity over TLS : Connect to VMs using RDP/SSH over TLS on port 443.",
+    "SKUs\n\n Azure Bastion offers four SKU tiers:\n\n \n Premium : Includes all Standard features plus session recording for compliance and private-only deployment.",
+    "Architecture\n\n Azure Bastion offers three deployment architectures:\n\n Private-only deployment : Premium SKU without public IP address for enhanced security.",
+    "Premium supports private-only deployment without a public IP.",
+    "Connection methods\n\n Azure Bastion supports multiple connection methods:\n\n \n Browser-based connections : Connect through the Azure portal using an HTML5 web client.",
+    "Shareable links : Create shareable links that allow users to connect to VMs without accessing the Azure portal.",
+    "Azure Bastion is deployed directly in your virtual network and supports all VMs in the virtual network using private IP addresses."
+  ]
+}

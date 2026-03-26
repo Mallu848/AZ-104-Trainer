@@ -1,0 +1,15 @@
+{
+  "topic": "Interpret access assignments and effective permissions",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/check-access",
+  "fetched_at": "2026-03-26T06:09:39.112Z",
+  "key_facts": [
+    "Step 1: Open the Azure resource\n\n To check the access for a user, you first need to open the Azure resource you want to check access for.",
+    "In Azure, you can specify a scope at four levels from broad to narrow: management group, subscription, resource group, and resource.",
+    "Open the Azure resource you want to check access for, such as Management groups , Subscriptions , Resource groups , or a particular resource.",
+    "Step 2: Check your access\n\n Follow these steps to check your access to the previously selected Azure resource.",
+    "The following shows an example of the Access control (IAM) page for a resource group.",
+    "The following shows an example of the Access control (IAM) page for a resource group.",
+    "Step 3: Check access for a user\n\n Follow these steps to check the access for a single user, group, service principal, or managed identity to the previously selected Azure resource."
+  ]
+}

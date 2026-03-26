@@ -1,0 +1,15 @@
+{
+  "topic": "Configure blob lifecycle management policies",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview",
+  "fetched_at": "2026-03-26T06:09:44.110Z",
+  "key_facts": [
+    "Known issues and limitations\n\n \n Tiering isn't yet supported in a premium block blob storage account.",
+    "A lifecycle management policy can't be used to change the tier of a blob that uses an encryption scope to the archive tier.",
+    "By using blob lifecycle management, customers can proactively optimize costs by implementing rule-based policies that automatically transition data to cooler tiers or expire it when it's no longer needed.",
+    "With the lifecycle management policy, you can:\n\n \n Transition current versions of a blob, previous versions of a blob, or blob snapshots to a cooler storage tier if these objects aren't accessed or modified for a period of time, to optimize for cost.",
+    "You must define at least one action per rule such as changing the blob tier to the cool tier or deleting blobs.",
+    "Policy execution\n\n When you add or edit the rules of a lifecycle policy, it can take up to 24 hours for changes to go into effect and for the first execution to start.",
+    "If you delete a policy, then no new policy runs are scheduled, but if a run is already in progress, that run continues until it completes and you're billed for any actions that are required to complete the run."
+  ]
+}

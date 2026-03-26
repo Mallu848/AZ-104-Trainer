@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure Azure Blob Storage containers",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction",
+  "fetched_at": "2026-03-26T06:09:43.188Z",
+  "key_facts": [
+    "The following path segment limitations apply to blob names:\n \n If the storage account does not have hierarchical namespace enabled, the number of path segments comprising the blob name cannot exceed 254.",
+    "Client libraries are available for different languages, including:\n\n \n .NET \n\n Java \n\n Node.js \n\n Python \n\n Go \n\n \n Clients can also securely connect to Blob Storage by using SSH File Transfer Protocol (SFTP) and mount Blob Storage containers by using the Network File System (NFS) 3.0 protocol.",
+    "A blob name must be at least one character long and cannot be more than 1,024 characters long, for blobs in Azure Storage.",
+    "Users or client applications can access objects in Blob Storage via HTTP/HTTPS, from anywhere in the world.",
+    "Objects in Blob Storage are accessible via the Azure Storage REST API , Azure PowerShell , Azure CLI , or an Azure Storage client library.",
+    "Container names must start with a letter or number, and can contain only lowercase letters, numbers, and the dash (-) character.",
+    "If the storage account has hierarchical namespace enabled, the number of path segments comprising the blob name cannot exceed 63 (including path segments for container name and account host name)."
+  ]
+}

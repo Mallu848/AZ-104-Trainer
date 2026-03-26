@@ -1,0 +1,15 @@
+{
+  "topic": "Configure VPN Gateway and ExpressRoute connectivity",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+  "fetched_at": "2026-03-26T06:09:50.517Z",
+  "key_facts": [
+    "VPN\nGateway\nGeneration \n\n SKU \n\n S2S/VNet-to-VNet\nTunnels \n\n P2S\n SSTP Connections \n\n P2S\n IKEv2/OpenVPN Connections \n\n Aggregate\nThroughput Benchmark \n\n BGP \n\n Zone-redundant \n\n Supported Number of VMs in the Virtual Network \n\n \n \n \n Generation1 \n\n Basic \n\n Max.",
+    "128\n\n Not Supported\n\n 100 Mbps\n\n Not Supported\n\n No\n\n 200\n\n \n Generation1 \n\n VpnGw1 \n\n Max.",
+    "Configure a site-to-site VPN as a secure failover path for ExpressRoute using:\n\n \n ExpressRoute + VPN Gateway: A combination of ExpressRoute + VPN Gateway connections (coexisting connections).",
+    "For more information about gateway SKUs, including supported features, performance tables, configuration steps, and production vs.",
+    "250\n\n 650 Mbps\n\n Supported\n\n No\n\n 450\n\n \n Generation1 \n\n VpnGw2 \n\n Max.",
+    "500\n\n 1 Gbps\n\n Supported\n\n No\n\n 1300\n\n \n Generation1 \n\n VpnGw3 \n\n Max.",
+    "1000\n\n 1.25 Gbps\n\n Supported\n\n No\n\n 4000\n\n \n Generation1 \n\n VpnGw1AZ \n\n Max."
+  ]
+}

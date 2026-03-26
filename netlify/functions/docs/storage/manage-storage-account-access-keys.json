@@ -1,0 +1,15 @@
+{
+  "topic": "Manage storage account access keys",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage",
+  "fetched_at": "2026-03-26T06:09:41.820Z",
+  "key_facts": [
+    "$storageAccountKey = `\n (Get-AzStorageAccountKey\n -ResourceGroupName <resource-group> `\n -Name <storage-account>).Value[0]\n \n \n \n\n To list your account access keys with Azure CLI, call the az storage account keys list command, as shown in the following example.",
+    "Any clients that use the account key to access the storage account must be updated to use the new key, including media services, cloud, desktop and mobile applications, and graphical user interface applications for Azure Storage, such as Azure Storage Explorer .",
+    "If you use Key 1 in some places and Key 2 in others, you will not be able to rotate your keys without some application losing access.",
+    "When you create a storage account, Azure generates two 512-bit storage account access keys for the account.",
+    "To learn about shared access signatures, see Grant limited access to data with shared access signatures .",
+    "Access to shared keys should be carefully limited and monitored.",
+    "Use user delegation SAS tokens with limited scope of access in scenarios where Microsoft Entra ID based authorization can't be used."
+  ]
+}

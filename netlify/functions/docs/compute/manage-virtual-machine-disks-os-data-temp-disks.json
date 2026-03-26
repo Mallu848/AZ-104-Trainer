@@ -1,0 +1,15 @@
+{
+  "topic": "Manage virtual machine disks (OS, data, temp disks)",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview",
+  "fetched_at": "2026-03-26T06:09:45.890Z",
+  "key_facts": [
+    "Azure VMs version 5 and above automatically encrypt their temporary disks and (if in use) their ephemeral OS disks with encryption-at-rest.",
+    "Locally redundant storage (LRS) disks provide at least 99.999999999% (11 9's) of durability over a year.",
+    "Zone-redundant storage (ZRS) disks provide at least 99.9999999999% (12 9's) of durability over a year.",
+    "Simple and scalable VM deployment\n\n With managed disks, you can create up to 50,000 disks of each disk type in a subscription per region.",
+    "To learn about the options each disk type has, see Overview of options to improve Azure Managed Disk performance \n\n Backup and disaster recovery options\n\n Managed disks support several backup and disaster recovery options.",
+    "Snapshots\n\n A managed disk snapshot is a read-only, crash-consistent full copy of a managed disk that's stored as a standard managed disk by default.",
+    "Snapshots would need to be able to coordinate with each other, and that's not supported."
+  ]
+}

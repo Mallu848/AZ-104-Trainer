@@ -1,0 +1,15 @@
+{
+  "topic": "Deploy and configure Azure Virtual Machine Scale Sets",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview",
+  "fetched_at": "2026-03-26T06:09:46.323Z",
+  "key_facts": [
+    "Important\n\n The orchestration mode is defined when you create the scale set and cannot be changed or updated later.",
+    "Scale sets support the use of the Azure load balancer for basic layer-4 traffic distribution, and Azure Application Gateway for more advanced layer-7 traffic distribution and TLS termination.",
+    "As demand increases, the scale set automatically adds more VMs to maintain an acceptable level of performance for your application.",
+    "Works at large-scale \n\n \n Scale sets support up to 1,000 VM instances for standard marketplace images and custom images through the Azure Compute Gallery (formerly known as Shared Image Gallery).",
+    "If you create a scale set using a managed image, the limit is 600 VM instances.",
+    "The number of VM instances can automatically increase or decrease in response to demand or a defined schedule.",
+    "Flexible orchestration offers high availability guarantees (up to 1,000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone."
+  ]
+}

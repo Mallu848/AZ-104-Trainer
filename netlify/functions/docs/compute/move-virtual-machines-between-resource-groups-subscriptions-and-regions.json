@@ -1,0 +1,15 @@
+{
+  "topic": "Move virtual machines between resource groups, subscriptions, and regions",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/resource-mover/tutorial-move-region-virtual-machines",
+  "fetched_at": "2026-03-26T06:09:45.657Z",
+  "key_facts": [
+    "For example, to take advantage of a new Azure region, to deploy features or services available in specific regions only, to meet internal policy and governance requirements, or in response to capacity planning requirements.",
+    "To create the identity, and to assign it the required role (Contributor or User Access administrator in the source subscription), the account you use to add resources needs Owner permissions on the subscription.",
+    "Subscription permissions \n\n Check that you have Owner access on the subscription containing the resources that you want to move\n\n Why do I need Owner access?",
+    "Destination subscription \n\n The subscription in the destination region needs enough quota to create the resources you're moving in the target region.",
+    "Allow outbound connectivity from VMs:\n \n If you're using a URL-based firewall proxy to control outbound connectivity, allow access to these URLs .",
+    "Select resources\n\n Note that, all supported resource types in resource groups within the selected source region are displayed.",
+    "Show first-level dependencies only shows only direct dependencies."
+  ]
+}

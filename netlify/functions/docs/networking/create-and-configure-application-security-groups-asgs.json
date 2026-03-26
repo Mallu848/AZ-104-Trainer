@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure application security groups (ASGs)",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-network/application-security-groups",
+  "fetched_at": "2026-03-26T06:09:48.902Z",
+  "key_facts": [
+    "Although each network interface (NIC) in this example is a member of only one application security group, a network interface can be a member of multiple application security groups, up to the Azure limits .",
+    "Priority\n\n Source\n\n Source ports\n\n Destination\n\n Destination ports\n\n Protocol\n\n Access\n\n \n \n \n 120\n\n *\n\n *\n\n AsgDb\n\n 1433\n\n Any\n\n Deny\n\n \n \n Allow-Database-BusinessLogic\n\n This rule allows traffic from the AsgLogic application security group to the AsgDb application security group.",
+    "Constraints\n\n Application security groups have the following constraints:\n\n \n There are limits to the number of application security groups you can have in a subscription, and other limits related to application security groups.",
+    "Tip\n\n To minimize the number of security rules you need, plan out your required application security groups.",
+    "You can reuse your security policy at scale without manual maintenance of explicit IP addresses.",
+    "Because inbound traffic from the internet is denied by the DenyAllInbound default security rule, no extra rule is needed for the AsgLogic or AsgDb application security groups.",
+    "Priority\n\n Source\n\n Source ports\n\n Destination\n\n Destination ports\n\n Protocol\n\n Access\n\n \n \n \n 100\n\n Internet\n\n *\n\n AsgWeb\n\n 80\n\n TCP\n\n Allow\n\n \n \n Deny-Database-All\n\n Because the AllowVNetInBound default security rule allows all communication between resources in the same virtual network, you need this rule to deny traffic from all resources."
+  ]
+}

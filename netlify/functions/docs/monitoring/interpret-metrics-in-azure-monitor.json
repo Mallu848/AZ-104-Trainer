@@ -1,0 +1,15 @@
+{
+  "topic": "Interpret metrics in Azure Monitor",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-platform-metrics",
+  "fetched_at": "2026-03-26T06:09:50.715Z",
+  "key_facts": [
+    "It's similar to the existing standard Azure Monitor Metrics REST API, but provides the capability to retrieve metric data for up to 50 resource IDs in the same subscription and region in a single batch API call.",
+    "While platform and custom metrics are stored for 93 days, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart.",
+    "Prometheus metrics\n\n Prometheus metrics are stored for 18 months , but a PromQL query can only span a maximum of 32 days.",
+    "Azure Monitor Metrics REST API - Allows you to access Azure Monitor platform metrics definitions and values.",
+    "Security\n\n All communication between connected systems and the Azure Monitor service is encrypted using the TLS 1.2 (HTTPS) protocol.",
+    "Secure connection is established between the agent and the Azure Monitor service using certificate-based authentication and TLS with port 443.",
+    "For performance reasons, the portal limits how much data it displays based on volume."
+  ]
+}

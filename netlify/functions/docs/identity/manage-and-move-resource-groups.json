@@ -1,0 +1,15 @@
+{
+  "topic": "Manage and move resource groups",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal",
+  "fetched_at": "2026-03-26T06:09:40.433Z",
+  "key_facts": [
+    "Use the Azure portal and Azure Resource Manager to manage resource groups\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Learn how to use the Azure portal with Azure Resource Manager to manage Azure resource groups.",
+    "The resource group can include all the resources for the solution or only those resources that you want to manage as a group.",
+    "The Azure portal uses the resource group scope to create views that span across multiple resources.",
+    "Deployments blade shows the history of ARM template or Bicep deployments targeted to that resource group (which includes portal deployments).",
+    "Policy blade provides information related to the policies enforced on the resource group.",
+    "The following screenshot shows the other columns that you can add to the display:\n\n \n \n \n \n \n\n \n Open resource groups\n\n \n Sign in to the Azure portal .",
+    "Deploy resources to a resource group\n\n After you create a Resource Manager template, use the Azure portal to deploy your Azure resources."
+  ]
+}

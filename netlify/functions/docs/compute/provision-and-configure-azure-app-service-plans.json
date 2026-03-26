@@ -1,0 +1,15 @@
+{
+  "topic": "Provision and configure Azure App Service plans",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans",
+  "fetched_at": "2026-03-26T06:09:47.284Z",
+  "key_facts": [
+    "Current limitations (preview): Windows only, Pv4/Pmv4 SKUs, available in East Asia, West Central US, North Europe, and East US.",
+    "Important\n\n Managed Instance is in preview, available for Windows web apps in select regions, and limited to Pv4 and Pmv4 pricing plans .",
+    "These tiers allocate CPU quotas to each app that runs on the shared resources.",
+    "These tiers are intended for only development and testing purposes.",
+    "Only apps in the same App Service plan share the same compute resources (and those resources aren't shared with other customers).",
+    "To find out which features are supported in each pricing tier, see the App Service plan details .",
+    "You can find more comparisons of plans in App Service limits ."
+  ]
+}

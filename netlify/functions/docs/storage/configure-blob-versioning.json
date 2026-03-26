@@ -1,0 +1,15 @@
+{
+  "topic": "Configure blob versioning",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview",
+  "fetched_at": "2026-03-26T06:09:44.058Z",
+  "key_facts": [
+    "Version 2019-10-10 and higher of the Azure Storage REST API supports blob versioning.",
+    "Versioning is not supported for blobs that are uploaded by using Data Lake Storage APIs.",
+    "When blob versioning is enabled, you can access earlier versions of a blob to recover your data if it's modified or deleted.",
+    "To minimize costs, use a lifecycle management policy to automatically delete old versions.",
+    "For more information about lifecycle management, see Optimize costs by automating Azure Blob Storage access tiers .",
+    "For more information about lifecycle management, see Optimize costs by automating Azure Blob Storage access tiers .",
+    "Important\n\n Blob versioning cannot help you to recover from the accidental deletion of a storage account or container."
+  ]
+}

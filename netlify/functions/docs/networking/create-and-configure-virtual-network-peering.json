@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure virtual network peering",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview",
+  "fetched_at": "2026-03-26T06:09:47.945Z",
+  "key_facts": [
+    "By default, a virtual network is peered with up to 500 other virtual networks.",
+    "By using the connectivity configuration for Azure Virtual Network Manager , you can increase this limit to peer up to 1,000 virtual networks to a single virtual network.",
+    "No public internet, gateways, or encryption are required in the communication between the virtual networks.",
+    "To learn more about the supported number of peerings, see Networking limits .",
+    "Permissions\n\n To learn about permissions required to create a virtual network peering, see Permissions .",
+    "This powerful feature allows you to create secure, high-performance connections between virtual networks while keeping all traffic on Microsoft's private backbone infrastructure, eliminating the need for public internet routing.",
+    "With this larger size, you can create a hub-and-spoke topology with 1,000-spoke virtual networks, for example."
+  ]
+}

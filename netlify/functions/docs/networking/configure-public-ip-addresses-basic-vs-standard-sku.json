@@ -1,0 +1,15 @@
+{
+  "topic": "Configure public IP addresses (Basic vs Standard SKU)",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses",
+  "fetched_at": "2026-03-26T06:09:48.032Z",
+  "key_facts": [
+    "Zone redundant IPs can only be created in regions where 3 availability zones are live.",
+    "Static public IP addresses are commonly used in the following scenarios:\n\n \n When you must update firewall rules to communicate with your Azure resources.",
+    "Standard v2 SKU Public IPs are always created as zone-redundant in regions that support availability zones .",
+    "Standard SKU Public IPs can be created as zonal or zone-redundant in regions that support availability zones .",
+    "Contact support to increase above the default limits based on your business needs.",
+    "SKU\n\n \n Important\n\n On September 30, 2025, Basic SKU public IPs were retired.",
+    "The SKU determines their functionality including allocation method, feature support, and resources they can be associated with."
+  ]
+}

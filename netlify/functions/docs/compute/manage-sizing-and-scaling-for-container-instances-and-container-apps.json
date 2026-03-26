@@ -1,0 +1,15 @@
+{
+  "topic": "Manage sizing and scaling for Container Instances and Container Apps",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
+  "fetched_at": "2026-03-26T06:09:46.962Z",
+  "key_facts": [
+    "Scale limit\n\n Default value\n\n Min value\n\n Max value\n\n \n \n \n Minimum number of replicas per revision\n\n 0\n\n 0\n\n Maximum replicas configurable are 1,000.",
+    "Maximum number of replicas per revision\n\n 10\n\n 1\n\n Maximum replicas configurable are 1,000.",
+    "If you want to ensure that an instance of your revision is always running, set the minimum number of replicas to 1 or higher.",
+    "Manual scale rule configuration is not required or supported in this scenario.",
+    "CLI parameter\n\n Description\n\n Default value\n\n Min value\n\n Max value\n\n \n \n \n --scale-rule-http-concurrency \n\n When the number of concurrent HTTP requests exceeds this value, then another replica is added.",
+    "CLI parameter\n\n Description\n\n Default value\n\n Min value\n\n Max value\n\n \n \n \n --scale-rule-tcp-concurrency \n\n When the number of concurrent TCP connections exceeds this value, then another replica is added.",
+    "triggers:\n- type: azure-servicebus ⬅️\n metadata:\n queueName: my-queue\n namespace: service-bus-namespace\n messageCount: \"5\"\n \n\n In the CLI command, set the --scale-rule-type parameter to the specification type value."
+  ]
+}

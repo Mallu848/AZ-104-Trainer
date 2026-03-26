@@ -1,0 +1,15 @@
+{
+  "topic": "Configure private DNS zones and VNet links for name resolution",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/dns/private-dns-overview",
+  "fetched_at": "2026-03-26T06:09:50.692Z",
+  "key_facts": [
+    "Other considerations\n\n Azure Private DNS has the following limitations:\n\n \n A specific virtual network can be linked to only one private zone if automatic registration of VM DNS records is enabled.",
+    "Reverse DNS works only for private IP space in the linked virtual network\n\n Reverse DNS for a private IP address in linked virtual network returns internal.cloudapp.net as the default suffix for the virtual machine.",
+    "Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Azure Private DNS provides a reliable and secure DNS service for your virtual networks.",
+    "To resolve the records of a private DNS zone from your virtual network, you must link the virtual network with the zone.",
+    "Linked virtual networks have full access and can resolve all DNS records published in the private zone.",
+    "Azure DNS supports A, AAAA, CNAME, MX, PTR, SOA, SRV, and TXT records.",
+    "Along with hosting your custom DNS records, Azure automatically maintains hostname records for the VMs in the specified virtual networks."
+  ]
+}

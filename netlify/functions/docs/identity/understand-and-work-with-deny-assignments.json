@@ -1,0 +1,15 @@
+{
+  "topic": "Understand and work with deny assignments",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments",
+  "fetched_at": "2026-03-26T06:09:39.615Z",
+  "key_facts": [
+    "Azure portal \n\n \n Azure PowerShell \n\n \n REST API \n\n \n \n Prerequisites\n\n To get information about a deny assignment, you must have:\n\n \n Microsoft.Authorization/denyAssignments/read permission, which is included in most Azure built-in roles .",
+    "Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>\n \n \n \n Prerequisites\n\n To get information about a deny assignment, you must have:\n\n \n Microsoft.Authorization/denyAssignments/read permission, which is included in most Azure built-in roles .",
+    "You must use the following version:\n\n \n 2018-07-01-preview or later\n\n 2022-04-01 is the first stable version\n\n \n List a single deny assignment\n\n To list a single deny assignment, use the Deny Assignments - Get REST API.",
+    "Permissions.Actions \n\n At least one Actions or one DataActions\n\n String[]\n\n An array of strings that specify the control plane actions to which the deny assignment blocks access.",
+    "Permissions.NotActions \n\n No\n\n String[]\n\n An array of strings that specify the control plane action to exclude from the deny assignment.",
+    "Permissions.DataActions \n\n At least one Actions or one DataActions\n\n String[]\n\n An array of strings that specify the data plane actions to which the deny assignment blocks access.",
+    "Permissions.NotDataActions \n\n No\n\n String[]\n\n An array of strings that specify the data plane actions to exclude from the deny assignment."
+  ]
+}

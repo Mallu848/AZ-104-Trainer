@@ -1,0 +1,15 @@
+{
+  "topic": "Configure resource locks (ReadOnly and Delete)",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources",
+  "fetched_at": "2026-03-26T06:09:40.155Z",
+  "key_facts": [
+    "A read-only lock on an Azure Kubernetes Service (AKS) cluster limits how you can access cluster resources through the portal.",
+    "resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {\n name: 'rgLock'\n properties: {\n level: 'CanNotDelete'\n notes: 'Resource group and its resources should not be deleted.'\n }\n}\n \n \n\n When applying a lock to a resource within the resource group, add the scope property.",
+    "A read-only lock on a resource group that contains an App Service plan prevents you from scaling up or out of the plan .",
+    "A cannot-delete lock on a resource group prevents Resource Manager from automatically deleting deployments in the history.",
+    "New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup\n \n To lock a resource group, provide the resource group name.",
+    "In the portal, these locks are called Delete and Read-only .",
+    "In the command line, these locks are called CanNotDelete and ReadOnly ."
+  ]
+}

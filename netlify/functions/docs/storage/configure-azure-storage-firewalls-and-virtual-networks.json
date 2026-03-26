@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Storage firewalls and virtual networks",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security",
+  "fetched_at": "2026-03-26T06:09:41.277Z",
+  "key_facts": [
+    "Service endpoints enable continuity during a regional failover and provide access to read-only geo-redundant storage (RA-GRS) instances.",
+    "When you create network rules using the Azure portal, these service endpoints are automatically created as you select each target subnet.",
+    "Configuring service endpoints between virtual networks and service instances in a paired region can be an important part of your disaster recovery plan.",
+    "To allow access to your service resources, you must allow these public IP addresses in the firewall setting for resource IPs.",
+    "Azure Storage firewall rules\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Azure Storage firewall rules provide granular control over network access to your storage account's public endpoint.",
+    "By default, storage accounts allow connections from any network, but you can restrict access by configuring network rules that define which sources can connect to your storage account.",
+    "Note\n\n Clients that make requests from allowed sources must also meet the authorization requirements of the storage account."
+  ]
+}

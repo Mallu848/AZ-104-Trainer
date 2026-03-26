@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Application Gateway and WAF",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/application-gateway/overview",
+  "fetched_at": "2026-03-26T06:09:50.164Z",
+  "key_facts": [
+    "Application Gateway operates at the application layer (OSI layer 7) and provides features like SSL/TLS termination, autoscaling, zone redundancy, and integration with Web Application Firewall for security.",
+    "If you need to optimize global routing of your web traffic and optimize top-tier end-user performance and reliability through quick global failover, see Front Door .",
+    "Secure applications against L3 and L4 DDoS attacks with Azure DDoS Protection plan.",
+    "Privately connect to your backend behind Application Gateway with Private Link and embrace a zero-trust access model.",
+    "Eliminate risk of data exfiltration and control privacy of communication from within the virtual network with a fully Private-only Application Gateway deployment .",
+    "Provide a centralized security experience for your application via Azure Policy, Azure Advisor, and Microsoft Sentinel integration that ensures consistent security features across apps.",
+    "Next steps\n\n Depending on your requirements and environment, you can create a test Application Gateway by using the Azure portal, Azure PowerShell, or Azure CLI."
+  ]
+}

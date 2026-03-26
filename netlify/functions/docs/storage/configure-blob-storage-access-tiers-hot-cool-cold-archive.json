@@ -1,0 +1,15 @@
+{
+  "topic": "Configure blob storage access tiers (Hot, Cool, Cold, Archive)",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview",
+  "fetched_at": "2026-03-26T06:09:43.520Z",
+  "key_facts": [
+    "Note\n\n The archive tier is not supported as the default access tier for a storage account.",
+    "If a blob's access tier is inferred from the default account access tier setting, then the Azure portal displays the access tier as Hot (inferred) , Cool (inferred) , or Cold (inferred) .",
+    "If you toggle the default access tier setting to a cooler tier in a general-purpose v2 account, then you're charged for write operations (per 10,000) for all blobs for which the access tier is inferred.",
+    "When you create a legacy Blob Storage account, you must specify the default access tier setting as hot or cool at create time.",
+    "To move data, you must synchronously copy blobs from the block blob storage account to the hot tier in a different account using the Put Block From URL API or a version of AzCopy that supports this API.",
+    "Data in the cool tier should be stored for a minimum of 30 days.",
+    "Data in the cold tier should be stored for a minimum of 90 days."
+  ]
+}

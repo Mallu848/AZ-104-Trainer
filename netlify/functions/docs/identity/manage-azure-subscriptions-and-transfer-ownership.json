@@ -1,0 +1,15 @@
+{
+  "topic": "Manage Azure subscriptions and transfer ownership",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/manage-azure-subscription-policy",
+  "fetched_at": "2026-03-26T06:09:40.721Z",
+  "key_facts": [
+    "Prerequisites\n\n \n Only directory global administrators with direct role assignment can edit subscription policies.",
+    "Before editing subscription policies, the global administrator must Elevate access to manage all Azure subscriptions and management groups .",
+    "Setting subscription policy\n\n \n Sign in to the Azure portal .",
+    "Subscriptions transferred into or out of a directory must remain associated with a Billing Tenant to ensure billing occurs correctly.",
+    "Available subscription policy settings\n\n Use the following policy settings to control the movement of Azure subscriptions from and into directories.",
+    "Subscriptions leaving a Microsoft Entra ID directory\n\n The policy allows or stops users from moving subscriptions out of the current directory.",
+    "Subscription owners can change the directory of an Azure subscription or use transfer features available on the Azure portal and APIs to another directory where they're a member."
+  ]
+}

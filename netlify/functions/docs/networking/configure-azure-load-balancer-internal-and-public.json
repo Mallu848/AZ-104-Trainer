@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Load Balancer (internal and public)",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview",
+  "fetched_at": "2026-03-26T06:09:49.973Z",
+  "key_facts": [
+    "Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n \n Important\n\n On September 30, 2025, Basic Load Balancer was retired.",
+    "Load balancer overview\n\n Azure Load Balancer operates at layer 4 of the Open Systems Interconnection (OSI) model.",
+    "With internal load balancer, you can provide inbound connectivity to your VMs in private network connectivity scenarios, such as accessing a load balancer frontend from an on-premises network in a hybrid scenario.",
+    "Azure Load Balancer has three stock-keeping units (SKUs) - Basic, Standard, and Gateway.",
+    "Each SKU is catered towards a specific scenario and has differences in scale, features, and pricing.",
+    "The service supports both inbound and outbound scenarios, provides low latency and high throughput, and scales up to millions of flows for all TCP and UDP applications.",
+    "For service-level agreements (SLAs), see the Microsoft licensing information for online services ."
+  ]
+}

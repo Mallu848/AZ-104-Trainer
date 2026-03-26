@@ -1,0 +1,15 @@
+{
+  "topic": "Configure stored access policies for storage",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/rest/api/storageservices/define-stored-access-policy",
+  "fetched_at": "2026-03-26T06:09:41.526Z",
+  "key_facts": [
+    "Stored access policies are not supported for the user delegation SAS or the account SAS.",
+    "See also\n\n \n Delegate access by using a shared access signature \n\n Grant limited access to Azure Storage resources by using shared access signatures \n\n \n\n \n \n\n \n \n\n \n\n \n \n \n\n \n \n \n \n Additional resources\n \n\n \n \n \n \n \n \n \n \n\n \n \n \n \n \n \n Last updated on \n 2023-07-11",
+    "Define a stored access policy\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n A stored access policy provides an additional level of control over service-level shared access signatures (SASs) on the server side.",
+    "The following storage resources support stored access policies:\n\n \n Blob containers\n\n File shares\n\n Queues\n\n Tables\n\n \n \n Note\n\n A stored access policy on a container can be associated with a shared access signature that grants permissions to the container itself or to the blobs that it contains.",
+    "Trying to set more than five access policies at one time causes the service to return status code 400 (Bad Request).",
+    "Note\n\n When you create or update a stored access policy on a container, table, queue, or share, the change might take up to 30 seconds to take effect.",
+    "During this interval, requests against a shared access signature that's associated with the stored access policy might fail with status code 403 (Forbidden), until the access policy becomes active."
+  ]
+}

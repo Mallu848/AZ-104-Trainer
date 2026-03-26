@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure Azure virtual machines",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/overview",
+  "fetched_at": "2026-03-26T06:09:45.189Z",
+  "key_facts": [
+    "With TLaD, any new Generation 2 VMs created through any client tools defaults to Trusted Launch with secure boot and vTPM enabled.",
+    "Virtual machine total core limits\n\n Your subscription has default quota limits in place that could impact the deployment of many virtual machines for your project.",
+    "The current limit on a per subscription basis is 20 virtual machine total cores per region.",
+    "Option 1: Initiate a failover by using Azure Site Recovery\n\n You can configure Azure Site Recovery for your VMs so that you can recover your application with a single click in matter of minutes.",
+    "Option 2: Wait for recovery\n\n In this case, no action on your part is required.",
+    "For example, you might need to open port 22 for SSH access, but you might want to block traffic to port 80.",
+    "By default, these resources are created in the same resource group as the VM."
+  ]
+}

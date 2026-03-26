@@ -1,0 +1,15 @@
+{
+  "topic": "Configure and manage Azure management groups",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+  "fetched_at": "2026-03-26T06:09:40.977Z",
+  "key_facts": [
+    "Limitations\n\n There are limitations to using custom roles on management groups:\n\n \n You can define only one management group in the assignable scopes of a new role.",
+    "For example, you can apply a policy to a management group that limits the regions available for virtual machine (VM) creation.",
+    "This policy would be applied to all nested management groups, subscriptions, and resources to allow VM creation only in authorized regions.",
+    "You can create a hierarchy that applies a policy, for example, that limits VM locations to the West US region in the management group called Corp .",
+    "Important facts about management groups\n\n \n A single directory can support 10,000 management groups.",
+    "A management group tree can support up to six levels of depth.",
+    "This limit doesn't include the root level or the subscription level."
+  ]
+}

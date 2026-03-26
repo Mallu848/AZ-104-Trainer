@@ -1,0 +1,15 @@
+{
+  "topic": "Configure log settings and diagnostic settings in Azure Monitor",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings",
+  "fetched_at": "2026-03-26T06:09:51.080Z",
+  "key_facts": [
+    "To help ensure the security of data in transit, all destination endpoints are configured to support TLS 1.2.",
+    "Any tables in a Log Analytics workspace are created automatically when the first data is sent to the workspace, so only the workspace itself must exist.",
+    "You must enable Allow trusted Microsoft services to bypass this firewall setting in storage accounts so that the Azure Monitor diagnostic settings service is granted access to your storage account.",
+    "You must enable Allow trusted Microsoft services to bypass this firewall setting in event hubs so that the Azure Monitor diagnostic settings service is granted access to your event hub resources.",
+    "Troubleshooting\n\n Metric category isn't supported\n\n You might receive an error message similar to \"Metric category 'xxxx' is not supported\" when you're using a Resource Manager template, the REST API, the Azure CLI, or Azure PowerShell.",
+    "The destination doesn't have to be in the same subscription as the resource that's sending logs if the user who configures the setting has appropriate Azure role-based access control (RBAC) access to both subscriptions.",
+    "Azure DNS zone endpoints (preview) and any Premium storage accounts aren't supported as destinations."
+  ]
+}

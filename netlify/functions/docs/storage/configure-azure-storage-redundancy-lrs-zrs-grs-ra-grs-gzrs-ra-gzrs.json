@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Storage redundancy (LRS, ZRS, GRS, RA-GRS, GZRS, RA-GZRS)",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+  "fetched_at": "2026-03-26T06:09:42.391Z",
+  "key_facts": [
+    "Note\n\n Azure Files doesn't support read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS).",
+    "For more information, see Optimize costs with smart tier \n\n Supported storage account types\n\n The following table shows which redundancy options are supported for each type of storage account.",
+    "Azure Storage redundancy\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n \n Azure Storage always stores multiple copies of your data to protect it from planned and unplanned events.",
+    "Whether your application requires read access to the replicated data in the secondary region during an outage in the primary region (geo-replication with read access).",
+    "If a zone becomes unavailable, no remounting of Azure file shares from the connected clients is required.",
+    "The archive tier for Blob Storage isn't currently supported for ZRS, GZRS, or RA-GZRS accounts.",
+    "When you utilize GRS or GZRS, the data in the secondary region isn't available for read or write access unless there's a failover to the secondary region."
+  ]
+}

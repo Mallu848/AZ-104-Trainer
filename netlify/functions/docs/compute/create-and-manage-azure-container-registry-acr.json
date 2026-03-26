@@ -1,0 +1,15 @@
+{
+  "topic": "Create and manage Azure Container Registry (ACR)",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro",
+  "fetched_at": "2026-03-26T06:09:46.423Z",
+  "key_facts": [
+    "Azure Container Registry transfers container images over HTTPS, and it supports TLS to help secure client connections.",
+    "Security features of the Premium service tier include content trust for image tag signing, and private endpoints (preview) to restrict access to the registry.",
+    "Azure provides tooling like the Azure CLI, the Azure portal, and API support to manage your container registries.",
+    "Each tier supports common features such as webhook integration, registry authentication with Microsoft Entra ID, and delete functionality.",
+    "Premium registries support additional capabilities and have greater storage and limits.",
+    "Supported images and artifacts\n\n When images are grouped in a repository, each image is a read-only snapshot of a Docker-compatible container.",
+    "Container registry security and access\n\n You authenticate to a registry by using the Azure CLI or the standard docker login command."
+  ]
+}

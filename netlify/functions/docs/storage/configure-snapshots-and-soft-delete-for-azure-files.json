@@ -1,0 +1,15 @@
+{
+  "topic": "Configure snapshots and soft delete for Azure Files",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/files/storage-snapshots-files",
+  "fetched_at": "2026-03-26T06:09:43.734Z",
+  "key_facts": [
+    "NFS snapshot limitations\n\n Only file management APIs ( AzRmStorageShare ) are supported for NFS Azure file share snapshots.",
+    "Limits\n\n Azure Files supports up to 200 share snapshots per share.",
+    "Only file management APIs ( AzRmStorageShare ) are supported for NFS Azure file share snapshots.",
+    "Important\n\n Share snapshots provide only file-level protection.",
+    "You can retrieve the list of versions of the directory or file, and you can mount a specific version directly as a drive (only available on Windows - see Limits ).",
+    "This feature minimizes the time required to create the share snapshot and saves on storage costs, because you pay only for the changed content.",
+    "After reaching 200 share snapshots, you must delete older share snapshots to create new ones."
+  ]
+}

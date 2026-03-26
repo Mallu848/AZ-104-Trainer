@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure an Azure Backup vault",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview",
+  "fetched_at": "2026-03-26T06:09:52.255Z",
+  "key_facts": [
+    "The security features ensure you can secure your backups, and safely recover data, even if production and backup servers are compromised.",
+    "Azure provides various built-in roles , and Azure Backup has three built-in roles to manage recovery points .",
+    "By default, all your data is encrypted using Microsoft managed keys.",
+    "This includes access to Azure resources such as Azure Disks or PostgreSQL servers to be backed up and Key Vaults used for encryption key management.",
+    "Specific roles can be assigned to these identities to grant the required access.",
+    "Backup vaults support two types of managed identities:\n\n \n System Assigned Managed Identity: This identity is automatically created when the Backup vault is provisioned and is tied to the lifecycle of the vault.",
+    "These identities ensure secure and manageable access control, enabling Backup vaults to operate with the least privilege necessary while aligning with organizational security policies."
+  ]
+}

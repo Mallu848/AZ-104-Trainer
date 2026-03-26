@@ -1,0 +1,15 @@
+{
+  "topic": "Manage user properties and bulk user operations",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/entra/fundamentals/how-to-manage-user-profile-info",
+  "fetched_at": "2026-03-26T06:09:38.007Z",
+  "key_facts": [
+    "You can also choose to allow users to connect their LinkedIn accounts or restrict access to the Microsoft Entra administration portal.",
+    "Prerequisites\n\n The required role of least privilege varies based on the type of user you're adding and if you need to assign Microsoft Entra roles at the same time.",
+    "Task\n\n Role\n\n \n \n \n Create a new user\n\n User Administrator\n\n \n Invite an external guest\n\n Guest Inviter\n\n \n Assign Microsoft Entra roles\n\n Privileged Role Administrator\n\n \n \n Add or change profile information\n\n When new users are created, only a few details are added to their user profile.",
+    "The Legal age group classification might limit the user's access and authority.",
+    "When you look at these settings together, you can see how permissions, restrictions, and other connections work together.",
+    "Some settings might be managed in more than one area, such as the uploading Organizational data in Microsoft 365 .",
+    "Parental controls: For organizations like K-12 school districts, the user's age group might need to be provided."
+  ]
+}

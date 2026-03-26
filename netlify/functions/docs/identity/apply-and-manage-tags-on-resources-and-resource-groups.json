@@ -1,0 +1,15 @@
+{
+  "topic": "Apply and manage tags on resources and resource groups",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+  "fetched_at": "2026-03-26T06:09:40.182Z",
+  "key_facts": [
+    "For example, this role can't apply tags to resources or resource groups through the Azure portal.",
+    "Each resource, resource group, and subscription can have a maximum of 50 tag name-value pairs.",
+    "Required access\n\n There are two ways to get the required access to tag resources:\n\n \n You can have write access to the Microsoft.Resources/tags resource type.",
+    "However, it can apply tags to subscriptions through the Azure portal.",
+    "It supports all tag operations through Azure PowerShell and REST API.",
+    "The Contributor role grants the required access to apply tags to any entity.",
+    "To apply tags to only one resource type, use the Contributor role for that resource."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "topic": "Perform failover to a secondary region using Azure Site Recovery",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-failover-failback",
+  "fetched_at": "2026-03-26T06:09:52.878Z",
+  "key_facts": [
+    "Custom is only available when you fail over a single VM, and don't use a recovery plan.",
+    "Note\n\n You may also get alternative virtual machine SKU recommendation during test failover.",
+    "Tutorial: Fail over Azure VMs to a secondary region\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Learn how to fail over Azure VMs that are enabled for disaster recovery with Azure Site Recovery , to a secondary Azure region.",
+    "After failover, you reprotect VMs in the target region so that they replicate back to the primary region.",
+    "In this article, you learn how to:\n\n \n \n Check prerequisites\n\n Verify VM settings\n\n Run a failover to the secondary region\n\n Start replicating the VM back to the primary region.",
+    "If you want to run a failover with full settings, learn about Azure VM networking , automation , and troubleshooting .",
+    "We recommend you run a disaster recovery drill for replicated VMs."
+  ]
+}

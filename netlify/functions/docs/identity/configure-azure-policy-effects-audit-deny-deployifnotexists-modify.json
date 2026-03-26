@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure Policy effects: Audit, Deny, DeployIfNotExists, Modify",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects",
+  "fetched_at": "2026-03-26T06:09:39.897Z",
+  "key_facts": [
+    "For example, policy definitions with effect auditIfNotExists require other details in the policy rule that aren't required for policies with effect audit .",
+    "PATCH requests that only modify tags related fields restricts policy evaluation to policies containing conditions that inspect tags related fields.",
+    "As an example, if both policy 1 and 2 had a deny effect, a resource would be blocked by the overlapping and conflicting policy definitions.",
+    "Azure Policy definitions effect basics\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Each policy definition in Azure Policy has a single effect in its policyRule .",
+    "That effect determines what happens when the policy rule is evaluated to match.",
+    "Resource properties and logic in the policy rule can determine whether a certain effect is considered valid to the policy definition.",
+    "Order of evaluation\n\n Azure Policy's first evaluation is for requests to create or update a resource."
+  ]
+}

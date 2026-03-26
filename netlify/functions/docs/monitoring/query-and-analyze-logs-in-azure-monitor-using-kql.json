@@ -1,0 +1,15 @@
+{
+  "topic": "Query and analyze logs in Azure Monitor using KQL",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-tutorial",
+  "fetched_at": "2026-03-26T06:09:51.233Z",
+  "key_facts": [
+    "The maximum number of results that you can retrieve in the Log Analytics portal experience is 30,000.",
+    "By default, the query returns records generated in the last 24 hours.",
+    "Set a filter on the DurationMs column to limit the records to those that took more than 150 milliseconds.",
+    "Note\n\n Creating an alert rule is not supported in the demo environment.",
+    "Tutorial: Use Log Analytics\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Log Analytics in the Azure portal lets you explore and analyze data collected by Azure Monitor Logs .",
+    "Prerequisites\n\n This tutorial uses the Log Analytics demo environment , which includes plenty of sample data that supports the sample queries.",
+    "You can also use your own Azure subscription, but you might not have data in the same tables."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "topic": "Troubleshoot network connectivity in Azure",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-connectivity-overview",
+  "fetched_at": "2026-03-26T06:09:48.504Z",
+  "key_facts": [
+    "A TCP ping is a unique use case in which, if there's no allowed rule, the firewall itself responds to the client's TCP ping request even though the TCP ping doesn't reach the target IP address/FQDN.",
+    "If there's a network rule that allows access to the target IP address/FQDN, the ping request reaches the target server and its response is relayed back to the client.",
+    "Such complex networks are implemented using network security groups, firewalls, user-defined routes, and resources provided by Azure.",
+    "Previously, connectivity tests with Connection troubleshoot required that the source virtual machine had the Network Watcher agent VM extension installed.",
+    "This simplifies setup, reduces operational overhead, and enables faster troubleshooting directly from the Azure portal.",
+    "No agent installation required : Connectivity tests can be initiated without deploying or updating the Network Watcher agent VM extension on your Windows or Linux virtual machines.",
+    "Streamlined experience : All diagnostics are performed using Azure platform APIs, making the process seamless and efficient."
+  ]
+}

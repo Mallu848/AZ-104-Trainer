@@ -1,0 +1,15 @@
+{
+  "topic": "Evaluate effective security rules in NSGs",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-security-group-view-overview",
+  "fetched_at": "2026-03-26T06:09:49.060Z",
+  "key_facts": [
+    "Effective security rules in the Azure portal\n\n In Azure portal, rules are displayed for each network interface and grouped by inbound vs outbound.",
+    "Additional resources\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n \n \n \n Last updated on \n 2025-09-23",
+    "Access to this page requires authorization.",
+    "It provides visibility into security and admin rules applied to a network interface.",
+    "You can use this feature to troubleshoot connectivity issues and to audit security and compliance of your Azure network resources.",
+    "You can define a prescriptive set of security rules as a model for security governance in your organization.",
+    "Then, you can implement a periodic compliance audit in a programmatic way by comparing the prescriptive rules with the effective rules for each of the virtual machines in your network."
+  ]
+}

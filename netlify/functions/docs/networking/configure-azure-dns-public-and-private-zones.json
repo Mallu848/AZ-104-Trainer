@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure DNS public and private zones",
+  "domain": "networking",
+  "url": "https://learn.microsoft.com/en-us/azure/dns/dns-overview",
+  "fetched_at": "2026-03-26T06:09:49.639Z",
+  "key_facts": [
+    "DNS Security Policy offers the ability to filter and log DNS queries at the virtual network level.",
+    "Azure DNS supports both internet-facing DNS domains and private DNS zones.",
+    "By hosting your domains in Azure, you can manage your DNS records by using the same credentials, APIs, tools, and billing as your other Azure services.",
+    "To learn about private resolver endpoints and rulesets, see Azure DNS Private Resolver endpoints and rulesets .",
+    "Additional resources\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n \n \n \n Last updated on \n 2025-12-16",
+    "Access to this page requires authorization.",
+    "Azure DNS overview\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n The Domain Name System (DNS) translates (resolves) a service name to an IP address."
+  ]
+}

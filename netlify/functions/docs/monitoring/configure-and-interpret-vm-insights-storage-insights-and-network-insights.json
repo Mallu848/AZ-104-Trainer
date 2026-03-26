@@ -1,0 +1,15 @@
+{
+  "topic": "Configure and interpret VM Insights, Storage Insights, and Network Insights",
+  "domain": "monitoring",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/vm/vminsights-overview",
+  "fetched_at": "2026-03-26T06:09:51.635Z",
+  "key_facts": [
+    "It combines host-level signals that Azure collects automatically with optional metrics and logs from the guest operating system.",
+    "Enable at scale\n\n You can enable VM monitoring at scale by using Azure CLI, PowerShell, Azure Policy, ARM templates, Bicep, and other infrastructure as code (IaC) tools.",
+    "Virtual machine scale sets\n\n Azure Virtual Machine Scale Sets (VMSS) support host metrics and guest performance data through Azure Monitor agent, similar to Azure VMs.",
+    "View VM health\n\n Open Monitor for any virtual machine in the Azure portal to see its current health.",
+    "Host metrics, including availability, are collected by default.",
+    "Enable enhanced monitoring to collect guest data and fully light up the Monitor view in the Azure portal.",
+    "This process installs Azure Monitor agent on the virtual machine and starts collecting a default set of metrics."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "topic": "Configure private endpoints for Azure Storage",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-private-endpoints",
+  "fetched_at": "2026-03-26T06:09:44.271Z",
+  "key_facts": [
+    "You can secure your storage account to only accept connections from your virtual network by configuring the storage firewall to deny access through its public endpoint by default.",
+    "If storage account A2 has a private endpoint in a virtual network N2 for Blob storage, then clients in virtual network N1 must also access Blob storage in account A2 using a private endpoint.",
+    "If storage account A2 does not have any private endpoints for Blob storage, then clients in virtual network N1 can access Blob storage in that account without a private endpoint.",
+    "Creating a private link does not automatically block connections on the public endpoint.",
+    "Clients in a subnet can thus connect to one storage account using private endpoint, while using service endpoints to access others.",
+    "Tip\n\n If you want to restrict access to your storage account through the private endpoint only, configure the storage firewall to deny or control access through the public endpoint.",
+    "You don't need a firewall rule to allow traffic from a virtual network that has a private endpoint, since the storage firewall only controls access through the public endpoint."
+  ]
+}

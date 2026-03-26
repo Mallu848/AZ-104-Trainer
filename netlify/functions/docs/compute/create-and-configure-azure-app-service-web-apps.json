@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure Azure App Service web apps",
+  "domain": "compute",
+  "url": "https://learn.microsoft.com/en-us/azure/app-service/overview",
+  "fetched_at": "2026-03-26T06:09:47.405Z",
+  "key_facts": [
+    "Not supported: Linux, containers, ASE, remote debugging (preview), non-PV4/PMV4 SKUs.",
+    "Students\n\n \n Free access : In addition to the widely available free tier , students can take advantage of the Azure for Students Starter program.",
+    "IDE support : Purpose-built deployment tools are available for Visual Studio, Visual Studio Code, IntelliJ, and Eclipse.",
+    "High-density hosting savings : Run more applications on fewer VMs with the memory-optimized P*mv3 tiers , and save up to 55% on predictable workloads with Azure savings plans and reserved instances .",
+    "Drive letter access: Configure access to SMB/UNC paths for legacy components (map or reference as supported).",
+    "Supports: Windows workloads (.NET, Java), COM/registry/MSI, drive mapping, managed identity, VNet integration, MSMQ client, CI/CD, Entra ID auth.",
+    "Choose a standard App Service plan if:\n\n \n You need Linux or container support."
+  ]
+}

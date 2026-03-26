@@ -1,0 +1,15 @@
+{
+  "topic": "Configure Azure RBAC role assignments at different scopes",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal",
+  "fetched_at": "2026-03-26T06:09:39.074Z",
+  "key_facts": [
+    "Prerequisites\n\n To assign Azure roles, you must have:\n\n \n Microsoft.Authorization/roleAssignments/write permissions, such as Role Based Access Control Administrator or User Access Administrator \n\n \n Step 1: Identify the needed scope\n\n When you assign roles, you must specify a scope.",
+    "Step 5: (Optional) Add condition\n\n If you selected a role that supports conditions, a Conditions tab will appear and you have the option to add a condition to your role assignment.",
+    "Assign Azure roles using the Azure portal\n\n \n \n \n \n \n \n \n \n \n Feedback \n \n \n \n\n \n \n\n \n \n \n \n \n \n \n \n Summarize this article for me\n \n \n \n\n \n \n\n \n\n \n \n \n Azure role-based access control (Azure RBAC) is the authorization system you use to manage access to Azure resources.",
+    "This article describes how to assign roles using the Azure portal.",
+    "In Azure, you can specify a scope at four levels from broad to narrow: management group , subscription, resource group , and resource.",
+    "Step 2: Open the Add role assignment page\n\n Access control (IAM) is the page that you typically use to assign roles to grant access to Azure resources.",
+    "It's also known as identity and access management (IAM) and appears in several locations in the Azure portal."
+  ]
+}

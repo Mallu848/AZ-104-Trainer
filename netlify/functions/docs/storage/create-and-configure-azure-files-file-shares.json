@@ -1,0 +1,15 @@
+{
+  "topic": "Create and configure Azure Files file shares",
+  "domain": "storage",
+  "url": "https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share",
+  "fetched_at": "2026-03-26T06:09:42.967Z",
+  "key_facts": [
+    "If you plan to deploy NFS file shares in your storage account, or you have clients that need access to unencrypted SMB (such as SMB 2.1), uncheck this checkbox.",
+    "The number of storage accounts per subscription is limited, so to deploy a new storage account into a selected subscription, it must have fewer storage accounts deployed than the subscription limit.",
+    "Make read access to data available in the event of region unavailability\n\n Checkbox\n\n Checked/unchecked\n\n No\n\n This setting only appears if you select the pay-as-you-go billing model with GRS or GZRS redundancy.",
+    "Azure Files doesn't support read access to data in the secondary region without a failover regardless of the status of this setting.",
+    "Access tier\n\n Radio button group\n\n Blob storage access tiers \n\n No\n\n This is an Azure Blob storage only setting.",
+    "Field name\n\n Input type\n\n Values\n\n Applicable to Azure Files\n\n Meaning\n\n \n \n \n Enable version-level immutability support\n\n Checkbox\n\n Checked/unchecked\n\n No\n\n This is an Azure Blob storage only setting.",
+    "Enable support for customer-managed keys\n\n Radio button group\n\n Blobs and files only\n All service types (blobs, files, tables, and queues)\n \n\n No\n\n All kind/SKU combinations for Azure Files support customer-managed keys regardless of this setting."
+  ]
+}

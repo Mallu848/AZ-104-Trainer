@@ -1,0 +1,15 @@
+{
+  "topic": "Create and manage custom RBAC roles",
+  "domain": "identity",
+  "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles",
+  "fetched_at": "2026-03-26T06:09:39.341Z",
+  "key_facts": [
+    "(For Microsoft Azure operated by 21Vianet, the limit is 2,000 custom roles.) Custom roles can be created using the Azure portal, Azure PowerShell, Azure CLI, or the REST API.",
+    "While a role definition is a management group or subscription-level resource, a role definition can be used in multiple subscriptions that share the same Microsoft Entra tenant.",
+    "For Azure PowerShell and Azure CLI, this ID is automatically generated when you create a new role.",
+    "You can define only one management group in AssignableScopes of a custom role.",
+    "Azure PowerShell\n\n To create a custom role using Azure PowerShell, you must provide following input.",
+    "{\n \"Name\": \"\",\n \"Description\": \"\",\n \"Actions\": [],\n \"NotActions\": [],\n \"DataActions\": [],\n \"NotDataActions\": [],\n \"AssignableScopes\": []\n}\n \n To update a custom role using Azure PowerShell, you must provide the following input.",
+    "{\n \"Name\": \"\",\n \"Id\": \"\",\n \"IsCustom\": true,\n \"Description\": \"\",\n \"Actions\": [],\n \"NotActions\": [],\n \"DataActions\": [],\n \"NotDataActions\": [],\n \"AssignableScopes\": []\n}\n \n Azure CLI\n\n To create or update a custom role using Azure CLI, you must provide following input."
+  ]
+}
