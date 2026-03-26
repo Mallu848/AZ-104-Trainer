@@ -415,7 +415,7 @@ module.exports = {
     },
     {
       topic: "Create and configure an Azure Backup vault",
-      url: "https://learn.microsoft.com/en-us/azure/backup/create-azure-backup-vault",
+      url: "https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview",
       domain: "monitoring"
     },
     {
