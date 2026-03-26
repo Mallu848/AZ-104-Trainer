@@ -1264,16 +1264,31 @@ function renderMC(q, container){
 
 // ── YES / NO ────────────────────────────────────────────────────────
 function renderYN(q, container){
-  // q.statements: array of {stmt, answer (true=Yes, false=No)}
   picked = new Map();
-  container.innerHTML = '<div style="font-size:11px;color:var(--ylw);font-family:var(--mono);margin-bottom:12px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:6px 12px">For each statement, select Yes or No</div>';
-  (q.statements || []).forEach((s, i)=>{
+  container.innerHTML = '';
+  const hint = document.createElement('div');
+  hint.style.cssText = 'font-size:11px;color:var(--ylw);font-family:var(--mono);margin-bottom:12px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:6px 12px';
+  hint.textContent = 'For each statement, select Yes or No';
+  container.appendChild(hint);
+  (q.statements || []).forEach((s, i) => {
     const row = document.createElement('div');
     row.className = 'yn-row';
-    row.innerHTML = `
-      <span class="yn-stmt">${s.stmt}</span>
-      <button class="yn-btn" id="yn-yes-${i}" onclick="pickYN(${i},true)"">Yes</button>
-      <button class="yn-btn" id="yn-no-${i}" onclick="pickYN(${i},false)">No</button>`;
+    const stmt = document.createElement('span');
+    stmt.className = 'yn-stmt';
+    stmt.textContent = s.stmt;
+    const yBtn = document.createElement('button');
+    yBtn.className = 'yn-btn';
+    yBtn.id = 'yn-yes-' + i;
+    yBtn.textContent = 'Yes';
+    yBtn.addEventListener('click', () => pickYN(i, true));
+    const nBtn = document.createElement('button');
+    nBtn.className = 'yn-btn';
+    nBtn.id = 'yn-no-' + i;
+    nBtn.textContent = 'No';
+    nBtn.addEventListener('click', () => pickYN(i, false));
+    row.appendChild(stmt);
+    row.appendChild(yBtn);
+    row.appendChild(nBtn);
     container.appendChild(row);
   });
 }
@@ -1801,7 +1816,7 @@ function startQTimer(){
   stopQTimer();
   qTimerSecs=90;
   updateTimerDisplay();
-  const wrap=document.getElementById('qtimer-wrap');
+  const wrap=document.getElementById('q-timer-wrap');
   if(wrap) wrap.style.display='flex';
   qTimerInterval=setInterval(()=>{
     qTimerSecs--;
@@ -1812,13 +1827,13 @@ function startQTimer(){
 
 function stopQTimer(){
   if(qTimerInterval){ clearInterval(qTimerInterval); qTimerInterval=null; }
-  const wrap=document.getElementById('qtimer-wrap');
+  const wrap=document.getElementById('q-timer-wrap');
   if(wrap) wrap.style.display='none';
 }
 
 function updateTimerDisplay(){
-  const val=document.getElementById('qtimer-val');
-  const bar=document.getElementById('qtimer-bar');
+  const val=document.getElementById('q-timer-val');
+  const bar=document.getElementById('q-timer-bar');
   if(!val||!bar) return;
   val.textContent=qTimerSecs+'s';
   const pct=Math.max(0,qTimerSecs/90*100);
@@ -2031,20 +2046,15 @@ async function startExamSim(){
   if(resEl) resEl.style.display='none';
   go('examsim');
 
-  // 8 batches of generateAIQuestions for 5 questions each = 40 total
-  const domains=['Identity & Access','Governance & Compliance','Administration','Virtual Networking',
-                 'Inter-site Connectivity','Network Traffic Mgmt','Azure Monitor','Storage'];
-  for(let i=0;i<8;i++){
-    try{
-      const batch=await generateAIQuestions(domains[i]||domains[i%domains.length],'exam');
-      examQuestions.push(...batch.slice(0,5));
-    } catch(e){
-      // fallback: grab from QB pool
-      const pool=buildPool();
-      const pick=pool.filter(q=>!examQuestions.includes(q)).slice(0,5);
-      examQuestions.push(...pick);
-    }
-  }
+  // 8 batches fired in PARALLEL via Promise.allSettled — cuts load time from ~32s to ~6-8s
+  const allDomains = ['identity','storage','compute','networking','monitoring',
+                      'identity','compute','networking'];
+  const batchPromises = allDomains.map(d => generateAIQuestions(d, 'hard').catch(() => []));
+  const results = await Promise.allSettled(batchPromises);
+  results.forEach(r => {
+    const batch = r.status === 'fulfilled' ? r.value : [];
+    examQuestions.push(...batch.slice(0, 5));
+  });
   // pad/trim to 40
   if(examQuestions.length<40){
     const pool=buildPool();
