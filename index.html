@@ -3047,13 +3047,37 @@ async function doNext(){
   qi++;
   if(qi >= pool.length){
     qi = 0;
+
+    // Show refill loading state
+    const qcard = document.getElementById('qcard');
+    const nxtbtn = document.getElementById('nxtbtn');
+    let loadDiv = document.getElementById('ai-gen-loading');
+    if(!loadDiv){
+      loadDiv = document.createElement('div');
+      loadDiv.id = 'ai-gen-loading';
+      loadDiv.style.cssText = 'text-align:center;padding:60px 20px;';
+      document.getElementById('qarea').prepend(loadDiv);
+    }
+    loadDiv.innerHTML = `
+      <div style="font-size:13px;color:var(--acc2);font-family:var(--mono);margin-bottom:16px;letter-spacing:.1em">Generating next batch...</div>
+      <div style="display:flex;justify-content:center;gap:6px;margin-bottom:12px">
+        <div class="dots"><span></span><span></span><span></span></div>
+      </div>
+      <div style="font-size:11px;color:var(--mut)">New questions every time — you'll almost never see the same one twice</div>`;
+    loadDiv.style.display = 'block';
+    qcard.style.display = 'none';
+    if(nxtbtn) nxtbtn.style.display = 'none';
+
     try {
       const aiQs = await generateAIQuestions(selDomain, selMode);
       pool = (aiQs && aiQs.length >= 3) ? aiQs.sort(() => Math.random() - .5) : buildPool();
     } catch(e) {
-      console.error("[AZ-104] AI refill failed:", e.message);
+      console.error('[AZ-104] AI refill failed:', e.message);
       pool = buildPool();
     }
+
+    loadDiv.style.display = 'none';
+    qcard.style.display = 'block';
   }
   loadQ();
 }
