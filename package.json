@@ -1,0 +1,12 @@
+{
+  "name": "az104-trainer",
+  "version": "1.0.0",
+  "description": "AZ-104 Microsoft Azure Administrator certification trainer with RAG-powered question generation",
+  "private": true,
+  "scripts": {
+    "fetch-docs": "node scripts/fetch-docs.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
