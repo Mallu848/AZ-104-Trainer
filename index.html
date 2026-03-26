@@ -955,7 +955,6 @@ async function startSession(){
     pool = (aiQs.length >= 5)
       ? aiQs.sort(() => Math.random() - .5)
       : buildPool();
-      : buildPool();
   } catch(e) {
     console.error("[AZ-104] AI generation failed:", e.message);
     pool = buildPool();
