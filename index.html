@@ -432,7 +432,7 @@ canvas#progress-chart{border-radius:10px;background:var(--s1);border:1px solid v
         <span class="qnum" id="qnum">Q1</span>
         <span class="qtype-badge qt-mc" id="qtype-badge">Multiple Choice</span>
         <span class="skill-ref" id="skillref">ARM Templates · Modify existing template</span>
-        <div class="q-timer-wrap" id="q-timer-wrap" style="display:none"><div class="q-timer-bar-outer"><div class="q-timer-bar-inner" id="q-timer-bar" style="width:100%;background:var(--grn)"></div></div><span class="q-timer-val" id="q-timer-val">90</span></div>
+        <button id="timer-toggle-btn" onclick="toggleTimer()" title="Toggle timer" style="display:none;font-family:var(--mono);font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(16,185,129,.1);color:var(--grn);border:1px solid var(--grn);cursor:pointer;letter-spacing:.05em;margin-right:4px">⏱ ON</button><div class="q-timer-wrap" id="q-timer-wrap" style="display:none"><div class="q-timer-bar-outer"><div class="q-timer-bar-inner" id="q-timer-bar" style="width:100%;background:var(--grn)"></div></div><span class="q-timer-val" id="q-timer-val">90</span></div>
       </div>
       <button class="bookmark-btn" id="bookmark-btn" onclick="toggleBookmark()" title="Bookmark">🔖</button>
       <div id="qscenario" class="sc-note" style="display:none"></div>
@@ -1240,6 +1240,9 @@ function loadQ(){
   eb.style.display = 'none';
   var abd = document.getElementById('ai-breakdown'); if(abd) abd.style.display = 'none';
   var lmw = document.getElementById('learn-more-wrap'); if(lmw) lmw.style.display='none';
+  // Show timer toggle in standard/hard/scenario modes
+  const ttb = document.getElementById('timer-toggle-btn');
+  if(ttb) ttb.style.display = (selMode !== 'examsim') ? 'inline-block' : 'none';
   startQTimer();
   updateBookmarkBtn(q);
 }
@@ -1809,10 +1812,29 @@ function updateBookmarkBtn(q){
 // ══════════════════════════════════════════════════════════════════
 // PER-QUESTION TIMER
 let qTimerInterval=null;
+let timerEnabled=true;
 let qTimerSecs=90;
 
+function toggleTimer(){
+  timerEnabled = !timerEnabled;
+  const btn = document.getElementById("timer-toggle-btn");
+  if(timerEnabled){
+    btn.textContent = "⏱ ON";
+    btn.style.background = "rgba(16,185,129,.1)";
+    btn.style.color = "var(--grn)";
+    btn.style.borderColor = "var(--grn)";
+    startQTimer();
+  } else {
+    btn.textContent = "⏱ OFF";
+    btn.style.background = "rgba(100,100,100,.1)";
+    btn.style.color = "var(--mut)";
+    btn.style.borderColor = "var(--bdr)";
+    stopQTimer();
+  }
+}
+
 function startQTimer(){
-  if(selMode==='examsim') return;
+  if(selMode==='examsim' || !timerEnabled) return;
   stopQTimer();
   qTimerSecs=90;
   updateTimerDisplay();
