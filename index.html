@@ -1240,6 +1240,7 @@ function loadQ(){
   eb.style.display = 'none';
   var abd = document.getElementById('ai-breakdown'); if(abd) abd.style.display = 'none';
   var lmw = document.getElementById('learn-more-wrap'); if(lmw) lmw.style.display='none';
+  var tn = document.getElementById('timer-nudge'); if(tn) tn.style.display='none';
   // Show timer toggle in standard/hard/scenario modes
   const ttb = document.getElementById('timer-toggle-btn');
   if(ttb) ttb.style.display = (selMode !== 'examsim') ? 'inline-block' : 'none';
@@ -1866,14 +1867,25 @@ function updateTimerDisplay(){
 }
 
 function timerExpired(){
-  // auto-mark wrong
-  const q=pool[qi%pool.length];
-  if(!q||done) return;
-  // mark picked as empty/wrong depending on type
-  if(q.type==='mc'||q.type==='yn') picked=-1;
-  else if(q.type==='ms') picked=new Set();
-  else if(q.type==='dnd') picked=[];
-  doSubmit();
+  if(done) return;
+  // Stop the timer bar at 0 but do NOT auto-submit or lock the question.
+  // Show a gentle nudge so the user can still answer and learn.
+  clearInterval(qTimerInterval); qTimerInterval = null;
+  const val = document.getElementById('q-timer-val');
+  const bar = document.getElementById('q-timer-bar');
+  if(val) { val.textContent = '0s'; val.style.color = 'var(--red)'; }
+  if(bar) { bar.style.width = '0%'; bar.style.background = 'var(--red)'; }
+  // Show a non-blocking nudge above the submit button
+  let nudge = document.getElementById('timer-nudge');
+  if(!nudge){
+    nudge = document.createElement('div');
+    nudge.id = 'timer-nudge';
+    nudge.style.cssText = 'font-family:var(--mono);font-size:11px;color:var(--red);margin-bottom:8px;letter-spacing:.05em';
+    const btnRow = document.getElementById('subbtn').parentNode;
+    btnRow.insertBefore(nudge, btnRow.firstChild);
+  }
+  nudge.textContent = 'Time is up — pick your answer to continue';
+  nudge.style.display = 'block';
 }
 
 // ══════════════════════════════════════════════════════════════════
