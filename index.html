@@ -364,7 +364,7 @@ h1{font-size:clamp(26px,5vw,44px);font-weight:800;line-height:1.05;margin-bottom
       <div class="opts" id="optslist"></div>
       <div class="btn-row">
         <button class="btn bp" id="subbtn" onclick="doSubmit()" disabled>Submit Answer</button>
-        <button class="btn bs" id="nxtbtn" onclick="doNext()" style="display:none">Next Question →</button>
+        <button class="btn bs" id="nxtbtn" onclick="doNext().catch(console.error)" style="display:none">Next Question →</button>
         <button class="btn bs" onclick="go('home')" style="margin-left:auto">← Home</button>
       </div>
     </div>
@@ -3043,9 +3043,18 @@ async function callAIGeneric(q, isCorrect){
   }
 }
 
-function doNext(){
+async function doNext(){
   qi++;
-  if(qi >= pool.length){ pool = buildPool(); qi=0; }
+  if(qi >= pool.length){
+    qi = 0;
+    try {
+      const aiQs = await generateAIQuestions(selDomain, selMode);
+      pool = (aiQs && aiQs.length >= 3) ? aiQs.sort(() => Math.random() - .5) : buildPool();
+    } catch(e) {
+      console.error("[AZ-104] AI refill failed:", e.message);
+      pool = buildPool();
+    }
+  }
   loadQ();
 }
 
