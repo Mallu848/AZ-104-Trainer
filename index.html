@@ -943,9 +943,18 @@ async function startSession(){
 
   clearInterval(msgTimer);
   try {
-    const aiQs = await generateAIQuestions(selDomain, selMode);
-    pool = (aiQs && aiQs.length >= 5)
+    // Two parallel calls of 5 = 10 questions, same latency as one call
+    const [batch1, batch2] = await Promise.allSettled([
+      generateAIQuestions(selDomain, selMode),
+      generateAIQuestions(selDomain, selMode)
+    ]);
+    const aiQs = [
+      ...(batch1.status === 'fulfilled' ? batch1.value : []),
+      ...(batch2.status === 'fulfilled' ? batch2.value : [])
+    ];
+    pool = (aiQs.length >= 5)
       ? aiQs.sort(() => Math.random() - .5)
+      : buildPool();
       : buildPool();
   } catch(e) {
     console.error("[AZ-104] AI generation failed:", e.message);
@@ -1648,8 +1657,15 @@ async function doNext(){
     if(nxtbtn) nxtbtn.style.display = 'none';
 
     try {
-      const aiQs = await generateAIQuestions(selDomain, selMode);
-      pool = (aiQs && aiQs.length >= 3) ? aiQs.sort(() => Math.random() - .5) : buildPool();
+      const [b1, b2] = await Promise.allSettled([
+        generateAIQuestions(selDomain, selMode),
+        generateAIQuestions(selDomain, selMode)
+      ]);
+      const aiQs = [
+        ...(b1.status === 'fulfilled' ? b1.value : []),
+        ...(b2.status === 'fulfilled' ? b2.value : [])
+      ];
+      pool = (aiQs.length >= 5) ? aiQs.sort(() => Math.random() - .5) : buildPool();
     } catch(e) {
       console.error('[AZ-104] AI refill failed:', e.message);
       pool = buildPool();
